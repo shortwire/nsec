@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn, Image as ImageIcon } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 const galleryCategories = ['All Space', 'Campus Life', 'Tech Fest', 'Labs', 'Convocation'];
 
@@ -23,26 +24,39 @@ export default function GalleryPage() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-brand-bg pt-32 pb-24">
-      <section className="px-6 lg:px-12 max-w-[1800px] mx-auto w-full">
-         <motion.div 
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-4 mb-4"
-         >
-           <span className="section-label !mb-0">{config.hero.subtitle}</span>
-           <div className="h-px w-12 bg-brand-accent/20" />
-         </motion.div>
-         
-         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl lg:text-8xl text-brand-maroon font-black uppercase tracking-tighter"
-            >
-              {config.hero.title} <br />
-              <span className="hero-serif text-brand-accent italic">{config.hero.titleHighlight}</span>
-            </motion.h1>
+  return (
+    <div className="w-full min-h-screen bg-brand-bg pb-24">
+      {/* HERO SECTION */}
+      <PageHero 
+        titleStroke={config.hero.title.toUpperCase()}
+        titleFill={config.hero.titleHighlight.toUpperCase()}
+        statutoryLabel={config.hero.subtitle}
+        policyLabel="Visual Archive"
+        rightLabel="Gallery.Node"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+              Capturing the <span className="text-brand-accent">vibrant energy</span> and state-of-the-art infrastructure of NSEC.
+            </p>
+            <div className="flex items-center gap-4 mt-6">
+               <div className="p-3 bg-white/10 rounded-xl border border-white/20">
+                  <ImageIcon size={24} className="text-brand-accent" />
+               </div>
+               <div className="flex flex-col">
+                  <span className="text-xl font-black text-white italic leading-none">{config.images.length}+</span>
+                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest mt-1">Images Collected</span>
+               </div>
+            </div>
+          </div>
+        }
+      />
+
+      <section className="px-6 lg:px-24 py-20 max-w-[1800px] mx-auto w-full">
+         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-16">
+            <div className="flex items-center gap-3">
+               <div className="w-12 h-[1.5px] bg-brand-accent" />
+               <span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Snapshot.Excellence</span>
+            </div>
 
             {/* Filter Pills */}
             <div className="flex flex-wrap items-center gap-3">

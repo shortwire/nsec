@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Map, ArrowRight, PlayCircle, Calendar } from 'lucide-react';
+import { Map, ArrowRight, PlayCircle, Calendar, Globe } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function VTourPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,35 +17,34 @@ export default function VTourPage() {
   if (!config) return <div className="h-screen bg-brand-bg flex items-center justify-center text-brand-muted">Loading tour...</div>;
 
   return (
-    <div className="w-full min-h-screen bg-brand-bg pt-32 pb-24">
-      <section className="px-6 lg:px-12 max-w-[1800px] mx-auto w-full">
-         <motion.div 
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-4 mb-4"
-         >
-           <span className="section-label !mb-0">{config.hero.subtitle}</span>
-           <div className="h-px w-12 bg-brand-accent/20" />
-         </motion.div>
-         
-         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl lg:text-8xl text-brand-maroon font-black uppercase tracking-tighter"
-            >
-              {config.hero.title} <br />
-              <span className="hero-serif text-brand-accent italic">{config.hero.titleHighlight}</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-brand-muted max-w-2xl leading-relaxed border-l-2 border-brand-accent pl-6 lg:mb-4"
-            >
+  return (
+    <div className="w-full min-h-screen bg-brand-bg pb-24">
+      {/* HERO SECTION */}
+      <PageHero 
+        titleStroke={config.hero.title.toUpperCase()}
+        titleFill={config.hero.titleHighlight.toUpperCase()}
+        statutoryLabel={config.hero.subtitle}
+        policyLabel="Virtual Experience"
+        rightLabel="Tour.Hub"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
               {config.hero.description}
-            </motion.p>
+            </p>
+            <div className="flex items-center gap-3 mt-6 p-4 bg-white/5 border border-white/10 rounded-2xl group cursor-pointer hover:bg-brand-accent/10 hover:border-brand-accent transition-all">
+               <div className="p-2 bg-brand-accent/20 rounded-lg text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-colors">
+                  <Globe size={20} />
+               </div>
+               <span className="text-[11px] font-mono font-black text-white/60 uppercase tracking-widest">Launch.Experience</span>
+            </div>
+          </div>
+        }
+      />
+
+      <section className="px-6 lg:px-24 py-20 max-w-[1800px] mx-auto w-full">
+         <div className="flex items-center gap-3 mb-12">
+            <div className="w-12 h-[1.5px] bg-brand-accent" />
+            <span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Immersive Navigation</span>
          </div>
 
          {/* 360 Tour Container */}

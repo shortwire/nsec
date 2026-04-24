@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Info, Eye, Network, Award, MessageSquare, Users, ArrowRight } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 const iconMap = {
   overview: Info,
@@ -117,29 +118,29 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-brand-bg pt-32 pb-24">
-      {/* Header section */}
-      <section className="px-6 lg:px-12 max-w-[1800px] mx-auto w-full mb-16">
-        <motion.div 
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-4"
-         >
-           <span className="section-label !mb-0">{config.hero.subtitle}</span>
-           <div className="h-px w-12 bg-brand-accent/20" />
-         </motion.div>
-         
-         <motion.h1 
-           initial={{ opacity: 0, y: 30 }}
-           animate={{ opacity: 1, y: 0 }}
-           className="text-6xl lg:text-8xl text-brand-maroon font-black uppercase tracking-tighter mt-4"
-         >
-           {config.hero.title} <span className="hero-serif text-brand-accent italic">{config.hero.titleHighlight}</span>
-         </motion.h1>
-      </section>
+    <div className="w-full min-h-screen bg-brand-bg pb-24">
+      {/* HERO SECTION */}
+      <PageHero 
+        titleStroke={config.hero.title.toUpperCase()}
+        titleFill={config.hero.titleHighlight.toUpperCase()}
+        statutoryLabel={config.hero.subtitle}
+        policyLabel="Institutional Overview"
+        rightLabel="About.Node"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+              Discover the <span className="text-brand-accent">legacy and vision</span> of Netaji Subhash Engineering College since 1998.
+            </p>
+            <div className="flex items-center gap-3 mt-4">
+               <div className="h-px w-12 bg-brand-maroon" />
+               <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Est. 1998</span>
+            </div>
+          </div>
+        }
+      />
 
       {/* Main Content layout */}
-      <section className="px-6 lg:px-12 max-w-[1800px] mx-auto w-full grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+      <section className="px-6 lg:px-24 py-20 max-w-[1800px] mx-auto w-full grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
         {/* Sidebar Nav */}
         <div className="lg:col-span-1 glass-card p-4 space-y-2 sticky top-[120px]">
           {tabs.map((tab) => {

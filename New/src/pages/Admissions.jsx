@@ -6,43 +6,39 @@ import {
   CheckCircle, 
   ArrowRight,
   Download,
-  ShieldCheck
+  ShieldCheck,
+  UserPlus
 } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function Admissions() {
   return (
-    <div className="flex flex-col w-full min-h-screen bg-brand-bg pt-32">
-      <section className="px-6 lg:px-12 py-32 max-w-[1800px] mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-24">
-          <div className="lg:col-span-8 space-y-8">
-            <motion.div 
-               initial={{ opacity: 0, x: -20 }}
-               animate={{ opacity: 1, x: 0 }}
-               className="flex items-center gap-4"
-             >
-               <span className="section-label !mb-0">Enrollment 2025</span>
-               <div className="h-px w-12 bg-brand-accent/20" />
-             </motion.div>
-             
-             <motion.h1 
-               initial={{ opacity: 0, y: 30 }}
-               animate={{ opacity: 1, y: 0 }}
-               className="text-7xl lg:text-9xl text-brand-maroon font-black uppercase tracking-tighter"
-             >
-               Secure your Technical <br />
-               <span className="hero-serif text-brand-accent italic">Legacy.</span>
-             </motion.h1>
+  return (
+    <div className="flex flex-col w-full min-h-screen bg-brand-bg pb-24">
+      {/* HERO SECTION */}
+      <PageHero 
+        titleStroke="SECURE YOUR"
+        titleFill="LEGACY"
+        statutoryLabel="Enrollment 2025"
+        policyLabel="Admissions Gateway"
+        rightLabel="Join.NSEC"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+              Join a cohort of <span className="text-brand-accent">thinkers and makers</span>. Our process identifies potential and academic excellence.
+            </p>
+            <div className="flex items-center gap-3 mt-6 p-4 bg-brand-accent/10 border border-brand-accent/20 rounded-2xl">
+               <ShieldCheck className="text-brand-accent" size={20} />
+               <span className="text-[10px] font-mono text-white/60 uppercase tracking-widest">AICTE Approved Path</span>
+            </div>
           </div>
-          
-          <div className="lg:col-span-4 space-y-8">
-             <p className="text-xl text-brand-muted font-medium leading-relaxed border-l-2 border-brand-accent pl-8">
-               Join a cohort of thinkers, makers, and innovators. Our admission process is designed to identify potential and academic excellence.
-             </p>
-             <div className="flex items-center gap-3 text-brand-accent font-bold text-sm tracking-widest uppercase">
-                <ShieldCheck className="w-5 h-5" />
-                AICTE Approved Institution
-             </div>
-          </div>
+        }
+      />
+
+      <section className="px-6 lg:px-24 py-20 max-w-[1800px] mx-auto w-full">
+        <div className="flex items-center gap-3 mb-16">
+          <div className="w-12 h-[1.5px] bg-brand-accent" />
+          <span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Enrollment Protocol</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Download, Calendar, Tag, Filter } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 const categories = ['All', 'Academic', 'Examination', 'Events', 'Placement', 'Admin', 'General', 'Library'];
 
@@ -25,25 +26,29 @@ export default function NoticePage() {
   });
 
   return (
-    <div className="w-full min-h-screen bg-brand-bg pt-32 pb-24">
-      <section className="px-6 lg:px-12 max-w-[1500px] mx-auto w-full">
-        <motion.div 
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-4 mb-4"
-         >
-           <span className="section-label !mb-0">{config.hero.subtitle}</span>
-           <div className="h-px w-12 bg-brand-accent/20" />
-         </motion.div>
-         
-         <motion.h1 
-           initial={{ opacity: 0, y: 30 }}
-           animate={{ opacity: 1, y: 0 }}
-           className="text-5xl lg:text-8xl text-brand-maroon font-black uppercase tracking-tighter mb-12"
-         >
-           {config.hero.title} <br />
-           <span className="hero-serif text-brand-accent italic">{config.hero.titleHighlight}</span>
-         </motion.h1>
+  return (
+    <div className="w-full min-h-screen bg-brand-bg pb-24">
+      {/* HERO SECTION */}
+      <PageHero 
+        titleStroke={config.hero.title.toUpperCase()}
+        titleFill={config.hero.titleHighlight.toUpperCase()}
+        statutoryLabel={config.hero.subtitle}
+        policyLabel="Bulletin Board"
+        rightLabel="Notices.Hub"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+              Stay updated with the latest <span className="text-brand-accent">academic and administrative</span> announcements.
+            </p>
+            <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex items-center justify-between">
+               <span className="text-[10px] font-mono text-white/60 uppercase">Total Notices</span>
+               <span className="text-xl font-black text-brand-accent italic">{config.notices.length}</span>
+            </div>
+          </div>
+        }
+      />
+
+      <section className="px-6 lg:px-24 py-20 max-w-[1500px] mx-auto w-full">
 
          {/* Filter Bar */}
          <div className="glass-card p-6 mb-12 flex flex-col md:flex-row gap-6 items-center justify-between">
