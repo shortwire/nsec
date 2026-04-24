@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Hero from '../components/hero';
 import { motion } from 'framer-motion';
 import { FileText, Archive, Mail, ExternalLink, ChevronRight } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function NirfPage() {
 	const [config, setConfig] = useState(null);
@@ -22,49 +22,30 @@ export default function NirfPage() {
 	}
 
 	return (
-		<div className="min-h-screen bg-[#f9f9f9] font-sans pb-24">
-			
-			{/* TOP LOGO SECTION */}
-			{/* <section className="w-full pt-32 pb-16 bg-white border-b border-gray-100 flex flex-col items-center justify-center">
-				<motion.div 
-					initial={{ scale: 0.8, opacity: 0 }}
-					animate={{ scale: 1, opacity: 1 }}
-					transition={{ duration: 0.6 }}
-					className="h-32 md:h-40 mb-6"
-				>
-					<img 
-						src="/assets/nirf/nirf-main-logo.png" 
-						alt="NIRF Logo" 
-						className="h-full w-auto object-contain drop-shadow-md"
-					/>
-				</motion.div>
-				<motion.h1 
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ duration: 0.6, delay: 0.2 }}
-					className="text-4xl md:text-5xl font-black text-[#800000] uppercase tracking-tight text-center px-4"
-				>
-					{config.title}
-				</motion.h1>
-			</section> */}
-
-			{/* HERO SECTION (LOCAL ASSET) */}
-			<Hero
-				title={config.external_reference.title}
-				subtitle="National Institutional Ranking Framework"
-				description={config.external_reference.note}
-				mediaSrc="/assets/nirf/nirf-2020-rank-l.jpg"
-				minHeightClass="min-h-[85vh]"
-				className="border-b-4 border-[#008b8b]"
-			>
-				<div className="w-full h-[60vh] mt-8 bg-white/10 backdrop-blur-md rounded-xl overflow-hidden border border-white/30 shadow-[0_0_40px_rgba(0,0,0,0.3)] flex items-center justify-center p-2">
-					<img
-						src="/assets/nirf/nirf-2020-rank-l.jpg"
-						alt="NIRF Ranking Certificate"
-						className="h-full w-auto object-contain rounded-lg"
-					/>
-				</div>
-			</Hero>
+		<div className="min-h-screen bg-brand-bg font-sans pb-24">
+			{/* HERO SECTION */}
+			<PageHero 
+				titleStroke="NIRF"
+				titleFill="RANKING"
+				statutoryLabel="National Institutional"
+				policyLabel="Ranking Framework"
+				rightLabel="Institutional.Value"
+				rightContent={
+					<div className="space-y-4">
+						<p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+							National Institutional Ranking Framework (NIRF) <span className="text-brand-accent">Rankings & Submissions</span> for the Ministry of Education.
+						</p>
+						<div className="relative mt-4 group">
+							<img
+								src="/assets/nirf/nirf-2020-rank-l.jpg"
+								alt="NIRF Ranking Certificate"
+								className="w-full h-auto object-cover rounded-lg border border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+							/>
+							<div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg pointer-events-none" />
+						</div>
+					</div>
+				}
+			/>
 
 			<div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-16">
 				

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Handshake, ChevronRight, FlaskConical, Library, Building2, ExternalLink, Award } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function RDPage() {
 	const [config, setConfig] = useState(null);
@@ -77,38 +78,28 @@ export default function RDPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-white font-sans">
+		<div className="min-h-screen bg-brand-bg font-sans">
 			{/* HERO SECTION */}
-			<section className="w-full pt-32 pb-20 bg-white border-b border-gray-100">
-				<div className="max-w-7xl mx-auto px-6 lg:px-12">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6 }}
-						className="text-center space-y-6"
-					>
-						<div className="flex items-center justify-center mb-4">
-							<div className="w-16 h-16 bg-maroon/10 rounded-full flex items-center justify-center">
-								<FlaskConical size={32} className="text-maroon" style={{ color: 'rgb(128, 0, 0)' }} />
-							</div>
-						</div>
-						
-						<h1 
-							className="text-5xl md:text-7xl font-bold tracking-tight"
-							style={{ color: 'rgb(128, 0, 0)' }}
-						>
-							Research & Development
-						</h1>
-
-						<p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-							Driving innovation through academic excellence and strategic partnerships with industry leaders. Our commitment to cutting-edge research shapes the future of our institution and beyond.
+			<PageHero 
+				titleStroke="R & D"
+				titleFill="CENTRE"
+				statutoryLabel="Research &"
+				policyLabel="Development"
+				rightLabel="Innovation.Core"
+				rightContent={
+					<div className="space-y-4">
+						<p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+							Driving innovation through <span className="text-brand-accent">academic excellence</span> and strategic partnerships with industry leaders.
 						</p>
-					</motion.div>
-				</div>
-			</section>
+						<p className="text-white/45 text-[13px] font-body italic border-l-2 border-brand-maroon pl-3">
+							"The future belongs to the curious."
+						</p>
+					</div>
+				}
+			/>
 
 			{/* CONTENT SECTIONS */}
-			<div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 space-y-20">
+			<div className="max-w-7xl mx-auto px-6 lg:px-24 py-20 space-y-20">
 				
 				{/* GENERAL INITIATIVES */}
 				{config.general && config.general.length > 0 && (
@@ -116,19 +107,11 @@ export default function RDPage() {
 						variants={containerVariants}
 						initial="hidden"
 						animate="visible"
-						className="space-y-8"
+						className="space-y-12"
 					>
-						<div className="space-y-2">
-							<div className="flex items-center gap-3">
-								<div className="w-1 h-8" style={{ backgroundColor: 'rgb(128, 0, 0)' }}></div>
-								<h2 
-									className="text-3xl md:text-4xl font-bold"
-									style={{ color: 'rgb(128, 0, 0)' }}
-								>
-									Key Initiatives & Reports
-								</h2>
-							</div>
-							<p className="text-gray-500 ml-4 font-light">Latest research projects and institutional reports</p>
+						<div className="flex items-center gap-3">
+							<div className="w-12 h-[1.5px] bg-brand-accent" />
+							<span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Key Initiatives & Reports</span>
 						</div>
 
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

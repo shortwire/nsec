@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import Hero from '../components/hero';
+import PageHero from '../components/PageHero';
 import Table from '../components/Table';
+import { motion } from 'framer-motion';
 
 export default function IIC() {
 	const [config, setConfig] = useState(null);
@@ -49,41 +50,39 @@ export default function IIC() {
 	}
 
 	return (
-		<div className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
-			<Hero
-				mediaType="image"
-				mediaSrc="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=900&fit=crop"
-				mediaAlt="Institution's Innovation Council"
-				subtitle="Institution's Innovation Council"
-				title="Innovation"
-				highlight="Council"
-				description={config.about?.overview}
-				minHeightClass="min-h-[62vh]"
-				overlayOpacity={0.65}
+		<div className="min-h-screen bg-brand-bg font-sans">
+			{/* HERO SECTION */}
+			<PageHero 
+				titleStroke="IIC"
+				titleFill="COUNCIL"
+				statutoryLabel="Institution's"
+				policyLabel="Innovation Council"
+				rightLabel="Creative.Engine"
+				rightContent={
+					<div className="space-y-4">
+						<p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+							Establishing a vibrant <span className="text-brand-accent">innovation ecosystem</span> to foster entrepreneurship and startups.
+						</p>
+						<div className="mt-4 flex items-center gap-4">
+							<div className="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20">
+								<img 
+									src="/assets/HeroFocus/25-years-nsec-logo-3.png" 
+									alt="25 Years of NSEC" 
+									className="h-20 w-auto object-contain brightness-0 invert opacity-80"
+								/>
+							</div>
+							<p className="text-white/45 text-[11px] font-mono uppercase tracking-widest leading-tight">
+								25 Years of <br /> Academic <br /> Excellence
+							</p>
+						</div>
+					</div>
+				}
 			/>
 
-			<section className="max-w-7xl mx-auto px-6 lg:px-12 py-14 relative">
-				
-				{/* 25 Years Excellence Badge */}
-				<div className="absolute right-6 lg:right-12 -top-20 lg:-top-24 z-10 hidden md:block">
-					<div className="bg-white/10 backdrop-blur-md p-4 rounded-3xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.2)] transition-transform hover:-translate-y-2 duration-500">
-						<img 
-							src="/assets/HeroFocus/25-years-nsec-logo-3.png" 
-							alt="25 Years of NSEC" 
-							className="h-32 lg:h-40 w-auto object-contain drop-shadow-2xl"
-						/>
-					</div>
-				</div>
-
-				{/* Mobile fallback for the badge */}
-				<div className="flex justify-center md:hidden mb-10 -mt-6">
-					<div className="bg-white p-4 rounded-3xl shadow-lg border border-gray-100">
-						<img 
-							src="/assets/HeroFocus/25-years-nsec-logo-3.png" 
-							alt="25 Years of NSEC" 
-							className="h-24 w-auto object-contain drop-shadow-md"
-						/>
-					</div>
+			<section className="max-w-7xl mx-auto px-6 lg:px-24 py-20 relative">
+				<div className="flex items-center gap-3 mb-10">
+					<div className="w-12 h-[1.5px] bg-brand-accent" />
+					<span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Institutional Innovation</span>
 				</div>
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10 mt-4 md:mt-0">

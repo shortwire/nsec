@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, FileText, Users, Target, CheckCircle2, Mail, BookOpen } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 const MotionDiv = motion.div;
 const MotionH1 = motion.h1;
@@ -122,48 +123,30 @@ export default function IqacPage({ configPath }) {
   }
 
   return (
-    <div className="w-full min-h-screen" style={{ backgroundColor: '#ffffff' }}>
-      {/* Background Decorative Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5 blur-3xl" style={{ backgroundColor: '#008b8b' }} />
-        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full opacity-5 blur-3xl" style={{ backgroundColor: '#800000' }} />
-      </div>
-
+    <div className="w-full min-h-screen bg-brand-bg">
       {/* Hero Section */}
-      <section className="relative px-6 lg:px-12 pt-32 pb-20 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-32">
-          <div className="lg:col-span-8 space-y-8">
-            <MotionDiv 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3"
-            >
-              <div className="flex items-center gap-2 px-4 py-2 font-semibold text-sm" style={{ backgroundColor: '#e8dfd5', color: '#008b8b' }}>
-                {pageConfig.hero.subtitle}
-              </div>
-            </MotionDiv>
-            
-            <MotionH1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl lg:text-7xl font-black tracking-tight leading-tight"
-              style={{ color: '#2d2d2d' }}
-            >
-              {pageConfig.hero.title}
-              <br />
-              <span style={{ color: '#800000' }}>
-                {pageConfig.hero.titleHighlight}
-              </span>
-            </MotionH1>
-          </div>
-          
-          <div className="lg:col-span-4">
-            <p className="text-lg font-medium leading-relaxed pl-6" style={{ color: '#4a4a4a', borderLeftColor: '#008b8b', borderLeftWidth: '4px' }}>
-              {pageConfig.summary || 'Ensuring continuous improvement in the entire operations of the institution.'}
+      <PageHero 
+        titleStroke="IQAC"
+        titleFill="CELL"
+        statutoryLabel="Internal Quality"
+        policyLabel="Assurance Cell"
+        rightLabel="Strategic.Quality"
+        rightContent={
+          <div className="space-y-4">
+            <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+              Ensuring <span className="text-brand-accent">continuous improvement</span> in the entire operations of the institution.
+            </p>
+            <p className="text-white/45 text-[13px] font-body italic border-l-2 border-brand-maroon pl-3">
+              "Quality is not an act, it is a habit."
             </p>
           </div>
+        }
+      />
+
+      <section className="relative px-6 lg:px-24 py-20 max-w-7xl mx-auto">
+        <div className="flex items-center gap-3 mb-12">
+          <div className="w-12 h-[1.5px] bg-brand-accent" />
+          <span className="text-xs font-mono font-black text-brand-accent uppercase tracking-[0.3em]">Institutional Framework</span>
         </div>
 
         {/* Cards Grid */}

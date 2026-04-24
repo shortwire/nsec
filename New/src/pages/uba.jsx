@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import PageHero from '../components/PageHero';
+import { Mail, Phone, FileText, ExternalLink, MapPin } from 'lucide-react';
 
 export default function UbaPage() {
 	const [config, setConfig] = useState(null);
@@ -20,55 +22,55 @@ export default function UbaPage() {
 	}
 
 	return (
-		<div className="min-h-screen font-sans" style={{ backgroundColor: '#ffffff' }}>
-			{/* HERO SECTION with Emblem */}
-			<section className="relative w-full pt-32 pb-24 flex flex-col items-center justify-center bg-gradient-to-b from-[#f5f0eb] to-white border-b border-gray-100">
-				<motion.div 
-					initial={{ scale: 0.8, opacity: 0 }}
-					animate={{ scale: 1, opacity: 1 }}
-					transition={{ duration: 0.7, ease: "easeOut" }}
-					className="w-40 h-40 md:w-56 md:h-56 mb-8 drop-shadow-xl"
-				>
-					<img src="/assets/uba/emblem.png" alt="Emblem" className="w-full h-full object-contain" />
-				</motion.div>
-				<motion.div
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ duration: 0.5, delay: 0.3 }}
-					className="text-center px-6 max-w-4xl"
-				>
-					<h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#800000] mb-4">
-						{config.title}
-					</h1>
-					<p className="text-lg md:text-xl font-medium text-gray-600 uppercase tracking-widest">
-						Netaji Subhash Engineering College
-					</p>
-				</motion.div>
-			</section>
+		<div className="min-h-screen bg-brand-bg font-sans pb-24">
+			{/* HERO SECTION */}
+			<PageHero 
+				titleStroke="UNNAT"
+				titleFill="BHARAT"
+				statutoryLabel="Unnat Bharat"
+				policyLabel="Abhiyan (UBA)"
+				rightLabel="Community.Action"
+				rightContent={
+					<div className="space-y-4">
+						<p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
+							Transforming <span className="text-brand-accent">Rural India</span> through institutional knowledge and community participation.
+						</p>
+						<div className="flex items-center gap-4 mt-4">
+							<img src="/assets/uba/emblem.png" alt="Emblem" className="h-20 w-auto object-contain drop-shadow-2xl" />
+							<div className="h-12 w-px bg-white/20" />
+							<img src="/assets/uba/uba-logo.png" alt="UBA Logo" className="h-16 w-auto object-contain brightness-0 invert opacity-70" />
+						</div>
+					</div>
+				}
+			/>
 
 			{/* MAP SECTION */}
-			<section className="max-w-6xl mx-auto px-6 lg:px-12 -mt-12 relative z-10">
+			<section className="max-w-7xl mx-auto px-6 lg:px-24 -mt-16 relative z-10">
 				<motion.div 
 					initial={{ y: 40, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ duration: 0.7, delay: 0.5 }}
-					className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white ring-1 ring-gray-200"
+					className="rounded-xl overflow-hidden shadow-2xl border border-brand-blue/10 bg-white"
 				>
-					<div className="bg-[#800000] py-4 px-6 text-white text-center">
-						<h2 className="text-2xl font-bold uppercase tracking-widest">Adopted Villages Map</h2>
+					<div className="bg-brand-blue py-5 px-8 text-white flex items-center justify-between">
+						<h2 className="text-xl font-black uppercase tracking-[0.2em] italic">Adopted Villages Node</h2>
+						<div className="flex items-center gap-2 text-brand-accent text-xs font-mono font-bold uppercase tracking-widest">
+							<MapPin size={14} /> Regional Presence
+						</div>
 					</div>
-					<div className="w-full h-[50vh] md:h-[65vh] bg-gray-100 relative">
+					<div className="w-full h-[50vh] md:h-[65vh] bg-slate-900 relative">
 						<img 
 							src="/assets/uba/uba-map-01.jpg" 
 							alt="UBA Map" 
-							className="w-full h-full object-cover object-center"
+							className="w-full h-full object-cover object-center opacity-80"
 						/>
+						<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 					</div>
-					<div className="bg-white p-6 grid grid-cols-2 md:grid-cols-5 gap-4 border-t border-gray-100">
+					<div className="bg-white p-8 grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-brand-blue/5">
 						{config.adopted_villages.map((village, idx) => (
-							<div key={idx} className="flex items-center gap-2">
-								<div className="w-3 h-3 rounded-full bg-[#008b8b]"></div>
-								<span className="text-sm font-bold text-gray-700">{village}</span>
+							<div key={idx} className="flex items-center gap-3 group">
+								<div className="w-2 h-2 rounded-full bg-brand-accent group-hover:scale-150 transition-transform shadow-[0_0_8px_rgba(0,139,139,0.6)]"></div>
+								<span className="text-sm font-black text-brand-blue/80 uppercase tracking-tight italic group-hover:text-brand-maroon transition-colors">{village}</span>
 							</div>
 						))}
 					</div>
