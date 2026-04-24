@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import Layout from '../components/Layout';
 import SuccessStories from '../components/SuccessStories';
+import SectionHeading from '../components/SectionHeading';
 import { 
   Square,
   Circle,
@@ -165,136 +166,134 @@ const NoticeTicker = ({ notices }) => {
 };
 
 const ArchitecturalCarousel = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [state, setState] = useState({
+    index: 0,
+    direction: 1,
+    keyframes: {
+      x: [0, 40, -40, 0],
+      y: [0, -25, 25, 0],
+      scale: [1, 1.25]
+    }
+  });
+
+  const generateNextState = (prevIndex, dir) => {
+    const nextIndex = (prevIndex + dir + images.length) % images.length;
+    const xRange = 60;
+    const yRange = 40;
+    const getRandom = (range) => Math.floor(Math.random() * range * 2) - range;
+    
+    return {
+      index: nextIndex,
+      direction: dir,
+      keyframes: {
+        x: [0, getRandom(xRange), getRandom(xRange), 0],
+        y: [0, getRandom(yRange), getRandom(yRange), 0],
+        scale: [1, 1.2 + Math.random() * 0.15]
+      }
+    };
+  };
 
   useEffect(() => {
     if (!images || images.length === 0) return;
-
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 600); 
-      
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 1200); 
-    }, 7000);
-
+      setState(prev => generateNextState(prev.index, 1));
+    }, 8000);
     return () => clearInterval(interval);
   }, [images]);
 
   if (!images || images.length === 0) return null;
 
-  const nextIndex = (currentIndex + 1) % images.length;
-
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-white">
-      {/* 16:9 Container - Fixed with max-h and auto margins to ensure absolute equal space */}
-      <div className="relative w-full h-full flex items-center justify-center">
-        <div className="relative w-full h-full overflow-visible group">
-          
-          {/* The Image Stage */}
-          <div className="w-full h-full overflow-hidden relative bg-brand-blue z-10">
-            
-            {/* BACKGROUND LAYER */}
-            <div className="absolute inset-0 z-0 opacity-0 pointer-events-none">
-              <img 
-                src={images[nextIndex].path} 
-                alt="preloader" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* ACTIVE IMAGE LAYER */}
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0.8 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0 z-10"
-            >
-              {/* Ken Burns Effect */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.25],
-                  x: [0, -30, 15, 0],
-                  y: [0, -15, 10, 0]
-                }}
-                transition={{ 
-                  duration: 15, 
-                  repeat: Infinity, 
-                  repeatType: "reverse",
-                  ease: "linear" 
-                }}
-                className="w-full h-full will-change-transform"
-              >
-                <img 
-                  src={images[currentIndex].path} 
-                  alt={images[currentIndex].label} 
-                  className="w-full h-full object-cover brightness-105"
-                />
-              </motion.div>
-
-              {/* Technical Overlay */}
-              <div className="absolute inset-0 pointer-events-none opacity-20">
-                <div className="absolute inset-0 bg-grid-white/5" />
-              </div>
-
-              {/* Label Node */}
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="absolute bottom-8 left-8 z-20"
-              >
-                <div className="bg-brand-blue/90 backdrop-blur-2xl px-6 py-3 rounded-2xl border border-brand-accent/20 shadow-2xl">
-                  <div className="flex items-center gap-4">
-                    <div className="w-1 h-6 bg-brand-accent rounded-full animate-pulse" />
-                    <div>
-                      <span className="text-[8px] font-black uppercase tracking-[0.4em] text-brand-accent block mb-0.5 opacity-80">
-                        NSEC_ARCHIVE // {String(currentIndex + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-lg font-black text-white uppercase italic tracking-tighter leading-none">
-                        {images[currentIndex].label}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* TRANSITION WIPE */}
-            <motion.div
-              animate={isTransitioning ? { x: ["-100%", "0%", "100%"] } : { x: "-100%" }}
-              transition={{ 
-                duration: 1.2, 
-                times: [0, 0.5, 1], 
-                ease: [0.65, 0, 0.35, 1] 
+    <div className="relative w-full h-full overflow-hidden bg-brand-blue group">
+      <AnimatePresence initial={false} mode="popLayout">
+        <motion.div
+          key={state.index}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ 
+            duration: 1.2, 
+            ease: [0.19, 1, 0.22, 1] 
+          }}
+          className="absolute inset-0 z-10"
+        >
+          {/* Main Image with optimized randomized movement */}
+          <div className="w-full h-full overflow-hidden">
+            <motion.img 
+              src={images[state.index].path} 
+              alt={images[state.index].label} 
+              className="w-full h-full object-cover will-change-transform"
+              animate={{ 
+                scale: state.keyframes.scale,
+                x: state.keyframes.x,
+                y: state.keyframes.y
               }}
-              className="absolute inset-0 z-40 flex pointer-events-none will-change-transform"
+              transition={{ 
+                duration: 10,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            />
+          </div>
+
+          {/* Overlays optimized for GPU */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/60 via-transparent to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/80 via-transparent to-transparent z-20 pointer-events-none" />
+
+          {/* Content Card - Floating Glassmorphism */}
+          <div className="absolute inset-0 flex items-end p-12 z-30 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.19, 1, 0.22, 1] }}
+              className="max-w-xl pointer-events-auto"
             >
-              <div className="w-full h-full bg-brand-accent relative shadow-[0_0_80px_rgba(0,139,139,0.5)]">
-                <div className="absolute inset-0 bg-grid-white/10" />
-                <div className="absolute top-0 right-0 w-[1px] h-full bg-white/50" />
+              <div className="inline-flex items-center gap-3 px-3 py-1 bg-brand-accent/20 backdrop-blur-md border border-brand-accent/30 rounded-full mb-6">
+                <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                <span className="text-[10px] font-bold text-brand-accent uppercase tracking-[0.3em]">
+                  Exploring Excellence
+                </span>
+              </div>
+              
+              <h3 className="text-5xl font-black text-white uppercase italic tracking-tighter leading-[0.9] mb-4">
+                {images[state.index].label.split(' ').map((word, i) => (
+                  <span key={i} className="block last:text-brand-accent last:not-italic">
+                    {word}
+                  </span>
+                ))}
+              </h3>
+
+              <div className="flex items-center gap-6 mt-8">
+                <div className="h-[1px] w-12 bg-white/30" />
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-[0.5em]">
+                  Archive // {String(state.index + 1).padStart(2, '0')}
+                </span>
               </div>
             </motion.div>
           </div>
+        </motion.div>
+      </AnimatePresence>
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-4 right-10 z-30 flex gap-1.5">
-            {images.map((_, i) => (
-              <div 
-                key={i}
-                className={`h-1 transition-all duration-500 rounded-full ${
-                  i === currentIndex ? "w-6 bg-brand-accent" : "w-1.5 bg-white/20"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Floating Navigation Controls */}
+      <div className="absolute bottom-12 right-12 z-40 flex items-center gap-4">
+        <button 
+          onClick={() => setState(prev => generateNextState(prev.index, -1))}
+          className="w-12 h-12 flex items-center justify-center border border-white/10 text-white hover:bg-brand-accent hover:border-brand-accent transition-all duration-500 rounded-full backdrop-blur-sm"
+        >
+          <MoveRight size={20} className="rotate-180" />
+        </button>
+        <button 
+          onClick={() => setState(prev => generateNextState(prev.index, 1))}
+          className="w-12 h-12 flex items-center justify-center border border-white/10 text-white hover:bg-brand-accent hover:border-brand-accent transition-all duration-500 rounded-full backdrop-blur-sm"
+        >
+          <MoveRight size={20} />
+        </button>
+      </div>
+
+      {/* Modern Grid Overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(10,17,26,0.4)_100%)]" />
       </div>
     </div>
   );
@@ -540,7 +539,7 @@ const getLucideIcon = (name, size = 20, className = "text-brand-accent") => {
       </section>
 
       {/* 02. CORE METRICS / DATA RIBBON ARRAY */}
-      <section className="bg-brand-bg py-16 relative overflow-hidden mt-2">
+      <section className="bg-brand-bg relative overflow-hidden mt-2 pt-24">
         <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl" />
         
         <div className="px-6 lg:px-12 relative z-10 w-full">
@@ -617,20 +616,13 @@ const getLucideIcon = (name, size = 20, className = "text-brand-accent") => {
       </section>
 
       {/* 03. BROADCAST: SPOTLIGHT & NOTICES */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="px-8 lg:px-24 mb-24">
-          <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
-            <div className="space-y-4">
-              <h2 className="text-7xl lg:text-9xl leading-[0.8] tracking-tighter text-brand-maroon uppercase italic font-black">
-                Broadcast.
-              </h2>
-            </div>
-            <div className="lg:max-w-md text-right border-r-4 border-brand-maroon pr-8 mb-2">
-              <p className="font-mono text-xs font-bold uppercase text-brand-accent italic">
-                "Live nodes of institutional communication."
-              </p>
-            </div>
-          </div>
+      <section className="bg-white relative overflow-hidden pt-32">
+        <div className="px-8 lg:px-24 mb-12">
+          <SectionHeading 
+            title="Broadcast" 
+            number="03" 
+            tagline="Live nodes of institutional communication." 
+          />
         </div>
 
         <div className="px-8 lg:px-24">
@@ -732,19 +724,12 @@ const getLucideIcon = (name, size = 20, className = "text-brand-accent") => {
       </section>
 
       {/* 04. SPECIALIZATIONS */}
-      <section className="pt-8 pb-20 px-8 lg:px-24 relative bg-brand-bg">
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-12">
-          <div className="space-y-4">
-            <h2 className="text-7xl lg:text-9xl leading-[0.8] tracking-tighter text-brand-maroon uppercase italic font-black">
-              Specializations.
-            </h2>
-          </div>
-          <div className="lg:max-w-md text-right border-r-4 border-brand-maroon pr-8 mb-2">
-            <p className="font-mono text-xs font-bold uppercase text-brand-accent italic">
-              "Standardized units of academic excellence."
-            </p>
-          </div>
-        </div>
+      <section className="px-8 lg:px-24 relative bg-white pt-32">
+        <SectionHeading 
+          title="Specializations" 
+          number="04" 
+          tagline="Standardized units of academic excellence." 
+        />
 
         <div className="space-y-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-brand-blue/15">

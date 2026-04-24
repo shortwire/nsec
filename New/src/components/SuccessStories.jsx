@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { PlayCircle, Quote, GraduationCap, Building2, Calendar, MoveRight, X, Play, Hexagon } from 'lucide-react';
 import { cn } from '../utils/cn';
+import SectionHeading from './SectionHeading';
 import * as Lucide from 'lucide-react';
 
 const VideoThumbnail = ({ src, thumbnail, alt }) => {
@@ -259,28 +260,21 @@ export default function SuccessStories({ data }) {
   const testimonyItems = [...validTestimonials, ...validTestimonials];
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden border-t border-brand-accent/10">
+    <section className="bg-white relative overflow-hidden border-t border-brand-accent/10 pt-32">
       {/* Structural Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-grid-slate-100/[0.4] pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent z-10" />
 
-      <div className="px-8 lg:px-24 mb-24 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
-          <div className="space-y-4">
-            <h2 className="text-7xl lg:text-9xl leading-[0.8] tracking-tighter text-brand-maroon uppercase italic font-black">
-              Alumni <span className="text-brand-blue">Nexus.</span>
-            </h2>
-          </div>
-          <div className="lg:max-w-md text-right border-r-4 border-brand-maroon pr-8 mb-2">
-            <p className="font-mono text-xs font-bold uppercase text-brand-accent italic">
-              "Global engineering nodes architecting future-proof systems across world-class technology hub hubs."
-            </p>
-          </div>
-        </div>
+      <div className="px-8 lg:px-24 mb-12 relative z-10">
+        <SectionHeading 
+          title="Alumni Nexus" 
+          number="05" 
+          tagline="Global engineering nodes architecting future-proof systems across world-class technology hubs." 
+        />
       </div>
 
       {/* Oblique Marquee Section */}
-      <div className="mb-40 space-y-6 relative z-10">
+      <div className="mb-16 space-y-6 relative z-10">
         <SuccessMarquee items={data.marquee.slice(0, 10)} tilt="left" />
         <SuccessMarquee items={data.marquee.slice(10)} reverse tilt="right" />
       </div>
