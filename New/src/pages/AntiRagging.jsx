@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, AlertTriangle, ChevronRight, Eye, Download, ExternalLink, Phone, ArrowUpRight, MessageSquare, Frown, BookOpen, Briefcase, IndianRupee, ShieldAlert, Mail, Brain } from 'lucide-react';
+import { Shield, AlertTriangle, ChevronRight, Eye, Download, ExternalLink, Phone, ArrowUpRight, MessageSquare, Frown, BookOpen, Briefcase, IndianRupee, ShieldAlert, Mail, Brain, Maximize } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -44,99 +44,37 @@ function HighlightText({ text }) {
  ═══════════════════════════════════════════════════════════ */
 const TIMELINE_ICONS = [MessageSquare, AlertTriangle, Frown, BookOpen, Briefcase, IndianRupee, ShieldAlert, Mail, Brain];
 
-function TimelineNode({ index, text, total }) {
-  const isEven = index % 2 === 0;
+/* ═══════════════════════════════════════════════════════════
+   CONSTITUTES CARD — Grid layout replacing vertical timeline
+ ═══════════════════════════════════════════════════════════ */
+function ConstitutesCard({ index, text }) {
   const Icon = TIMELINE_ICONS[index % TIMELINE_ICONS.length];
   return (
-    <div className="relative flex items-stretch group">
-      {/* Left side */}
-      <div className="hidden lg:block lg:w-[calc(50%-2rem)] order-1">
-        {isEven && (
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -5 }}
-            className="relative mr-6 p-6 rounded-[20px] bg-white border border-brand-accent/20 border-l-[3px] border-l-[#fbbf24] shadow-[0_2px_12px_rgba(0,0,0,0.04),0_0_0_1px_rgba(251,191,36,0.15)] hover:bg-slate-50 transition-all duration-300 cursor-default"
-          >
-            <div className="absolute top-1/2 -right-6 w-6 h-[2px] -translate-y-1/2" style={{ background: 'linear-gradient(to right, rgba(0,139,139,0.15), rgba(0,139,139,0.3))' }} />
-            <div className="absolute inset-0 rounded-[20px] -z-10 translate-x-1 translate-y-1 bg-brand-accent/[0.02] border border-brand-accent/5" />
-            <div className="flex gap-4 items-start">
-              <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
-                <Icon size={20} />
-              </div>
-              <p className="text-[16px] font-body text-slate-700 leading-[1.8] tracking-wide pt-1"><HighlightText text={text} /></p>
-            </div>
-          </motion.div>
-        )}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-[#fbbf24] shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3"
+    >
+      {/* Number Badge */}
+      <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-[#fbbf24] flex items-center justify-center shadow-[0_2px_4px_rgba(251,191,36,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(251,191,36,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white">
+        <span className="text-[12px] font-mono font-black text-slate-900">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        {/* Connector line */}
+        <div className="absolute top-1/2 left-full w-16 h-[2px] -translate-y-1/2 opacity-70 group-hover:opacity-100 group-hover:w-24 transition-all duration-[250ms] ease-out pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.8), rgba(251,191,36,0.1), transparent)' }} />
       </div>
 
-      {/* Center spine */}
-      <div className="flex flex-col items-center shrink-0 w-12 lg:w-16 order-2 relative z-10">
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.07 }}
-          className="relative w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_0_0_2px_#fbbf24,0_0_0_5px_rgba(251,191,36,0.15),0_0_10px_rgba(251,191,36,0.25)] transition-all duration-300"
-        >
-          <span className="text-xs font-mono font-black text-white">{String(index + 1).padStart(2, '0')}</span>
-          <div className="absolute inset-0 rounded-full border-2 animate-ping" style={{ animationDuration: '1.2s', borderColor: 'rgba(251,191,36,0.5)' }} />
-          <div className="absolute inset-[1px] rounded-full border-2 animate-pulse" style={{ animationDuration: '0.8s', borderColor: 'rgba(251,191,36,0.25)' }} />
-        </motion.div>
-        {index < total - 1 && (
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.07 + 0.15 }}
-            className="w-[2px] flex-1 min-h-[32px] origin-top mt-1"
-            style={{ background: 'linear-gradient(to bottom, rgba(0,139,139,0.35), rgba(0,139,139,0.05))' }}
-          />
-        )}
-      </div>
-
-      {/* Right side */}
-      <div className="hidden lg:block lg:w-[calc(50%-2rem)] order-3">
-        {!isEven && (
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -5 }}
-            className="relative ml-6 p-6 rounded-[20px] bg-white border border-brand-accent/20 border-l-[3px] border-l-[#fbbf24] shadow-[0_2px_12px_rgba(0,0,0,0.04),0_0_0_1px_rgba(251,191,36,0.15)] hover:bg-slate-50 transition-all duration-300 cursor-default"
-          >
-            <div className="absolute top-1/2 -left-6 w-6 h-[2px] -translate-y-1/2" style={{ background: 'linear-gradient(to left, rgba(0,139,139,0.15), rgba(0,139,139,0.3))' }} />
-            <div className="absolute inset-0 rounded-[20px] -z-10 -translate-x-1 translate-y-1 bg-brand-accent/[0.02] border border-brand-accent/5" />
-            <div className="flex gap-4 items-start">
-              <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
-                <Icon size={20} />
-              </div>
-              <p className="text-[16px] font-body text-slate-700 leading-[1.8] tracking-wide pt-1"><HighlightText text={text} /></p>
-            </div>
-          </motion.div>
-        )}
-      </div>
-
-      {/* Mobile card */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.5, delay: index * 0.07 }}
-        whileHover={{ y: -3 }}
-        className="lg:hidden flex-1 ml-3 mb-5 p-5 rounded-[20px] bg-white border border-brand-accent/20 border-l-[3px] border-l-[#fbbf24] shadow-[0_2px_12px_rgba(0,0,0,0.04),0_0_0_1px_rgba(251,191,36,0.15)] hover:bg-slate-50 transition-all duration-300 cursor-default order-3"
-      >
-        <div className="flex gap-4 items-start">
-          <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] transition-all duration-300">
-            <Icon size={20} />
-          </div>
-          <p className="text-[16px] font-body text-slate-700 leading-[1.8] tracking-wide pt-1"><HighlightText text={text} /></p>
+      <div className="p-6 pt-8 min-h-[140px] flex gap-4 items-start relative z-10">
+        <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
+          <Icon size={20} />
         </div>
-      </motion.div>
-    </div>
+        <p className="text-[16px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2">
+          <HighlightText text={text} />
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
@@ -191,7 +129,8 @@ export default function AntiRagging() {
   const carouselPhrases = [
     { main: "STRICT ZERO TOLERANCE", highlight: "AGAINST RAGGING" },
     { main: "REPORT ANY INCIDENT", highlight: "WITHOUT FEAR" },
-    { main: "ENSURING A SECURE", highlight: "CAMPUS ENVIRONMENT" }
+    { main: "ENSURING A SECURE", highlight: "CAMPUS ENVIRONMENT" },
+    { main: "EVERY STUDENT DESERVES", highlight: "A SAFE CAMPUS" }
   ];
 
   useEffect(() => {
@@ -220,7 +159,7 @@ export default function AntiRagging() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-bg">
+    <div className="min-h-screen bg-white">
 
       {/* ── 01. HERO ── */}
       <PageHero
@@ -228,8 +167,8 @@ export default function AntiRagging() {
         maxHeight="33vh"
         titleStroke="ANTI-"
         titleFill="RAGGING"
-        statutoryLabel={<span className="text-[#fbbf24]">Statutory Committee</span>}
-        policyLabel="POLICY"
+        statutoryLabel={<span className="text-[#fbbf24]">POLICY</span>}
+        policyLabel=""
         rightLabel={<span className="text-[#fbbf24]">Zero.Tolerance.Policy</span>}
         rightContent={
           <div className="leading-snug">
@@ -286,20 +225,7 @@ export default function AntiRagging() {
               ))}
             </div>
 
-            {/* Line 3 — softer */}
-            <div className="flex flex-wrap gap-x-[0.35em] gap-y-1 mb-6 mt-2">
-              {['Every', 'student', 'deserves', 'a', 'safe', 'and', 'dignified', 'campus', 'experience.'].map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.36 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-white/45 text-[13px] font-body"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </div>
+
 
             {/* Carousel */}
             <motion.div
@@ -340,35 +266,31 @@ export default function AntiRagging() {
       <div className="h-[2px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.5) 30%, rgba(251,191,36,0.5) 70%, transparent)' }} />
 
       {/* ── 02. GUIDELINES CONTENT ── */}
-      <section className="relative pt-32 pb-24 px-8 lg:px-24 bg-brand-bg overflow-hidden">
+      <section className="relative pt-24 pb-0 px-8 lg:px-24 bg-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
-        {/* Section 01: What Constitutes Ragging — VERTICAL TIMELINE */}
-        <div className="mb-32 relative">
+        {/* Section 01: What Constitutes Ragging — GRID LAYOUT */}
+        <div className="mb-8 relative">
           <SectionHeading
             title="What Constitutes"
             tagline="Defining the boundaries of student conduct."
           />
           <div className="mb-12" />
 
-          <div className="max-w-5xl mx-auto relative">
-            {/* Persistent glowing timeline spine */}
-            <div className="absolute left-6 lg:left-1/2 lg:-translate-x-[1px] top-0 bottom-0 w-[2px] pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,139,139,0.2) 15%, rgba(0,139,139,0.15) 85%, transparent)' }} />
-            <div className="absolute left-6 lg:left-1/2 lg:-translate-x-[3px] top-[10%] bottom-[10%] w-[6px] pointer-events-none rounded-full blur-sm" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,139,139,0.08) 30%, rgba(0,139,139,0.06) 70%, transparent)' }} />
-
-            {(config.what_constitutes_ragging || []).map((item, i, arr) => (
-              <TimelineNode key={i} index={i} text={item} total={arr.length} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-5xl mx-auto relative pt-4">
+            {(config.what_constitutes_ragging || []).map((item, i) => (
+              <ConstitutesCard key={i} index={i} text={item} />
             ))}
           </div>
         </div>
 
         {/* Gradient separator between timeline and punishments */}
-        <div className="h-[1px] mx-auto max-w-3xl mb-8" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.2) 20%, rgba(128,0,0,0.1) 50%, rgba(251,191,36,0.2) 80%, transparent)' }} />
+        <div className="h-[1px] mx-auto max-w-3xl my-4" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.2) 20%, rgba(128,0,0,0.1) 50%, rgba(251,191,36,0.2) 80%, transparent)' }} />
 
-        {/* Section 02: Punishments — GRID CARDS with red-tinted strip */}
-        <div className="relative -mx-8 lg:-mx-24 px-8 lg:px-24 py-24 border-y border-brand-maroon/5" style={{ background: 'linear-gradient(180deg, rgba(127,29,29,0.02) 0%, rgba(127,29,29,0.04) 50%, rgba(127,29,29,0.02) 100%)' }}>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-brand-maroon/[0.04] rounded-full blur-[100px] pointer-events-none" />
+        {/* Section 02: Punishments — GRID CARDS */}
+        <div className="relative -mx-8 lg:-mx-24 px-8 lg:px-24 pt-8 pb-12 border-t border-brand-maroon/5 bg-white">
+          {/* Removed the background gradient and glow to keep it pure white */}
 
           <SectionHeading
             title="Punishments"
@@ -388,7 +310,7 @@ export default function AntiRagging() {
       <div className="h-[1px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(0,139,139,0.12) 30%, rgba(0,139,139,0.12) 70%, transparent)' }} />
 
       {/* ── 03. REPORT & HELPLINE ── */}
-      <section className="relative pt-32 pb-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-accent/[0.025] rounded-full blur-3xl pointer-events-none translate-x-1/3 translate-y-1/3" />
         <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-brand-accent/[0.015] rounded-full blur-3xl pointer-events-none -translate-x-1/3 -translate-y-1/3" />
 
@@ -495,7 +417,7 @@ export default function AntiRagging() {
       <div className="h-[1px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(0,139,139,0.12) 30%, rgba(128,0,0,0.08) 70%, transparent)' }} />
 
       {/* ── 04. PDF PREVIEW ── */}
-      <section className="py-20 px-8 lg:px-24 bg-brand-bg relative overflow-hidden">
+      <section className="pt-16 pb-24 px-8 lg:px-24 bg-white relative overflow-hidden">
         <SectionHeading
           title="Committee (ARC)"
           tagline="Official Anti-Ragging Committee & Squad"
@@ -528,11 +450,11 @@ export default function AntiRagging() {
                 href={PDF_SRC}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn inline-flex items-center gap-1.5 px-4 py-2 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg
-                           font-mono font-black text-[10px] uppercase tracking-[0.15em]
+                title="Fullscreen"
+                className="group/btn inline-flex items-center justify-center p-2.5 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg
                            hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all duration-300"
               >
-                <Eye size={12} className="group-hover/btn:scale-110 transition-transform duration-200" /> View
+                <Maximize size={14} className="group-hover/btn:scale-110 transition-transform duration-200" />
               </a>
               <a
                 href={PDF_SRC}
