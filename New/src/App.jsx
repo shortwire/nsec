@@ -19,8 +19,12 @@ import Ariia from './pages/ariia';
 import GenericLifePage from './pages/GenericLifePage';
 import StandardInfoPage from './pages/StandardInfoPage';
 import AntiRagging from './pages/AntiRagging';
+import Moocs from './pages/Moocs';
+import Iqac from './pages/Iqac';
+import Nba from './pages/Nba';
 import Uba from './pages/uba';
 import RDPage from './pages/rd';
+import Naac from './pages/Naac';
 import NirfPage from './pages/nirf';
 
 
@@ -52,11 +56,11 @@ function App() {
           <Route path="vtour" element={<VTourPage />} />
           
           {/* Programs/Iqac style cloned routes */}
-          <Route path="iqac" element={<IqacPage configPath="/config/page-iqac-config.json" />} />
-          <Route path="naac" element={<IqacPage configPath="/config/page-naac-config.json" />} />
-          <Route path="rd" element={<RDPage configPath="/config/page-rd-config.json" />} />
-          <Route path="nba" element={<IqacPage configPath="/config/page-nba-config.json" />} />
-          <Route path="moocs" element={<IqacPage configPath="/config/page-moocs-config.json" />} />
+          <Route path="iqac" element={<Iqac />} />
+          <Route path="nba" element={<Nba />} />
+          <Route path="naac" element={<Naac />} />
+          <Route path="rd" element={<RDPage />} />
+          <Route path="moocs" element={<Moocs />} />
           <Route path="nirf" element={<NirfPage />} />
 
           {/* Life style cloned routes */}

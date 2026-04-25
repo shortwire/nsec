@@ -13,6 +13,7 @@ export default function NbaPage() {
         statutoryLabel="National Board"
         policyLabel="of Accreditation"
         rightLabel="Quality.Assurance"
+        useYellowAccents={true}
         rightContent={
           <div className="space-y-4">
             <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">

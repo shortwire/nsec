@@ -21,6 +21,7 @@ export default function Life() {
         statutoryLabel="Campus Culture"
         policyLabel="Student Lifestyle"
         rightLabel="Life.Node"
+        useYellowAccents={true}
         rightContent={
           <div className="space-y-4">
             <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">

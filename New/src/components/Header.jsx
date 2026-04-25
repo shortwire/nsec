@@ -101,14 +101,7 @@ export default function Header() {
               </React.Fragment>
             ))}
           </div>
-          <Link to="/silverjubilee" className="flex items-center gap-3 px-4 py-1.5 bg-brand-maroon rounded-full border border-white/20 hover:bg-white hover:text-brand-maroon hover:border-brand-maroon transition-all group shadow-sm">
-            <img
-              src="/assets/HeroFocus/25-years-nsec-logo-3.png"
-              alt="25 Years"
-              className="w-4 h-4 object-contain"
-            />
-            <span className="text-[11px] font-black uppercase tracking-widest">25 Years</span>
-          </Link>
+
         </div>
       </div>
 

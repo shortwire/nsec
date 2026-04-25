@@ -21,6 +21,7 @@ export default function Admissions() {
         statutoryLabel="Enrollment 2025"
         policyLabel="Admissions Gateway"
         rightLabel="Join.NSEC"
+        useYellowAccents={true}
         rightContent={
           <div className="space-y-4">
             <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">

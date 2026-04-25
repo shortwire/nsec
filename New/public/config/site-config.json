@@ -162,16 +162,11 @@
         "icon": "GraduationCap"
       },
       "grid": [
-        {
-          "label": "Silver Jubilee",
-          "subLabel": "25 years of Academic Excellence",
-          "path": "/silver-jubilee",
-          "image": "/assets/HeroFocus/25-years-nsec-logo-3.png"
-        },
+
         {
           "label": "Accreditation",
           "subLabel": "NBA(EE,CSE,ECE,BME) & NAAC(Institute)",
-          "path": "/accreditation",
+          "path": "/nba",
           "icon": "Award"
         },
         {
@@ -548,7 +543,7 @@
         },
         {
           "name": "Accreditation & Affiliation",
-          "path": "/about#accreditation",
+          "path": "/nba",
           "desc": "Quality Standards"
         },
         {
@@ -585,6 +580,11 @@
           "name": "RTI",
           "path": "/about#rti",
           "desc": "Right to Information"
+        },
+        {
+          "name": "UBA Cell",
+          "path": "/uba",
+          "desc": "Unnat Bharat Abhiyan"
         },
         {
           "name": "Policies",
@@ -1259,6 +1259,10 @@
           {
             "name": "ARIIA Data",
             "path": "/ariia"
+          },
+          {
+            "name": "UBA Cell",
+            "path": "/uba"
           }
         ]
       },

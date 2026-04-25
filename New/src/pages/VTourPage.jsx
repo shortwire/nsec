@@ -25,6 +25,7 @@ export default function VTourPage() {
         statutoryLabel={config.hero.subtitle}
         policyLabel="Virtual Experience"
         rightLabel="Tour.Hub"
+        useYellowAccents={true}
         rightContent={
           <div className="space-y-4">
             <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">

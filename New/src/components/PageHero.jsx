@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
+import { cn } from '../utils/cn';
 
 /* ═══════════════════════════════════════════════════════════
    THREE.JS  —  RIPPLE WAVE PARTICLE FIELD
@@ -155,10 +156,18 @@ export default function PageHero({
   rightContent = null,
   showParticles = true,
   maxHeight = null,
+  useYellowAccents = false,
 }) {
   return (
     <section className="relative w-full overflow-hidden bg-brand-blue" style={{ minHeight: maxHeight || '38vh', maxHeight: maxHeight || undefined }}>
       {showParticles && <ThreeBackground />}
+
+      {/* Decorative Top Accent Line (if yellow accents enabled) */}
+      {useYellowAccents && (
+        <div className="absolute top-0 left-0 right-0 h-[1px] z-20" 
+          style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.3), transparent)' }} 
+        />
+      )}
 
       <div
         className="absolute top-0 right-0 h-full w-[45%] pointer-events-none"
@@ -174,8 +183,8 @@ export default function PageHero({
         >
           {statutoryLabel && (
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-[1.5px] bg-[var(--color-brand-maroon)]" />
-              <span className="text-[11px] font-mono font-black text-[var(--color-brand-maroon)] uppercase tracking-[0.4em]">
+              <div className={cn("w-8 h-[1.5px] rounded-full", useYellowAccents ? "bg-[#fbbf24]" : "bg-[var(--color-brand-maroon)]")} />
+              <span className={cn("text-[11px] font-mono font-black uppercase tracking-[0.4em]", useYellowAccents ? "text-[#fbbf24]" : "text-[var(--color-brand-maroon)]")}>
                 {statutoryLabel}
               </span>
             </div>
@@ -230,9 +239,9 @@ export default function PageHero({
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="h-px w-8 bg-brand-maroon origin-left"
+                className={cn("h-px w-8 origin-left", useYellowAccents ? "bg-[#fbbf24]" : "bg-brand-maroon")}
               />
-              <span className="text-[11px] font-mono font-black text-brand-maroon uppercase tracking-[0.3em]">
+              <span className={cn("text-[11px] font-mono font-black uppercase tracking-[0.3em]", useYellowAccents ? "text-[#fbbf24]" : "text-brand-maroon")}>
                 {rightLabel}
               </span>
             </div>
@@ -247,7 +256,11 @@ export default function PageHero({
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-[2px]"
-        style={{ background: 'linear-gradient(to right, transparent, var(--color-brand-accent), transparent)' }} />
+        style={{ 
+          background: useYellowAccents 
+            ? 'linear-gradient(to right, transparent, #fbbf24, transparent)' 
+            : 'linear-gradient(to right, transparent, var(--color-brand-accent), transparent)' 
+        }} />
     </section>
   );
 }

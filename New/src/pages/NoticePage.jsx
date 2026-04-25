@@ -34,6 +34,7 @@ export default function NoticePage() {
         statutoryLabel={config.hero.subtitle}
         policyLabel="Bulletin Board"
         rightLabel="Notices.Hub"
+        useYellowAccents={true}
         rightContent={
           <div className="space-y-4">
             <p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">

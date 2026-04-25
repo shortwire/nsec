@@ -167,9 +167,10 @@ export default function AntiRagging() {
         maxHeight="33vh"
         titleStroke="ANTI-"
         titleFill="RAGGING"
-        statutoryLabel={<span className="text-[#fbbf24]">POLICY</span>}
+        statutoryLabel="POLICY"
         policyLabel=""
-        rightLabel={<span className="text-[#fbbf24]">Zero.Tolerance.Policy</span>}
+        rightLabel="Zero.Tolerance.Policy"
+        useYellowAccents={true}
         rightContent={
           <div className="leading-snug">
             {/* Line 1 */}
