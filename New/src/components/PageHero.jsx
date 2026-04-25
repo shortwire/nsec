@@ -153,17 +153,19 @@ export default function PageHero({
   policyLabel = "Overview",
   rightLabel = "Explore.Now",
   rightContent = null,
+  showParticles = true,
+  maxHeight = null,
 }) {
   return (
-    <section className="relative w-full overflow-hidden bg-brand-blue" style={{ minHeight: '38vh' }}>
-      <ThreeBackground />
+    <section className="relative w-full overflow-hidden bg-brand-blue" style={{ minHeight: maxHeight || '38vh', maxHeight: maxHeight || undefined }}>
+      {showParticles && <ThreeBackground />}
 
       <div
         className="absolute top-0 right-0 h-full w-[45%] pointer-events-none"
         style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(0,139,139,0.04) 100%)' }}
       />
 
-      <div className="relative z-10 px-4 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 h-full" style={{ minHeight: '38vh', paddingBlock: '3.5rem' }}>
+      <div className="relative z-10 px-4 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 h-full" style={{ minHeight: maxHeight || '38vh', maxHeight: maxHeight || undefined, paddingBlock: maxHeight ? '1.5rem' : '3.5rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -173,7 +175,7 @@ export default function PageHero({
           {statutoryLabel && (
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-[1.5px] bg-[var(--color-brand-maroon)]" />
-              <span className="text-[8px] font-mono font-black text-[var(--color-brand-maroon)] uppercase tracking-[0.5em]">
+              <span className="text-[11px] font-mono font-black text-[var(--color-brand-maroon)] uppercase tracking-[0.4em]">
                 {statutoryLabel}
               </span>
             </div>
@@ -230,7 +232,7 @@ export default function PageHero({
                 transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="h-px w-8 bg-brand-maroon origin-left"
               />
-              <span className="text-[8px] font-mono font-black text-brand-maroon uppercase tracking-[0.4em]">
+              <span className="text-[11px] font-mono font-black text-brand-maroon uppercase tracking-[0.3em]">
                 {rightLabel}
               </span>
             </div>

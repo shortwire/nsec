@@ -321,8 +321,6 @@ export default function Home() {
 
   if (!config) return <div className="h-screen bg-white" />;
 
-
-  
   const { hero } = config;
   const tickerItems = hero.ticker || [];
 

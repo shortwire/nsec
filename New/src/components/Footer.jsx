@@ -47,11 +47,11 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-10">
             <div className="flex flex-col">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-brand-maroon flex items-center justify-center border border-white/20">
+                <div className="w-14 h-14 bg-brand-maroon flex items-center justify-center rounded-full border border-white/20">
                   <img
                     src="/assets/uba/nsec_logo_w962xh1280.jpeg"
                     alt="NSEC Logo"
-                    className="w-9 h-9 object-contain"
+                    className="w-10 h-10 object-contain rounded-full"
                   />
                 </div>
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-brand-maroon to-transparent" />

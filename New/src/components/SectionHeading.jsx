@@ -4,7 +4,7 @@ import { cn } from '../utils/cn';
 
 const SectionHeading = ({ title, tagline, className }) => {
   return (
-    <div className={cn("relative w-full mb-16 -mt-12 select-none pt-12", className)}>
+    <div className={cn("relative w-full mb-10 -mt-6 select-none pt-6", className)}>
       
       {/* TOP LEFT BRACKET (Teal) */}
       <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-accent opacity-60" />
@@ -12,7 +12,7 @@ const SectionHeading = ({ title, tagline, className }) => {
       {/* TOP RIGHT BRACKET (Teal) */}
       <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-brand-accent opacity-60" />
 
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative py-0">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative py-0">
         
         {/* LEFT: THE INTERACTIVE PORTAL HEADING */}
         <div className="relative group flex-shrink-0">
@@ -24,7 +24,7 @@ const SectionHeading = ({ title, tagline, className }) => {
           >
             {/* BACKGROUND LAYER: Hollow Maroon Base */}
             <h2 
-              className="text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-[-0.08em] leading-none"
+              className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-[-0.08em] leading-none"
               style={{ 
                 WebkitTextStroke: '1.5px var(--color-brand-maroon)',
                 color: 'transparent',
@@ -42,7 +42,7 @@ const SectionHeading = ({ title, tagline, className }) => {
               transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
             >
               <h2 
-                className="text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-[-0.08em] leading-none text-brand-accent"
+                className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-[-0.08em] leading-none text-brand-accent"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {title}
@@ -67,7 +67,7 @@ const SectionHeading = ({ title, tagline, className }) => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-right"
           >
-            <p className="text-xl md:text-2xl font-light text-brand-muted leading-tight tracking-tight italic">
+            <p className="text-base md:text-lg font-light text-brand-maroon leading-tight tracking-tight italic">
               {tagline}
             </p>
           </motion.div>
@@ -75,7 +75,7 @@ const SectionHeading = ({ title, tagline, className }) => {
       </div>
 
       {/* HORIZONTAL TRANSITION LINE (Maroon to Teal) */}
-      <div className="relative mt-8 w-full">
+      <div className="relative mt-5 w-full">
         {/* Left Tick */}
         <div className="absolute left-0 bottom-0 w-[2px] h-3 bg-brand-maroon z-20" />
         
