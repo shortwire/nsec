@@ -293,6 +293,7 @@ export default function AntiRagging() {
           {/* Removed the background gradient and glow to keep it pure white */}
 
           <SectionHeading
+          
             title="Punishments"
             tagline="Actions to be taken for abetting in ragging."
           />
