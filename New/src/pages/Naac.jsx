@@ -695,12 +695,12 @@ export default function Naac() {
     <div className="min-h-screen bg-white overflow-hidden">
       {/* ── 01. HERO ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="NAAC"
-        titleFill="CERT"
+        titleFill="CERTIFIED"
         statutoryLabel="INSTITUTIONAL ACCREDITATION"
-        policyLabel="Quality Management"
+        policyLabel=""
         rightLabel="Quality.Node.Auth"
         useYellowAccents={true}
         rightContent={
@@ -753,7 +753,7 @@ export default function Naac() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px] bg-white border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
+              className="p-8 rounded-[24px] bg-white border-2 border-slate-200 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/30 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
                 <stat.icon size={32} />
@@ -838,12 +838,12 @@ export default function Naac() {
       <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Vision */}
-          <div className="lg:col-span-1 p-10 bg-white rounded-[40px] text-white relative overflow-hidden group">
+          <div className="lg:col-span-1 p-10 bg-white rounded-[40px] text-slate-900 border border-slate-100 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <ShieldCheck size={120} />
             </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter mb-8">Our <span className="text-brand-accent">Vision</span></h3>
-            <p className="text-lg font-body font-medium leading-relaxed opacity-80 italic">
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Our <span className="text-brand-accent">Vision</span></h3>
+            <p className="text-lg font-body font-medium text-slate-600 leading-relaxed italic">
               "{iqacData.vision}"
             </p>
           </div>
