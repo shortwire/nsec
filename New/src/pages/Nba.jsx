@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, CheckCircle, Building2, Globe } from 'lucide-react';
+import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, CheckCircle, Building2, Globe, BookOpen, ExternalLink, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -63,6 +63,7 @@ function ProgramCard({ index, program }) {
 }
 
 export default function Nba() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -98,7 +99,7 @@ export default function Nba() {
   return (
     <div className="min-h-screen bg-white">
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="NBA"
         titleFill="PROG"
@@ -158,7 +159,7 @@ export default function Nba() {
           <SectionHeading title="Accreditation Status" tagline="National Board of Accreditation (NBA) approved programs at NSEC." />
         </div>
         <div className="max-w-7xl mx-auto mt-12">
-          <div className="p-8 bg-slate-50 border border-slate-200 rounded-3xl mb-12 flex flex-col md:flex-row items-center gap-8 shadow-sm">
+          <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12 flex flex-col md:flex-row items-center gap-8 shadow-sm">
             <div className="w-20 h-20 shrink-0 bg-brand-accent/10 rounded-2xl flex items-center justify-center text-brand-accent">
               <ShieldCheck size={40} />
             </div>
@@ -176,84 +177,43 @@ export default function Nba() {
         </div>
       </section>
 
-      <section className="relative py-32 px-8 lg:px-24 bg-white overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-grid" />
-        
-        {/* Decorative background logo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] pointer-events-none grayscale flex items-center justify-center">
-          <img src="https://www.nsec.ac.in/images/nba-logo.png" alt="" className="w-1/2 h-auto" />
-        </div>
-
-        <SectionHeading title="Historical Excellence" tagline="A consistent record of accreditation and quality since 2005." />
-        
-        <div className="max-w-5xl mx-auto mt-24 relative">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-brand-accent/0 via-brand-accent/20 to-brand-accent/0 md:-translate-x-1/2" />
-
-          <div className="space-y-16">
+      <section className="relative pt-16 pb-0 px-8 lg:px-24 bg-white overflow-hidden">
+        <div className="mb-8 relative">
+          <SectionHeading title="Historical Excellence" tagline="A consistent record of accreditation and quality since 2005." />
+          <div className="mb-12" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-5xl mx-auto relative pt-4">
             {historicalCycles.map((cycle, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 30 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true, margin: "-100px" }} 
-                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }} 
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-[#fbbf24] shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3"
               >
-                {/* Timeline Node */}
-                <div className="absolute left-0 md:left-1/2 w-11 h-11 rounded-full bg-white border-2 border-brand-accent flex items-center justify-center z-10 md:-translate-x-1/2 shadow-[0_4px_12px_rgba(0,139,139,0.15)]">
-                  <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
+                {/* Number Badge */}
+                <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-[#fbbf24] flex items-center justify-center shadow-[0_2px_4px_rgba(251,191,36,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(251,191,36,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white">
+                  <span className="text-[12px] font-mono font-black text-slate-900">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="absolute top-1/2 left-full w-16 h-[2px] -translate-y-1/2 opacity-70 group-hover:opacity-100 group-hover:w-24 transition-all duration-[250ms] ease-out pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.8), rgba(251,191,36,0.1), transparent)' }} />
                 </div>
-
-                {/* Content Card */}
-                <div className={`w-full md:w-[45%] p-8 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:border-brand-accent/30 hover:shadow-xl transition-all duration-500 group`}>
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-heading font-black italic uppercase tracking-tighter text-brand-accent group-hover:scale-110 transition-transform origin-left">
-                        {cycle.period}
-                      </span>
-                      <div className="px-3 py-1 bg-brand-accent/10 border border-brand-accent/20 rounded-full">
-                        <span className="text-[9px] font-mono font-black text-brand-accent uppercase tracking-widest">{cycle.status}</span>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-sm font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Programmes Covered</h4>
-                      <p className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors leading-tight">
-                        {cycle.programs}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-brand-accent/5 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent/10 transition-colors">
-                        <ShieldCheck size={16} />
-                      </div>
-                      <span className="text-[10px] font-mono text-slate-400 group-hover:text-slate-600 transition-colors uppercase tracking-widest">Quality Assurance Audit Passed</span>
-                    </div>
+                <div className="p-6 pt-8 min-h-[140px] flex gap-4 items-start relative z-10">
+                  <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
+                    <History size={20} />
+                  </div>
+                  <div className="pt-1 pr-2">
+                    <h3 className="text-[18px] font-heading font-black italic uppercase tracking-tighter text-slate-900 group-hover:text-slate-800 transition-colors leading-tight">{cycle.period}</h3>
+                    <p className="text-[12px] font-mono font-bold text-brand-accent uppercase tracking-widest mt-1">{cycle.status}</p>
+                    <p className="text-[14px] font-body font-medium text-slate-600 mt-2 leading-relaxed">{cycle.programs}</p>
                   </div>
                 </div>
-
-                {/* Empty spacer for desktop layout */}
-                <div className="hidden md:block md:w-[45%]" />
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Closing decorative element */}
-        <div className="mt-24 text-center">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="inline-block px-6 py-3 bg-slate-50 border border-slate-100 rounded-xl"
-          >
-            <span className="text-xs font-mono font-bold text-slate-300 uppercase tracking-[0.3em]">Timeline Baseline: Established 2005</span>
-          </motion.div>
-        </div>
       </section>
 
       {/* ── 04. AICTE & MAKAUT ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none grayscale invert" style={{ backgroundImage: 'url("https://www.nsec.ac.in/images/nba-logo.png")', backgroundSize: '400px', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} />
         
         <div className="max-w-7xl mx-auto relative z-10">
@@ -274,7 +234,7 @@ export default function Nba() {
                   { title: "Engg & MBA (2024-25)", url: "https://www.nsec.ac.in/circular/EOA-Report-2024-25_BTech.PDF" },
                   { title: "MCA & BCA Program (2024-25)", url: "https://www.nsec.ac.in/circular/EOA-REPORT-2024-2025-MCA-BCA.PDF" }
                 ].map((doc, i) => (
-                  <a key={i} href={doc.url} target="_blank" rel="noopener noreferrer" className="p-5 bg-white border border-slate-100 rounded-2xl flex items-center justify-between hover:border-brand-accent/40 hover:shadow-lg transition-all group">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="p-5 bg-white border border-slate-100 rounded-2xl flex items-center justify-between hover:border-brand-accent/40 hover:shadow-lg transition-all group">
                     <span className="text-[13px] font-heading font-black italic uppercase tracking-tight text-slate-800">{doc.title}</span>
                     <Download size={16} className="text-slate-300 group-hover:text-brand-accent group-hover:translate-y-1 transition-all" />
                   </a>
@@ -302,7 +262,7 @@ export default function Nba() {
                   { name: "BBA (Hospital Mgmt)", url: "https://www.nsec.ac.in/circular/109%20-BBA%28Spl%29-2-25-26.pdf" },
                   { name: "BBA Digital Marketing", url: "https://www.nsec.ac.in/circular/109%20-BBA%28Spl%29-2-25-26.pdf" }
                 ].map((prog, i) => (
-                  <a key={i} href={prog.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-white border border-slate-50 rounded-xl hover:border-brand-maroon/20 hover:bg-slate-50 transition-all group">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(prog.url); }}   className="flex items-center gap-3 p-3 bg-white border border-slate-50 rounded-xl hover:border-brand-maroon/20 hover:bg-white transition-all group">
                     <CheckCircle2 size={14} className="text-brand-accent shrink-0 group-hover:scale-110" />
                     <span className="text-[11px] font-mono font-bold text-slate-600 uppercase tracking-tight leading-none">{prog.name} [2025-26]</span>
                   </a>
@@ -315,56 +275,8 @@ export default function Nba() {
           </div>
         </div>
       </section>
-      {/* ── 04. ACCREDITATION TIMELINE ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden border-y border-slate-200">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-        <SectionHeading title="Accreditation Journey" tagline="Chronological milestones of institutional excellence." />
-        
-        <div className="max-w-5xl mx-auto mt-20 relative">
-          {/* Center Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent -translate-x-1/2 hidden md:block" />
-          
-          <div className="space-y-12 relative">
-            {historicalCycles.map((cycle, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-              >
-                {/* Content */}
-                <div className={`flex-1 w-full ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <div className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-500 group relative overflow-hidden">
-                    <div className={`absolute top-0 bottom-0 w-1.5 bg-brand-accent ${i % 2 === 0 ? 'right-0' : 'left-0'}`} />
-                    <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-2 block">{cycle.status}</span>
-                    <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-2 leading-none">{cycle.period}</h3>
-                    <p className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-500 mb-4">{cycle.programs}</p>
-                    <div className="flex flex-wrap gap-2 justify-end md:justify-start">
-                      {cycle.programs.split(', ').map((p, pi) => (
-                        <span key={pi} className="px-3 py-1 bg-slate-50 rounded-lg text-[9px] font-mono font-bold text-slate-400 group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-colors">{p}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Dot */}
-                <div className="relative z-10 shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center text-brand-accent shadow-lg group-hover:scale-110 transition-transform">
-                    <History size={20} />
-                  </div>
-                </div>
-
-                {/* Spacer for reverse layout */}
-                <div className="flex-1 hidden md:block" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
       {/* ── 05. ACCREDITATION NODE ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
           <div className="lg:w-1/2">
@@ -375,7 +287,7 @@ export default function Nba() {
                 { title: "NBA Certificate (2019 - 2022)", url: "https://www.nsec.ac.in/impdoc/nba-nsec-2019-2022.pdf" },
                 { title: "Historical Certificates (2005 - 2019)", url: "https://www.nsec.ac.in/impdoc/NBA_Accreditation_2005-2019_opt.pdf" }
               ].map((doc, i) => (
-                <a key={i} href={doc.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-6 bg-slate-50 border border-slate-100 rounded-2xl hover:border-brand-accent/40 hover:bg-white hover:shadow-xl transition-all duration-300">
+                <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="group flex items-center justify-between p-6 bg-white border border-slate-100 rounded-2xl hover:border-brand-accent/40 hover:bg-white hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent"><FileText size={20} /></div>
                     <span className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 group-hover:text-brand-accent transition-colors">{doc.title}</span>
@@ -406,6 +318,46 @@ export default function Nba() {
       </section>
 
 
+      {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

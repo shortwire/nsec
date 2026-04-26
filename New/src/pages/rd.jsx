@@ -1,25 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FlaskConical, 
-  Lightbulb, 
-  Target, 
-  CheckCircle2, 
-  Users, 
-  ExternalLink, 
-  FileText, 
-  Award, 
-  Building2, 
-  Handshake, 
-  Globe, 
-  Cpu, 
-  BookOpen, 
-  ChevronRight,
-  Maximize,
-  Microscope,
-  Zap,
-  Library
-} from 'lucide-react';
+import { FlaskConical, Lightbulb, Target, CheckCircle2, Users, ExternalLink, FileText, Award, Building2, Handshake, Globe, Cpu, BookOpen, ChevronRight, Maximize, Microscope, Zap, Library, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -113,6 +94,7 @@ function InitiativeCard({ item, index }) {
 }
 
 export default function Rd() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -297,7 +279,7 @@ export default function Rd() {
       </section>
 
       {/* ── 03. OBJECTIVES ── */}
-      <section className="relative py-16 px-8 lg:px-24 ">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 ">
         <SectionHeading
           title="Key Objectives"
           tagline="Strategic focus areas for the R&D Cell."
@@ -323,7 +305,7 @@ export default function Rd() {
       </section>
 
       {/* ── 04. INITIATIVES & ARCHIVE ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl" />
         <SectionHeading
           title="Key Initiatives"
@@ -337,7 +319,7 @@ export default function Rd() {
       </section>
 
       {/* ── 05. MOUs & PARTNERSHIPS ── */}
-      <section className="relative py-24 px-8 lg:px-24  overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none [background-size:24px_24px]" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -396,9 +378,9 @@ export default function Rd() {
         className="fixed bottom-10 right-10 z-50 hidden lg:block"
       >
         <a 
-          href="https://www.nsec.ac.in/impdoc/331.pdf" 
-          target="_blank" 
-          rel="noreferrer"
+          href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf("https://www.nsec.ac.in/impdoc/331.pdf"); }} 
+           
+          
           className="flex items-center gap-3 px-6 py-4 bg-brand-accent text-white rounded-full shadow-[0_10px_30px_rgba(0,139,139,0.4)] hover:scale-105 hover:bg-brand-accent/90 transition-all group"
         >
           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
@@ -407,6 +389,47 @@ export default function Rd() {
           <span className="text-xs font-mono font-black uppercase tracking-widest">Download Guidelines</span>
         </a>
       </motion.div>
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

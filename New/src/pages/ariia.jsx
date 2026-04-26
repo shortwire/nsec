@@ -1,22 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Award, 
-  FileText, 
-  Download, 
-  CheckCircle2, 
-  ChevronRight, 
-  History, 
-  MessageSquare, 
-  ExternalLink,
-  Lightbulb,
-  Rocket,
-  Search,
-  Mail,
-  Zap,
-  Activity
-} from 'lucide-react';
+import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, ExternalLink, Lightbulb, Rocket, Search, Mail, Zap, Activity, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -40,6 +24,7 @@ function HighlightText({ text }) {
 }
 
 export default function Ariia() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -141,7 +126,7 @@ export default function Ariia() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
+              className="p-8 rounded-[24px] bg-white border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
                 <stat.icon size={32} />
@@ -154,7 +139,7 @@ export default function Ariia() {
       </section>
 
       {/* ── 02. DATA PORTAL ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden border-y border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden border-y border-slate-200">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         
         <div className="max-w-7xl mx-auto">
@@ -184,10 +169,10 @@ export default function Ariia() {
                   {cycle.docs.map((doc, di) => (
                     <a
                       key={di}
-                      href={doc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-6 bg-slate-50 border border-slate-100 rounded-2xl hover:border-brand-accent/40 hover:bg-white transition-all group/item"
+                      href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}
+                      
+                      
+                      className="flex items-center justify-between p-6 bg-white border border-slate-100 rounded-2xl hover:border-brand-accent/40 hover:bg-white transition-all group/item"
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-brand-accent shadow-sm group-hover/item:bg-brand-accent group-hover/item:text-white transition-all">
@@ -206,25 +191,25 @@ export default function Ariia() {
       </section>
 
       {/* ── 03. TRANSPARENCY & VERIFICATION ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Institutional Ethics</span>
             <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
               Transparency & <br/> <span className="text-brand-accent">Accuracy</span>
             </h2>
-            <div className="p-8 bg-slate-50 border border-slate-100 rounded-[32px] relative overflow-hidden">
+            <div className="p-8 bg-white border border-slate-100 rounded-[32px] relative overflow-hidden">
               <p className="text-[17px] font-body font-medium text-slate-600 leading-relaxed italic">
                 "The institution is also ensuring that the <span className="text-brand-accent font-bold">Submitted Data for ARIIA 2020</span>, reflecting on institution's website is correct. We pro-actively examine all comments and feedback to effect corrections, if so warranted."
               </p>
             </div>
             <div className="mt-8 flex gap-4">
               <div className="px-4 py-2 bg-brand-accent/10 border border-brand-accent/20 rounded-lg text-[9px] font-mono font-black text-brand-accent uppercase tracking-widest">Data Integrity</div>
-              <div className="px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Verified Node</div>
+              <div className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Verified Node</div>
             </div>
           </div>
 
-          <div className="relative p-12 bg-slate-900 rounded-[48px] text-white shadow-2xl overflow-hidden group">
+          <div className="relative p-12 bg-white rounded-[48px] text-white shadow-2xl overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Mail size={160} />
             </div>
@@ -260,6 +245,47 @@ export default function Ariia() {
       </section>
 
 
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

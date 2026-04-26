@@ -1,30 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Lightbulb, 
-  Users, 
-  Rocket, 
-  Building2, 
-  FileText, 
-  Download, 
-  CheckCircle2, 
-  ChevronRight, 
-  ExternalLink,
-  Zap,
-  Target,
-  Trophy,
-  Cpu,
-  Wrench,
-  Calendar,
-  Activity,
-  Image as ImageIcon,
-  Video,
-  Mail,
-  Hammer,
-  Cog,
-  Microscope
-} from 'lucide-react';
+import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, CheckCircle2, ChevronRight, ExternalLink, Zap, Target, Trophy, Cpu, Wrench, Calendar, Activity, Image as ImageIcon, Video, Mail, Hammer, Cog, Microscope, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -49,6 +25,7 @@ function HighlightText({ text }) {
 }
 
 export default function IdeaLab() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -131,7 +108,7 @@ export default function IdeaLab() {
 
 
       {/* ── 02. ABOUT & MISSION ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           <div>
@@ -156,7 +133,7 @@ export default function IdeaLab() {
           </div>
 
           <div className="relative pt-12">
-            <div className="bg-slate-900 rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden group">
+            <div className="bg-white rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
                 <Hammer size={120} />
               </div>
@@ -183,7 +160,7 @@ export default function IdeaLab() {
       </section>
 
       {/* ── 03. RESOURCE PORTALS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white border-y border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white border-y border-slate-200">
         <SectionHeading title="IDEA Hub" tagline="Resources, Committees, and Fabrication Portals." />
         
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -196,7 +173,7 @@ export default function IdeaLab() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="p-8 bg-slate-50 border border-slate-100 rounded-[32px] hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group flex flex-col items-center text-center relative overflow-hidden"
+              className="p-8 bg-white border border-slate-100 rounded-[32px] hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group flex flex-col items-center text-center relative overflow-hidden"
             >
               <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-sm">
                 <card.icon size={24} />
@@ -213,7 +190,7 @@ export default function IdeaLab() {
       </section>
 
       {/* ── 04. FABRICATION FACILITIES ── */}
-      <section id="facilities" className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section id="facilities" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="relative">
             <div className="absolute -inset-4 bg-brand-accent/5 rounded-[48px] blur-3xl" />
@@ -244,7 +221,7 @@ export default function IdeaLab() {
                 { title: "Fabrication Station", icon: Cog },
                 { title: "Testing & Validation Node", icon: Activity }
               ].map((item, i) => (
-                <div key={i} className="flex gap-5 p-6 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-lg transition-all group">
+                <div key={i} className="flex gap-5 p-6 bg-white border border-slate-100 rounded-2xl hover:bg-white hover:shadow-lg transition-all group">
                   <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-brand-accent border border-slate-200 group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
                     <item.icon size={20} />
                   </div>
@@ -260,6 +237,47 @@ export default function IdeaLab() {
       </section>
 
 
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

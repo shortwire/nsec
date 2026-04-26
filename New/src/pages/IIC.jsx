@@ -1,30 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Lightbulb, 
-  Users, 
-  Rocket, 
-  Building2, 
-  FileText, 
-  Download, 
-  CheckCircle2, 
-  ChevronRight, 
-  ExternalLink,
-  Zap,
-  Target,
-  Trophy,
-  Share2,
-  Cpu,
-  Globe,
-  Handshake,
-  Wrench,
-  Calendar,
-  Activity,
-  Microscope,
-  Stethoscope,
-  Factory
-} from 'lucide-react';
+import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, CheckCircle2, ChevronRight, ExternalLink, Zap, Target, Trophy, Share2, Cpu, Globe, Handshake, Wrench, Calendar, Activity, Microscope, Stethoscope, Factory, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -50,6 +26,7 @@ function HighlightText({ text }) {
 }
 
 export default function IIC() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -157,7 +134,7 @@ export default function IIC() {
 
 
       {/* ── 02. JOURNEY & OVERVIEW ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           <div>
@@ -182,7 +159,7 @@ export default function IIC() {
           </div>
 
           <div className="relative pt-12">
-            <div className="bg-slate-900 rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden">
+            <div className="bg-white rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10"><Rocket size={120} /></div>
               <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-white mb-8">EDC Mandate</h3>
               <p className="text-sm font-body font-medium text-white/60 leading-relaxed mb-8 italic">
@@ -209,7 +186,7 @@ export default function IIC() {
       </section>
 
       {/* ── 03. FOCUS & FUNCTIONS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white border-y border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Council Mandate</span>
@@ -225,7 +202,7 @@ export default function IIC() {
                 "Organize Hackathons, Idea competitions and mini-challenges.",
                 "Create Institutional Innovation portal for projects."
               ].map((fn, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group">
+                <div key={i} className="flex gap-4 p-5 bg-white border border-slate-100 rounded-2xl hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group">
                   <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
                     <Zap size={18} />
                   </div>
@@ -235,7 +212,7 @@ export default function IIC() {
             </div>
           </div>
 
-          <div className="p-12 bg-slate-900 rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
+          <div className="p-12 bg-white rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Target size={160} />
             </div>
@@ -261,14 +238,14 @@ export default function IIC() {
       </section>
 
       {/* ── 04. IIC MEMBERS TABLE ── */}
-      <section id="members" className="relative py-24 px-8 lg:px-24 bg-white">
+      <section id="members" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <SectionHeading title="IIC Members" tagline="Council composition according to the IIC Portal." />
         
         <div className="max-w-7xl mx-auto mt-16 overflow-hidden rounded-[40px] border border-slate-100 shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-900 text-white">
+                <tr className="bg-white text-white">
                   <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">SN</th>
                   <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">Name</th>
                   <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">Position in the Council</th>
@@ -277,7 +254,7 @@ export default function IIC() {
               </thead>
               <tbody className="bg-white">
                 {iicMembers.map((member, i) => (
-                  <tr key={i} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors group">
+                  <tr key={i} className="border-b border-slate-50 hover:bg-white/50 transition-colors group">
                     <td className="p-6">
                       <span className="text-sm font-mono font-bold text-slate-300 group-hover:text-brand-accent">#{member.sn.toString().padStart(2, '0')}</span>
                     </td>
@@ -285,10 +262,10 @@ export default function IIC() {
                       <p className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 leading-none group-hover:text-brand-accent transition-colors">{member.name}</p>
                     </td>
                     <td className="p-6">
-                      <span className="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-all">{member.position}</span>
+                      <span className="px-3 py-1 bg-white border border-slate-100 rounded-lg text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-all">{member.position}</span>
                     </td>
                     <td className="p-6 text-right">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-300 group-hover:bg-brand-accent group-hover:text-white transition-all ml-auto">
+                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-300 group-hover:bg-brand-accent group-hover:text-white transition-all ml-auto">
                         <ChevronRight size={14} />
                       </div>
                     </td>
@@ -301,7 +278,7 @@ export default function IIC() {
       </section>
 
       {/* ── 05. INNOVATION HUB (RESOURCES) ── */}
-      <section id="hub" className="relative py-24 px-8 lg:px-24 bg-slate-50 border-t border-slate-200">
+      <section id="hub" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white border-t border-slate-200">
         <SectionHeading title="Innovation Hub" tagline="Resources, Facilities, and Strategic Ecosystem Portals." />
         
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -317,7 +294,7 @@ export default function IIC() {
               {card.type === 'pdf' && (
                 <div className="absolute top-0 right-0 p-4 bg-brand-maroon/10 text-brand-maroon text-[8px] font-mono font-black uppercase tracking-widest rounded-bl-xl">PDF Resource</div>
               )}
-              <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-inner">
+              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-inner">
                 <card.icon size={24} />
               </div>
               <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-800 mb-2 group-hover:text-brand-accent transition-colors">{card.title}</h4>
@@ -338,7 +315,7 @@ export default function IIC() {
       </section>
 
       {/* ── 06. KEY HIGHLIGHTS (PRODUCTS & FACILITIES) ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto space-y-32">
           {/* Products */}
           <div id="products" className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -391,7 +368,7 @@ export default function IIC() {
       </section>
 
       {/* ── 07. REGIONAL ECOSYSTEM & PARTNERSHIPS ── */}
-      <section id="ecosystem" className="py-24 px-8 lg:px-24 bg-slate-900 text-white relative overflow-hidden">
+      <section id="ecosystem" className="pt-16 pb-8 px-8 lg:px-24 bg-white text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-brand-accent rounded-full blur-[120px]" />
         </div>
@@ -446,6 +423,47 @@ export default function IIC() {
       </section>
 
 
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

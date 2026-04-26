@@ -1,19 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Award, 
-  FileText, 
-  Download, 
-  CheckCircle2, 
-  ChevronRight, 
-  History, 
-  MessageSquare, 
-  ExternalLink,
-  GraduationCap,
-  Scale,
-  Stamp
-} from 'lucide-react';
+import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, ExternalLink, GraduationCap, Scale, Stamp, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -38,6 +25,7 @@ function HighlightText({ text }) {
 }
 
 export default function Naac() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
   const [activeCriterion, setActiveCriterion] = useState(null);
 
@@ -765,7 +753,7 @@ export default function Naac() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
+              className="p-8 rounded-[24px] bg-white border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
                 <stat.icon size={32} />
@@ -790,7 +778,7 @@ export default function Naac() {
       </section>
 
       {/* ── 02.5 ABOUT IQAC & COORDINATOR ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -816,22 +804,22 @@ export default function Naac() {
             <div className="absolute -inset-4 bg-brand-accent/5 rounded-[40px] blur-2xl" />
             <div className="relative bg-white border border-slate-100 rounded-[40px] p-10 shadow-xl overflow-hidden">
               <div className="flex flex-col sm:flex-row items-center gap-8 mb-8">
-                <div className="w-24 h-24 rounded-3xl bg-slate-100 overflow-hidden border-2 border-brand-accent/20 shrink-0">
+                <div className="w-24 h-24 rounded-3xl bg-white overflow-hidden border-2 border-brand-accent/20 shrink-0">
                   <img src="https://www.nsec.ac.in/images/dr-sukumar-roy.jpg" alt="Dr. Sukumar Roy" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-heading font-black italic uppercase tracking-tight text-slate-900 leading-none mb-2">{iqacData.coordinator.name}</h3>
                   <p className="text-xs font-mono font-bold text-brand-accent uppercase tracking-widest mb-4">{iqacData.coordinator.role}</p>
                   <div className="flex flex-wrap gap-3">
-                    <a href={`mailto:${iqacData.coordinator.email.split(',')[0]}`} className="p-2 bg-slate-50 rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><MessageSquare size={16} /></a>
-                    <a href={`tel:${iqacData.coordinator.phone}`} className="p-2 bg-slate-50 rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><Download size={16} /></a>
+                    <a href={`mailto:${iqacData.coordinator.email.split(',')[0]}`} className="p-2 bg-white rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><MessageSquare size={16} /></a>
+                    <a href={`tel:${iqacData.coordinator.phone}`} className="p-2 bg-white rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><Download size={16} /></a>
                   </div>
                 </div>
               </div>
               <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed mb-8 border-l-2 border-slate-100 pl-6 italic">
                 "{iqacData.coordinator.desk}"
               </p>
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-white rounded-2xl border border-slate-100 flex items-center justify-between">
                 <div>
                   <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Contact Node</p>
                   <p className="text-[11px] font-heading font-black italic text-slate-700">{iqacData.coordinator.email.split(',')[0]}</p>
@@ -847,10 +835,10 @@ export default function Naac() {
       </section>
 
       {/* ── 02.6 VISION, MISSION & OBJECTIVES ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Vision */}
-          <div className="lg:col-span-1 p-10 bg-slate-900 rounded-[40px] text-white relative overflow-hidden group">
+          <div className="lg:col-span-1 p-10 bg-white rounded-[40px] text-white relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <ShieldCheck size={120} />
             </div>
@@ -861,7 +849,7 @@ export default function Naac() {
           </div>
 
           {/* Mission */}
-          <div className="lg:col-span-2 p-10 bg-slate-50 border border-slate-100 rounded-[40px] relative overflow-hidden group">
+          <div className="lg:col-span-2 p-10 bg-white border border-slate-100 rounded-[40px] relative overflow-hidden group">
             <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
               {iqacData.mission.map((item, i) => (
@@ -881,7 +869,7 @@ export default function Naac() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {iqacData.objectives.map((obj, i) => (
                 <div key={i} className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 mb-4 font-heading font-black italic">{i + 1}</div>
+                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-slate-400 mb-4 font-heading font-black italic">{i + 1}</div>
                   <p className="text-[13px] font-body font-medium text-slate-600 leading-relaxed italic">"{obj}"</p>
                 </div>
               ))}
@@ -891,7 +879,7 @@ export default function Naac() {
       </section>
 
       {/* ── 02.7 IQAC COMPOSITION ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <SectionHeading title="IQAC Composition" tagline="Institutional governance and quality monitoring board." />
         <div className="max-w-7xl mx-auto mt-16 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -906,7 +894,7 @@ export default function Naac() {
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="px-2 py-1 bg-brand-accent/10 rounded text-[9px] font-mono font-black text-brand-accent uppercase tracking-widest">{member.role}</div>
-                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-200 group-hover:text-brand-accent transition-colors"><ShieldCheck size={16} /></div>
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-200 group-hover:text-brand-accent transition-colors"><ShieldCheck size={16} /></div>
                 </div>
                 <h4 className="text-sm font-heading font-black italic uppercase tracking-tight text-slate-800 mb-1 leading-tight group-hover:text-brand-accent transition-colors">{member.name}</h4>
                 <p className="text-[11px] font-body font-medium text-slate-400 leading-tight">{member.detail}</p>
@@ -917,12 +905,12 @@ export default function Naac() {
       </section>
 
       {/* ── 02.8 FUNCTIONS OF IQAC ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
             <div className="grid grid-cols-1 gap-4">
               {iqacData.functions.map((fn, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all group">
+                <div key={i} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all group">
                   <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-300 group-hover:text-brand-accent group-hover:border-brand-accent/30 transition-all shrink-0">
                     <CheckCircle2 size={18} />
                   </div>
@@ -946,7 +934,7 @@ export default function Naac() {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 {iqacData.annualReports.map((r, i) => (
-                  <a key={i} href={r.url} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white border border-slate-100 text-[10px] font-mono font-bold text-slate-500 hover:bg-brand-maroon hover:text-white transition-all text-center">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(r.url); }}   className="p-2 rounded-lg bg-white border border-slate-100 text-[10px] font-mono font-bold text-slate-500 hover:bg-brand-maroon hover:text-white transition-all text-center">
                     {r.year}
                   </a>
                 ))}
@@ -957,13 +945,13 @@ export default function Naac() {
       </section>
 
       {/* ── 03. QUALITY & STATUTORY PORTALS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden border-y border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden border-y border-slate-200">
         <SectionHeading title="NAAC Cycles & Statutory" tagline="Institutional evaluation history and compliance repository." />
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Cycle 2 Panel */}
           <div className="bg-white rounded-[40px] border border-slate-100 shadow-xl overflow-hidden flex flex-col">
-            <div className="p-10 bg-slate-900 text-white relative">
+            <div className="p-10 bg-white text-white relative">
               <div className="absolute top-0 right-0 p-8 opacity-20"><ShieldCheck size={80} /></div>
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-2 block">Ongoing Accreditation</span>
               <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter mb-1">NAAC 2nd Cycle</h3>
@@ -973,7 +961,7 @@ export default function Naac() {
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">Statutory Documents</p>
                 {cycles.second.docs.map((doc, i) => (
-                  <a key={i} href={doc.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-brand-accent/30 hover:bg-white hover:shadow-lg transition-all group">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-transparent hover:border-brand-accent/30 hover:bg-white hover:shadow-lg transition-all group">
                     <FileText size={16} className="text-slate-300 group-hover:text-brand-accent transition-colors" />
                     <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-700 leading-none group-hover:text-slate-900">{doc.title}</span>
                   </a>
@@ -982,12 +970,12 @@ export default function Naac() {
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">AQAR Reports</p>
                 {cycles.second.aqars.map((aq, i) => (
-                  <a key={i} href={aq.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-brand-accent/[0.03] rounded-2xl border border-brand-accent/10 hover:bg-brand-accent hover:text-white transition-all group">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(aq.url); }}   className="flex items-center justify-between p-4 bg-brand-accent/[0.03] rounded-2xl border border-brand-accent/10 hover:bg-brand-accent hover:text-white transition-all group">
                     <span className="text-xs font-heading font-black italic uppercase tracking-tight">AQAR {aq.year}</span>
                     <Download size={14} className="opacity-40 group-hover:opacity-100 group-hover:translate-y-1 transition-all" />
                   </a>
                 ))}
-                <div className="p-6 bg-slate-50 rounded-3xl border border-dashed border-slate-200 mt-4">
+                <div className="p-6 bg-white rounded-3xl border border-dashed border-slate-200 mt-4">
                   <p className="text-[10px] font-mono font-bold text-slate-400 uppercase leading-relaxed text-center">Extended Profiles and DVV Clarifications are integrated in the criteria explorer below.</p>
                 </div>
               </div>
@@ -996,7 +984,7 @@ export default function Naac() {
 
           {/* Cycle 1 Panel */}
           <div className="bg-white rounded-[40px] border border-slate-100 shadow-xl overflow-hidden flex flex-col">
-            <div className="p-10 bg-slate-50 border-b border-slate-100 relative">
+            <div className="p-10 bg-white border-b border-slate-100 relative">
               <div className="absolute top-0 right-0 p-8 opacity-10 text-slate-900"><History size={80} /></div>
               <span className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.4em] mb-2 block">Archival History</span>
               <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-1">NAAC 1st Cycle</h3>
@@ -1006,7 +994,7 @@ export default function Naac() {
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">Historical Certificates</p>
                 {cycles.first.docs.map((doc, i) => (
-                  <a key={i} href={doc.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
+                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
                     <FileText size={16} className="text-slate-300 group-hover:text-slate-600 transition-colors" />
                     <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-600 leading-none group-hover:text-slate-800">{doc.title}</span>
                   </a>
@@ -1016,7 +1004,7 @@ export default function Naac() {
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">AQAR (2018-2023)</p>
                 <div className="grid grid-cols-1 gap-2">
                   {cycles.first.aqars.map((aq, i) => (
-                    <a key={i} href={aq.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
+                    <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(aq.url); }}   className="flex items-center justify-between p-3 bg-white rounded-xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
                       <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-500">AQAR {aq.year}</span>
                       <Download size={12} className="opacity-20 group-hover:opacity-100 transition-all" />
                     </a>
@@ -1031,7 +1019,7 @@ export default function Naac() {
 
 
       {/* ── 04. CRITERION DOCUMENTS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <SectionHeading title="Criterion-wise Data" tagline="Detailed breakdown of institutional performance metrics." />
         
         <div className="max-w-7xl mx-auto mt-12 overflow-x-auto pb-8">
@@ -1046,7 +1034,7 @@ export default function Naac() {
                 transition={{ delay: i * 0.05 }}
                 className={`group relative flex flex-col items-center text-center transition-all duration-300 ${activeCriterion === crit.id ? 'scale-105' : 'hover:scale-102'}`}
               >
-                <div className={`w-full aspect-square rounded-2xl border flex flex-col items-center justify-center p-4 transition-all duration-300 ${activeCriterion === crit.id ? 'bg-brand-accent border-brand-accent shadow-2xl' : 'bg-slate-50 border-slate-100 hover:bg-brand-accent/5 hover:border-brand-accent/30'}`}>
+                <div className={`w-full aspect-square rounded-2xl border flex flex-col items-center justify-center p-4 transition-all duration-300 ${activeCriterion === crit.id ? 'bg-brand-accent border-brand-accent shadow-2xl' : 'bg-white border-slate-100 hover:bg-brand-accent/5 hover:border-brand-accent/30'}`}>
                   <span className={`text-4xl font-heading font-black italic transition-colors mb-2 ${activeCriterion === crit.id ? 'text-white/40' : 'text-brand-accent/20 group-hover:text-brand-accent/40'}`}>C{crit.id}</span>
                   <span className={`text-[9px] font-mono font-black uppercase tracking-widest transition-colors leading-tight ${activeCriterion === crit.id ? 'text-white' : 'text-slate-400 group-hover:text-slate-800'}`}>{crit.title}</span>
                 </div>
@@ -1069,7 +1057,7 @@ export default function Naac() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-7xl mx-auto mt-12 overflow-hidden"
             >
-              <div className="p-8 lg:p-12 rounded-[32px] bg-slate-50 border border-slate-200 shadow-inner relative">
+              <div className="p-8 lg:p-12 rounded-[32px] bg-white border border-slate-200 shadow-inner relative">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent to-transparent" />
                 
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-12 gap-6">
@@ -1116,10 +1104,10 @@ export default function Naac() {
                             {indicator.years.map((y, yi) => (
                               <a
                                 key={yi}
-                                href={y.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[10px] font-mono font-bold text-slate-600 hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all"
+                                href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(y.url); }}
+                                
+                                
+                                className="px-3 py-1.5 rounded-lg bg-white border border-slate-100 text-[10px] font-mono font-bold text-slate-600 hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all"
                               >
                                 {y.label}
                               </a>
@@ -1132,10 +1120,10 @@ export default function Naac() {
                         {indicator.links.map((link, li) => (
                           <a
                             key={li}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-between p-4 rounded-xl bg-slate-50/50 border border-slate-100 hover:border-brand-accent/30 hover:bg-white transition-all group/link"
+                            href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(link.url); }}
+                            
+                            
+                            className="flex items-center justify-between p-4 rounded-xl bg-white/50 border border-slate-100 hover:border-brand-accent/30 hover:bg-white transition-all group/link"
                           >
                             <div className="flex items-center gap-3">
                               {link.type === 'pdf' ? <FileText size={16} className="text-brand-maroon" /> : <Download size={16} className="text-green-600" />}
@@ -1157,6 +1145,47 @@ export default function Naac() {
 
 
 
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

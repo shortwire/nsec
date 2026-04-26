@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, BookOpen, ExternalLink, Download, Globe, GraduationCap, Cpu, Laptop, Award, Info, Phone, ChevronRight, Maximize } from 'lucide-react';
+import { Shield, BookOpen, ExternalLink, Download, Globe, GraduationCap, Cpu, Laptop, Award, Info, Phone, ChevronRight, Maximize, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -57,7 +57,7 @@ function PlatformCard({ index, platform }) {
           <p className="text-[14px] font-body font-medium text-slate-600 leading-[1.6]">
             {platform.description}
           </p>
-          <a href={platform.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-brand-accent font-mono text-[10px] uppercase tracking-widest font-black hover:gap-2 transition-all duration-200 mt-2">
+          <a href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(platform.url); }}   className="inline-flex items-center gap-1.5 text-brand-accent font-mono text-[10px] uppercase tracking-widest font-black hover:gap-2 transition-all duration-200 mt-2">
             Visit Platform <ExternalLink size={12} />
           </a>
         </div>
@@ -93,7 +93,7 @@ function BasketCard({ index, item }) {
           <HighlightText text={item.text} />
         </p>
         {item.url && (
-          <a href={item.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-brand-maroon font-mono text-[10px] uppercase tracking-widest font-black hover:gap-2 transition-all duration-200 mt-3">
+          <a href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(item.url); }}   className="inline-flex items-center gap-1.5 text-brand-maroon font-mono text-[10px] uppercase tracking-widest font-black hover:gap-2 transition-all duration-200 mt-3">
             Download PDF <Download size={12} />
           </a>
         )}
@@ -103,6 +103,7 @@ function BasketCard({ index, item }) {
 }
 
 export default function Moocs() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
   const PDF_SRC = 'https://www.nsec.ac.in/notice/GUIDELINES-FOR-MOOCS-Aug-2021.pdf';
 
@@ -276,9 +277,9 @@ export default function Moocs() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative p-10 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40 transition-all duration-500 overflow-hidden"
+            className="group relative p-10 bg-white rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40 transition-all duration-500 overflow-hidden"
           >
-            <div className="absolute inset-0 z-0 bg-slate-900/80 group-hover:bg-slate-900/60 transition-colors duration-500 rounded-2xl" />
+            <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
             <div className="flex items-center justify-between relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all duration-300">
                 <GraduationCap size={22} />
@@ -297,9 +298,9 @@ export default function Moocs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="group relative p-10 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(128,0,0,0.15)] hover:border-brand-maroon/40 transition-all duration-500 overflow-hidden"
+            className="group relative p-10 bg-white rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(128,0,0,0.15)] hover:border-brand-maroon/40 transition-all duration-500 overflow-hidden"
           >
-            <div className="absolute inset-0 z-0 bg-slate-900/80 group-hover:bg-slate-900/60 transition-colors duration-500 rounded-2xl" />
+            <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
             <div className="flex items-center justify-between relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-brand-accent/30 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all duration-300">
                 <Info size={22} />
@@ -327,7 +328,7 @@ export default function Moocs() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.08)] border border-slate-200/60 mt-12"
         >
-          <div className="flex items-center justify-between px-6 py-4 bg-slate-900">
+          <div className="flex items-center justify-between px-6 py-4 bg-white">
             <div className="flex items-center gap-5">
               <div className="flex gap-2">
                 {['bg-red-400', 'bg-yellow-400', 'bg-green-400'].map((c, i) => (
@@ -355,6 +356,47 @@ export default function Moocs() {
           </div>
         </motion.div>
       </section>
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

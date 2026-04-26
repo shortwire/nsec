@@ -1,24 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  MapPin, 
-  Users, 
-  Globe, 
-  Building2, 
-  Leaf, 
-  Heart,
-  MessageSquare,
-  FileText,
-  Download,
-  CheckCircle2,
-  ExternalLink,
-  ChevronRight,
-  GraduationCap,
-  Globe2,
-  TreePine,
-  Sprout
-} from 'lucide-react';
+import { ShieldCheck, MapPin, Users, Globe, Building2, Leaf, Heart, MessageSquare, FileText, Download, CheckCircle2, ExternalLink, ChevronRight, GraduationCap, Globe2, TreePine, Sprout, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
@@ -44,6 +26,7 @@ function HighlightText({ text }) {
 }
 
 export default function UbaPage() {
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
 
   const carouselPhrases = [
@@ -201,7 +184,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 02. OVERVIEW ── */}
-      <section className="relative py-24 px-8 lg:px-24  overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -251,7 +234,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 03. ADOPTED VILLAGES ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <SectionHeading title="Adopted Villages" tagline="Direct technological and knowledge support to rural clusters." />
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {ubaData.villages.map((village, i) => (
@@ -278,7 +261,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 04. INTERVENTION DOMAINS ── */}
-      <section className="relative py-24 px-8 lg:px-24  overflow-hidden border-y border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden border-y border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Human Development */}
           <div className="bg-white rounded-[40px] p-12 border border-slate-100 shadow-xl relative overflow-hidden group">
@@ -325,7 +308,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 05. FOCUS & FUNCTIONS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-white">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Strategic Focus</span>
@@ -362,7 +345,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 06. COORDINATORS DESK ── */}
-      <section className="relative py-24 px-8 lg:px-24  overflow-hidden border-t border-slate-200">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden border-t border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {ubaData.coordinators.map((coord, i) => (
             <motion.div
@@ -387,7 +370,7 @@ export default function UbaPage() {
               <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed mb-8 border-l-2 border-slate-100 pl-6 italic">
                 "{coord.desk}"
               </p>
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-white rounded-2xl border border-slate-100 flex items-center justify-between">
                 <div>
                   <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Official Email</p>
                   <p className="text-[11px] font-heading font-black italic text-slate-700">{coord.email.split(',')[0]}</p>
@@ -405,6 +388,47 @@ export default function UbaPage() {
       </section>
 
 
+    
+            {/* PDF Modal */}
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPdf(null)}
+            className="fixed inset-0 z-[200] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                    <BookOpen size={16} />
+                  </div>
+                  <h3 className="text-sm font-heading font-black italic uppercase tracking-widest text-slate-800">Document Preview</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a href={selectedPdf} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors" title="Open in new tab">
+                    <ExternalLink size={18} />
+                  </a>
+                  <button onClick={() => setSelectedPdf(null)} className="p-2 rounded-full hover:bg-red-100 text-slate-500 hover:text-red-600 transition-colors" title="Close">
+                    <X size={18} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <iframe src={selectedPdf} className="absolute inset-0 w-full h-full border-0" title="PDF Preview" />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
