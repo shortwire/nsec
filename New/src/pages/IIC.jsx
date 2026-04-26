@@ -4,6 +4,8 @@ import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, C
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
+void motion;
+
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
    ═══════════════════════════════════════════════════════════ */
@@ -41,7 +43,7 @@ export default function IIC() {
       setCurrentSentenceIdx((prev) => (prev + 1) % carouselPhrases.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselPhrases.length]);
 
 
 
@@ -90,7 +92,7 @@ export default function IIC() {
         titleStroke="IIC"
         titleFill="HUB"
         statutoryLabel="INSTITUTION'S INNOVATION COUNCIL"
-        policyLabel="MHRD's Innovation Cell (MIC) Mandate"
+        policyLabel=""
         rightLabel="Creative.Node"
         useYellowAccents={true}
         rightContent={
@@ -159,10 +161,10 @@ export default function IIC() {
           </div>
 
           <div className="relative pt-12">
-            <div className="bg-white rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden">
+            <div className="bg-white rounded-[48px] p-12 text-slate-900 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10"><Rocket size={120} /></div>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-white mb-8">EDC Mandate</h3>
-              <p className="text-sm font-body font-medium text-white/60 leading-relaxed mb-8 italic">
+              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">EDC Mandate</h3>
+              <p className="text-sm font-body font-medium text-slate-600 leading-relaxed mb-8 italic">
                 <HighlightText text="The NSEC Entrepreneurship Development Cell (NSEC-EDC) started its journey with the aim to inculcate the spirit of innovation and entrepreneurship amongst the young students, encouraging start-up creation through guidance, mentorship and support." />
               </p>
               <div className="space-y-4">
@@ -171,11 +173,11 @@ export default function IIC() {
                   { title: "ARIIA Readiness", desc: "Benchmarking institutional rankings for innovation." },
                   { title: "Cognitive Ability", desc: "Developing technical and problem-solving skills." }
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all">
+                  <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all">
                     <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent"><CheckCircle2 size={16} /></div>
                     <div>
-                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-white/80">{item.title}</h4>
-                      <p className="text-[12px] font-body text-white/50">{item.desc}</p>
+                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-slate-900">{item.title}</h4>
+                      <p className="text-[12px] font-body text-slate-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -212,11 +214,11 @@ export default function IIC() {
             </div>
           </div>
 
-          <div className="p-12 bg-white rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
+          <div className="p-12 bg-white rounded-[48px] text-slate-900 shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Target size={160} />
             </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter mb-8">Major Focus</h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Major Focus</h3>
             <div className="space-y-4">
               {[
                 "Vibrant innovation ecosystem creation.",
@@ -225,11 +227,11 @@ export default function IIC() {
                 "Scouting Ideas and Pre-incubation Scouting.",
                 "Develop better Cognitive Ability for Students."
               ].map((focus, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all group/item">
-                  <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover/item:bg-brand-accent group-hover/item:text-white transition-all">
+                <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all group/item">
+                  <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover/item:bg-brand-accent group-hover/item:text-slate-900 transition-all">
                     <CheckCircle2 size={16} />
                   </div>
-                  <span className="text-[13px] font-body font-medium text-white/70 pt-1 leading-tight">{focus}</span>
+                  <span className="text-[13px] font-body font-medium text-slate-700 pt-1 leading-tight">{focus}</span>
                 </div>
               ))}
             </div>
@@ -368,7 +370,7 @@ export default function IIC() {
       </section>
 
       {/* ── 07. REGIONAL ECOSYSTEM & PARTNERSHIPS ── */}
-      <section id="ecosystem" className="pt-16 pb-8 px-8 lg:px-24 bg-white text-white relative overflow-hidden">
+      <section id="ecosystem" className="pt-16 pb-8 px-8 lg:px-24 bg-white text-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-brand-accent rounded-full blur-[120px]" />
         </div>
@@ -376,7 +378,7 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Regional Network</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
             <div id="mous" className="space-y-4">
               {[
                 { name: "Electrixa Energy and Lighting Pvt. Ltd.", type: "Industry Partner" },
@@ -384,12 +386,12 @@ export default function IIC() {
                 { name: "Photonix Solar", type: "Energy Partner" },
                 { name: "Suncraft Energy", type: "Sustainable Partner" }
               ].map((mou, i) => (
-                <div key={i} className="p-4 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-all">
+                <div key={i} className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between group hover:bg-slate-100 transition-all">
                   <div>
-                    <p className="text-lg font-heading font-black italic uppercase tracking-tight text-white/90 group-hover:text-brand-accent transition-colors">{mou.name}</p>
-                    <span className="text-[9px] font-mono font-black text-white/30 uppercase tracking-widest">{mou.type}</span>
+                    <p className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-900 group-hover:text-brand-accent transition-colors">{mou.name}</p>
+                    <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest">{mou.type}</span>
                   </div>
-                  <Handshake size={20} className="text-white/20 group-hover:text-brand-accent transition-all" />
+                  <Handshake size={20} className="text-slate-400 group-hover:text-brand-accent transition-all" />
                 </div>
               ))}
             </div>
@@ -397,24 +399,24 @@ export default function IIC() {
 
           <div id="achievements">
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Achievements</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
             <div className="space-y-6">
-              <div className="p-8 bg-white/5 border border-white/10 rounded-[32px] hover:border-brand-accent transition-all">
+              <div className="p-8 bg-slate-50 border border-slate-200 rounded-[32px] hover:border-brand-accent transition-all">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-brand-accent/20 flex items-center justify-center text-brand-accent"><Trophy size={24} /></div>
-                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-white">Model Assembly Unit</h4>
+                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900">Model Assembly Unit</h4>
                 </div>
-                <p className="text-sm font-body font-medium text-white/50 leading-relaxed italic">
-                  Established a specialized <span className="text-white font-bold">Model Assembly cum Testing Unit on LED Lighting</span> within the campus, supporting real-world industrial training.
+                <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">
+                  Established a specialized <span className="text-slate-900 font-bold">Model Assembly cum Testing Unit on LED Lighting</span> within the campus, supporting real-world industrial training.
                 </p>
               </div>
-              <div className="p-8 bg-white/5 border border-white/10 rounded-[32px] hover:border-brand-accent transition-all">
+              <div className="p-8 bg-slate-50 border border-slate-200 rounded-[32px] hover:border-brand-accent transition-all">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-brand-maroon/20 flex items-center justify-center text-brand-maroon"><Activity size={24} /></div>
-                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-white">INFERNO Fest</h4>
+                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900">INFERNO Fest</h4>
                 </div>
-                <p className="text-sm font-body font-medium text-white/50 leading-relaxed italic">
-                  Our flagship business fest, <span className="text-white font-bold">INFERNO</span>, continues to act as a launchpad for student-led startups and business plan competitions.
+                <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">
+                  Our flagship business fest, <span className="text-slate-900 font-bold">INFERNO</span>, continues to act as a launchpad for student-led startups and business plan competitions.
                 </p>
               </div>
             </div>
