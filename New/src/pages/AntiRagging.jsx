@@ -167,10 +167,9 @@ export default function AntiRagging() {
         maxHeight="33vh"
         titleStroke="ANTI-"
         titleFill="RAGGING"
-        statutoryLabel="POLICY"
+        statutoryLabel={<span className="text-[#fbbf24]">POLICY</span>}
         policyLabel=""
-        rightLabel="Zero.Tolerance.Policy"
-        useYellowAccents={true}
+        rightLabel={<span className="text-[#fbbf24]">Zero.Tolerance.Policy</span>}
         rightContent={
           <div className="leading-snug">
             {/* Line 1 */}
@@ -294,7 +293,6 @@ export default function AntiRagging() {
           {/* Removed the background gradient and glow to keep it pure white */}
 
           <SectionHeading
-          
             title="Punishments"
             tagline="Actions to be taken for abetting in ragging."
           />
