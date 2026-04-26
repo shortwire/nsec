@@ -79,7 +79,7 @@ function BasketCard({ index, item }) {
       className="group relative rounded-[20px] bg-gradient-to-br from-brand-maroon/[0.04] via-white to-white border border-brand-maroon/[0.12] border-l-[3px] border-l-brand-maroon shadow-[0_6px_24px_rgba(0,0,0,0.06)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(128,0,0,0.14)] hover:border-brand-maroon/[0.22] transition-all duration-[250ms] ease-out mt-3 ml-3"
     >
       <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-brand-maroon flex items-center justify-center shadow-[0_2px_4px_rgba(128,0,0,0.15)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(128,0,0,0.25)] transition-all duration-[250ms] ease-out z-10 border-2 border-brand-accent/80">
-        <span className="text-[12px] font-mono font-black text-slate-900">
+          <span className="text-[12px] font-mono font-black text-white">
           {String(index + 1).padStart(2, '0')}
         </span>
         <div className="absolute top-1/2 left-full w-20 h-[2px] -translate-y-1/2 opacity-70 group-hover:opacity-100 group-hover:w-32 transition-all duration-[250ms] ease-out pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(128,0,0,0.5), rgba(128,0,0,0.1), transparent)' }} />
