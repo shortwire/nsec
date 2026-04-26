@@ -157,13 +157,13 @@ export default function Iqac() {
     <div className="min-h-screen bg-white">
       {/* ── 01. HERO ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="IQAC"
         titleFill="CELL"
         useYellowAccents={true}
         statutoryLabel="ESTD. 2013"
-        policyLabel="Quality Management"
+        policyLabel=""
         rightLabel="Strategic.Quality.Node"
         rightContent={
           <div className="leading-snug">
@@ -267,7 +267,7 @@ export default function Iqac() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="p-4 bg-slate-50 rounded-lg border-l-2 border-brand-maroon/30 text-[13px] font-body font-medium text-slate-600 leading-relaxed"
+                  className="p-4  rounded-lg border-l-2 border-brand-maroon/30 text-[13px] font-body font-medium text-slate-600 leading-relaxed"
                 >
                   {p}
                 </motion.div>
@@ -278,7 +278,7 @@ export default function Iqac() {
       </section>
 
       {/* ── 03. OBJECTIVES ── */}
-      <section className="relative py-16 px-8 lg:px-24 bg-slate-50">
+      <section className="relative py-16 px-8 lg:px-24 ">
         <SectionHeading
           title="Functions & Objectives"
           tagline="Strategic goals for quality sustenance and enhancement."
@@ -318,11 +318,11 @@ export default function Iqac() {
       </section>
 
       {/* ── 05. LINKS & REPORTS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-900 overflow-hidden">
+      <section className="relative py-24 px-8 lg:px-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-grid" />
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
           <div className="lg:w-1/2">
-            <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-6">Important Links</h2>
+            <h2 className="text-4xl font-heading font-slate-800 italic uppercase tracking-tighter text-maroon mb-6">Important Links</h2>
             <div className="space-y-4">
               {[
                 { title: "Composition & Functions (Order)", url: "https://www.nsec.ac.in/impdoc/230710_1_IQAC_Office%20Order.pdf" },
@@ -334,22 +334,22 @@ export default function Iqac() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-brand-accent/20 hover:border-brand-accent/40 transition-all duration-300"
+                  className="group flex items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl hover:bg-brand-accent/5 hover:border-brand-accent/30 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent">
+                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
                       <ExternalLink size={20} />
                     </div>
-                    <span className="text-lg font-heading font-black italic uppercase tracking-tight text-white/90 group-hover:text-white">{link.title}</span>
+                    <span className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-700 group-hover:text-brand-accent">{link.title}</span>
                   </div>
-                  <ChevronRight size={20} className="text-white/20 group-hover:translate-x-1 group-hover:text-brand-accent transition-all" />
+                  <ChevronRight size={20} className="text-slate-300 group-hover:translate-x-1 group-hover:text-brand-accent transition-all" />
                 </a>
               ))}
             </div>
           </div>
 
           <div className="lg:w-1/2">
-            <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-6">Annual Reports</h2>
+            <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-800 mb-6">Annual Reports</h2>
             <div className="grid grid-cols-2 gap-4">
               {reports.map((report, i) => (
                 <a
@@ -357,13 +357,13 @@ export default function Iqac() {
                   href={report.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 bg-white/5 border border-white/10 rounded-xl flex items-center justify-between hover:bg-brand-maroon/20 hover:border-brand-maroon/40 transition-all group"
+                  className="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-brand-maroon/5 hover:border-brand-maroon/30 shadow-sm hover:shadow-md transition-all group"
                 >
                   <div className="flex items-center gap-3">
                     <Download size={16} className="text-brand-maroon group-hover:scale-110 transition-transform" />
-                    <span className="text-sm font-mono font-bold text-white/70">{report.year}</span>
+                    <span className="text-sm font-mono font-bold text-slate-600 group-hover:text-brand-maroon">{report.year}</span>
                   </div>
-                  <span className="text-[9px] font-mono font-black text-white/30 uppercase tracking-widest group-hover:text-white/60">PDF</span>
+                  <span className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest group-hover:text-brand-maroon/60">PDF</span>
                 </a>
               ))}
             </div>
