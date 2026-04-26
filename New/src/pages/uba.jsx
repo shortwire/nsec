@@ -4,6 +4,8 @@ import { ShieldCheck, MapPin, Users, Globe, Building2, Leaf, Heart, MessageSquar
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
+void motion;
+
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
    ═══════════════════════════════════════════════════════════ */
@@ -41,12 +43,12 @@ export default function UbaPage() {
       setCurrentSentenceIdx((prev) => (prev + 1) % carouselPhrases.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselPhrases.length]);
 
   const stats = [
-    { label: "Participating Institute", value: "NSEC Garia", icon: Building2 },
-    { label: "Adopted Villages", value: "05 Clusters", icon: MapPin },
-    { label: "Mentoring RCI", value: "IIT Kharagpur", icon: GraduationCap }
+    { label: "Participating Institute", value: "NSEC Garia", icon: Building2, bgImg: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" },
+    { label: "Adopted Villages", value: "05 Clusters", icon: MapPin, bgImg: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" },
+    { label: "Mentoring RCI", value: "IIT Kharagpur", icon: GraduationCap, bgImg: "https://images.unsplash.com/photo-1626245917164-21be272d3362?auto=format&fit=crop&w=800&q=80" }
   ];
 
   const ubaData = {
@@ -171,13 +173,22 @@ export default function UbaPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px]  border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
+              className="group relative p-10 bg-slate-900 rounded-[24px] border border-slate-800 shadow-xl flex flex-col items-center text-center
+                         hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40
+                         transition-all duration-500 overflow-hidden min-h-[300px] justify-center"
             >
-              <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
+              {/* Background Image Overlay */}
+              <div className="absolute inset-0 z-0 opacity-80 pointer-events-none bg-center bg-cover rounded-[24px] transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]" style={{ backgroundImage: `url('${stat.bgImg}')` }} />
+              <div className="absolute inset-0 z-0 bg-slate-900/80 group-hover:bg-slate-900/60 transition-colors duration-500 rounded-[24px]" />
+              
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-[2] group-hover:bg-brand-accent/30 z-0 blur-xl" />
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] z-0 transition-all duration-500" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.8), rgba(251,191,36,0.2), transparent)' }} />
+
+              <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-[#fbbf24]/80 flex items-center justify-center text-brand-accent mb-6 group-hover:bg-brand-accent group-hover:text-white group-hover:scale-110 transition-all duration-500 relative z-10 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
                 <stat.icon size={32} />
               </div>
-              <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.3em] mb-2">{stat.label}</p>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 leading-none">{stat.value}</h3>
+              <p className="text-[10px] font-mono font-black text-white/50 uppercase tracking-[0.3em] mb-2 relative z-10">{stat.label}</p>
+              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-white leading-none relative z-10 drop-shadow-md">{stat.value}</h3>
             </motion.div>
           ))}
         </div>
@@ -285,21 +296,21 @@ export default function UbaPage() {
           </div>
 
           {/* Material Development */}
-          <div className=" rounded-[40px] p-12 text-white relative overflow-hidden group shadow-2xl">
+          <div className="bg-white rounded-[40px] p-12 text-slate-900 relative overflow-hidden group shadow-2xl border border-slate-100">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Leaf size={160} />
             </div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Domain Beta</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-8 leading-none">
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
               Material <br/> <span className="text-brand-accent">Development</span>
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {ubaData.interventions.material.map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-brand-accent transition-all group/item">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white/40 group-hover/item:text-brand-accent transition-all shrink-0">
+                <div key={i} className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:bg-slate-100 hover:border-brand-accent transition-all group/item">
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 border border-slate-200 group-hover/item:text-brand-accent transition-all shrink-0">
                     <item.icon size={18} />
                   </div>
-                  <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-white/70 pt-1 leading-none group-hover/item:text-white transition-colors">{item.title}</span>
+                  <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-700 pt-1 leading-none group-hover/item:text-slate-900 transition-colors">{item.title}</span>
                 </div>
               ))}
             </div>
@@ -345,7 +356,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 06. COORDINATORS DESK ── */}
-      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden border-t border-slate-200">
+      <section className="relative pt-16 pb-24 px-8 lg:px-24 overflow-hidden border-t border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {ubaData.coordinators.map((coord, i) => (
             <motion.div
