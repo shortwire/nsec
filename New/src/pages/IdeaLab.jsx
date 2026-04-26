@@ -4,6 +4,8 @@ import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, C
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
+void motion;
+
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
    ═══════════════════════════════════════════════════════════ */
@@ -40,7 +42,7 @@ export default function IdeaLab() {
       setCurrentSentenceIdx((prev) => (prev + 1) % carouselPhrases.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselPhrases.length]);
 
 
 
@@ -133,7 +135,7 @@ export default function IdeaLab() {
           </div>
 
           <div className="relative pt-12">
-            <div className="bg-white rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden group">
+            <div className="bg-white rounded-[48px] p-12 text-slate-900 shadow-2xl relative overflow-hidden group border border-slate-200">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
                 <Hammer size={120} />
               </div>
@@ -145,11 +147,11 @@ export default function IdeaLab() {
                   { title: "Tangible Prototypes", desc: "Transforming concepts into products, or services." },
                   { title: "Global Challenges", desc: "Addressing real-world problems through design thinking." }
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all">
+                  <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all">
                     <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent shrink-0"><CheckCircle2 size={16} /></div>
                     <div>
-                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-white/80">{item.title}</h4>
-                      <p className="text-[12px] font-body text-white/50">{item.desc}</p>
+                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-slate-900">{item.title}</h4>
+                      <p className="text-[12px] font-body text-slate-600">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -173,9 +175,9 @@ export default function IdeaLab() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="p-8 bg-white border border-slate-100 rounded-[32px] hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group flex flex-col items-center text-center relative overflow-hidden"
+              className="p-8 bg-white border-2 border-slate-200 rounded-[32px] hover:bg-white hover:shadow-xl hover:border-brand-accent/25 transition-all group flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-sm border border-slate-200">
                 <card.icon size={24} />
               </div>
               <h4 className="text-[15px] font-heading font-black italic uppercase tracking-tight text-slate-800 mb-1 group-hover:text-brand-accent transition-colors leading-none">{card.title}</h4>
@@ -189,51 +191,43 @@ export default function IdeaLab() {
         </div>
       </section>
 
-      {/* ── 04. FABRICATION FACILITIES ── */}
-      <section id="facilities" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="relative">
-            <div className="absolute -inset-4 bg-brand-accent/5 rounded-[48px] blur-3xl" />
-            <div className="relative rounded-[48px] overflow-hidden group shadow-2xl">
-              <div className="absolute inset-0 bg-brand-accent/10 group-hover:bg-brand-accent/0 transition-colors duration-700" />
-              <img 
-                src="/assets/HeroFocus/nsec-idealab-fp01.jpg" 
-                alt="IDEA Lab Fabrication" 
-                className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => { e.target.src = '/assets/HeroFocus/Campus_Life1.webp'; }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-slate-900 to-transparent">
-                <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.3em] mb-2 block">Laboratory Node</span>
-                <h4 className="text-3xl font-heading font-black italic uppercase tracking-tight text-white leading-none">Advanced Maker Space</h4>
+      {/* ── 04. IDEA LAB SNAPSHOT ── */}
+      <section id="facilities" className="pt-16 pb-24 px-8 lg:px-24 bg-white relative overflow-hidden">
+        <SectionHeading
+          title="IDEA Lab Snapshot"
+          tagline="A visual look at the fabrication and prototyping space."
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.08)] border border-slate-200/60 mt-12"
+        >
+          <div className="flex items-center justify-between px-6 py-4 bg-white">
+            <div className="flex items-center gap-5">
+              <div className="flex gap-2">
+                {['bg-red-400', 'bg-yellow-400', 'bg-green-400'].map((c, i) => (
+                  <div key={i} className={`w-3 h-3 rounded-full ${c} opacity-60`} />
+                ))}
+              </div>
+              <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-white/[0.06] rounded-lg border border-slate-200">
+                <Building2 size={11} className="text-brand-accent/60" />
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                  IDEA-Lab-Snapshot.jpg
+                </span>
               </div>
             </div>
           </div>
-
-          <div>
-            <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">State-of-the-Art</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
-              Fabrication <br/> <span className="text-brand-accent">& Prototyping</span>
-            </h2>
-            <div className="space-y-4">
-              {[
-                { title: "Design Thinking Area", icon: Lightbulb },
-                { title: "Rapid Prototyping Unit", icon: Microscope },
-                { title: "Fabrication Station", icon: Cog },
-                { title: "Testing & Validation Node", icon: Activity }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-5 p-6 bg-white border border-slate-100 rounded-2xl hover:bg-white hover:shadow-lg transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-brand-accent border border-slate-200 group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
-                    <item.icon size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-[15px] font-heading font-black italic uppercase tracking-tight text-slate-800 leading-none mb-1">{item.title}</h4>
-                    <p className="text-[11px] font-body text-slate-400">Integrated workflow for conceptual to physical transformation.</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="w-full h-[78vh] bg-white">
+            <img
+              src="/assets/HeroFocus/nsec-idealab-fp01.jpg"
+              alt="IDEA Lab snapshot"
+              className="w-full h-full object-cover"
+              onError={(e) => { e.currentTarget.src = '/assets/HeroFocus/Campus_Life1.webp'; }}
+            />
           </div>
-        </div>
+        </motion.div>
       </section>
 
 

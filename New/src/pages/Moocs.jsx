@@ -41,7 +41,7 @@ function PlatformCard({ index, platform }) {
       className="group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-brand-accent shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3"
     >
       {/* Number Badge */}
-      <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_2px_4px_rgba(0,139,139,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-white">
+      <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_2px_4px_rgba(0,139,139,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-slate-900">
         <span className="text-[12px] font-mono font-black">
           {String(index + 1).padStart(2, '0')}
         </span>
@@ -79,7 +79,7 @@ function BasketCard({ index, item }) {
       className="group relative rounded-[20px] bg-gradient-to-br from-brand-maroon/[0.04] via-white to-white border border-brand-maroon/[0.12] border-l-[3px] border-l-brand-maroon shadow-[0_6px_24px_rgba(0,0,0,0.06)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(128,0,0,0.14)] hover:border-brand-maroon/[0.22] transition-all duration-[250ms] ease-out mt-3 ml-3"
     >
       <div className="absolute -top-3 -left-4 w-11 h-11 rounded-full bg-brand-maroon flex items-center justify-center shadow-[0_2px_4px_rgba(128,0,0,0.15)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(128,0,0,0.25)] transition-all duration-[250ms] ease-out z-10 border-2 border-brand-accent/80">
-        <span className="text-[12px] font-mono font-black text-white">
+        <span className="text-[12px] font-mono font-black text-slate-900">
           {String(index + 1).padStart(2, '0')}
         </span>
         <div className="absolute top-1/2 left-full w-20 h-[2px] -translate-y-1/2 opacity-70 group-hover:opacity-100 group-hover:w-32 transition-all duration-[250ms] ease-out pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(128,0,0,0.5), rgba(128,0,0,0.1), transparent)' }} />
@@ -281,15 +281,15 @@ export default function Moocs() {
           >
             <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-slate-900 transition-all duration-300">
                 <GraduationCap size={22} />
               </div>
               <span className="text-sm font-mono font-black text-brand-accent uppercase tracking-[0.2em]">SPoC-Coursera</span>
             </div>
             <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-2">Prof. Anupam Ghosh</h4>
-              <p className="text-sm font-mono text-white/70 uppercase tracking-widest">Head of Department, CSE (AIML)</p>
-              <p className="text-xs font-body text-white/50 mt-2">Contact for Coursera invitation and credit transfer assistance.</p>
+              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-2">Prof. Anupam Ghosh</h4>
+              <p className="text-sm font-mono text-slate-600 uppercase tracking-widest">Head of Department, CSE (AIML)</p>
+              <p className="text-xs font-body text-slate-500 mt-2">Contact for Coursera invitation and credit transfer assistance.</p>
             </div>
           </motion.div>
 
@@ -302,14 +302,14 @@ export default function Moocs() {
           >
             <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-brand-accent/30 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-brand-accent/30 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-slate-900 transition-all duration-300">
                 <Info size={22} />
               </div>
               <span className="text-sm font-mono font-black text-brand-accent uppercase tracking-[0.2em]">NPTEL Steps</span>
             </div>
             <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-2">NPTEL-Swayam Join</h4>
-              <p className="text-[13px] font-body text-white/70">Visit Swayam portal → Search Catalog → Select Course → Join with <span className="text-brand-accent">Gmail ID</span>.</p>
+              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-2">NPTEL-Swayam Join</h4>
+              <p className="text-[13px] font-body text-slate-600">Visit Swayam portal → Search Catalog → Select Course → Join with <span className="text-brand-accent">Gmail ID</span>.</p>
             </div>
           </motion.div>
         </div>
@@ -337,16 +337,16 @@ export default function Moocs() {
               </div>
               <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-white/[0.06] rounded-lg border border-white/[0.08]">
                 <Shield size={11} className="text-brand-accent/60" />
-                <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
                   MOOCs-Guidelines-NSEC.pdf
                 </span>
               </div>
             </div>
             <div className="flex items-center gap-2.5">
-              <a href={PDF_SRC} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg hover:bg-brand-accent hover:text-white transition-all">
+              <a href={PDF_SRC} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg hover:bg-brand-accent hover:text-slate-900 transition-all">
                 <Maximize size={14} />
               </a>
-              <a href={PDF_SRC} download className="px-4 py-2 bg-brand-maroon text-white rounded-lg font-mono font-black text-[10px] uppercase tracking-[0.15em] hover:bg-white hover:text-brand-maroon transition-all">
+              <a href={PDF_SRC} download className="px-4 py-2 bg-brand-maroon text-slate-900 rounded-lg font-mono font-black text-[10px] uppercase tracking-[0.15em] hover:bg-white hover:text-brand-maroon transition-all">
                 Download
               </a>
             </div>
