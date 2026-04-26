@@ -102,8 +102,8 @@ export default function Nba() {
         maxHeight="33vh"
         titleStroke="NBA"
         titleFill="PROG"
-        statutoryLabel="NATIONAL BOARD OF ACCREDITATION"
-        policyLabel="Outcome Based Education"
+        statutoryLabel="OUTCOME BASED EDUCATION"
+        policyLabel=""
         rightLabel="Quality.Node.System"
         useYellowAccents={true}
         rightContent={

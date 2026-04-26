@@ -82,12 +82,12 @@ export default function IdeaLab() {
     <div className="min-h-screen bg-white font-sans selection:bg-brand-accent/30">
       {/* ── HERO SECTION ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="IDEA"
         titleFill="LAB"
         statutoryLabel="AICTE NSEC INITIATIVE"
-        policyLabel="Idea Development, Evaluation & Application"
+        policyLabel=""
         rightLabel="Maker.Space"
         useYellowAccents={true}
         rightContent={

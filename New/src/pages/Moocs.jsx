@@ -140,7 +140,7 @@ export default function Moocs() {
     <div className="min-h-screen bg-white">
       {/* ── 01. HERO ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="MOOCs &"
         titleFill="NPTEL"

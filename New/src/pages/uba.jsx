@@ -135,7 +135,7 @@ export default function UbaPage() {
         titleStroke="UNNAT"
         titleFill="BHARAT"
         statutoryLabel="Abhiyan"
-        policyLabel="Rural Development"
+        policyLabel=""
         rightLabel="UBA.Cell.NSEC"
         useYellowAccents={true}
         rightContent={
@@ -188,7 +188,7 @@ export default function UbaPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px] bg-slate-50 border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
+              className="p-8 rounded-[24px]  border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/20 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
                 <stat.icon size={32} />
@@ -201,7 +201,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 02. OVERVIEW ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden">
+      <section className="relative py-24 px-8 lg:px-24  overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -239,7 +239,7 @@ export default function UbaPage() {
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {['NSS Unit', 'Rotaract Club', 'Faculty Group', 'Motivated Staff'].map((tag, i) => (
-                  <div key={i} className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-lg text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest group hover:bg-brand-accent hover:text-white transition-all">
+                  <div key={i} className="flex items-center gap-2 px-4 py-2  rounded-lg text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest group hover:bg-brand-accent hover:text-white transition-all">
                     <CheckCircle2 size={12} className="text-brand-accent group-hover:text-white" />
                     {tag}
                   </div>
@@ -278,7 +278,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 04. INTERVENTION DOMAINS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden border-y border-slate-200">
+      <section className="relative py-24 px-8 lg:px-24  overflow-hidden border-y border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Human Development */}
           <div className="bg-white rounded-[40px] p-12 border border-slate-100 shadow-xl relative overflow-hidden group">
@@ -291,7 +291,7 @@ export default function UbaPage() {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {ubaData.interventions.human.map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-brand-accent/20 hover:bg-white transition-all group/item">
+                <div key={i} className="flex gap-4 p-4  rounded-2xl border border-transparent hover:border-brand-accent/20 hover:bg-white transition-all group/item">
                   <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-300 group-hover/item:text-brand-accent group-hover/item:border-brand-accent/30 transition-all shrink-0">
                     <item.icon size={20} />
                   </div>
@@ -302,7 +302,7 @@ export default function UbaPage() {
           </div>
 
           {/* Material Development */}
-          <div className="bg-slate-900 rounded-[40px] p-12 text-white relative overflow-hidden group shadow-2xl">
+          <div className=" rounded-[40px] p-12 text-white relative overflow-hidden group shadow-2xl">
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Leaf size={160} />
             </div>
@@ -334,7 +334,7 @@ export default function UbaPage() {
             </h2>
             <div className="space-y-4">
               {ubaData.focus.map((f, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
+                <div key={i} className="flex gap-4 p-5  rounded-2xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
                   <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
                     <CheckCircle2 size={16} />
                   </div>
@@ -344,7 +344,7 @@ export default function UbaPage() {
             </div>
           </div>
 
-          <div className="p-12 bg-brand-maroon/5 border border-brand-maroon/10 rounded-[48px] relative overflow-hidden">
+          <div className="p-12  border border-brand-maroon/10 rounded-[48px] relative overflow-hidden">
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-brand-maroon/5 rounded-full blur-3xl" />
             <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">Operational <span className="text-brand-maroon">Functions</span></h3>
             <div className="grid grid-cols-1 gap-6">
@@ -362,7 +362,7 @@ export default function UbaPage() {
       </section>
 
       {/* ── 06. COORDINATORS DESK ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-50 overflow-hidden border-t border-slate-200">
+      <section className="relative py-24 px-8 lg:px-24  overflow-hidden border-t border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {ubaData.coordinators.map((coord, i) => (
             <motion.div
@@ -375,7 +375,7 @@ export default function UbaPage() {
             >
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-accent group-hover:w-2 transition-all" />
               <div className="flex flex-col sm:flex-row items-center gap-8 mb-8">
-                <div className="w-24 h-24 rounded-3xl bg-slate-100 overflow-hidden border-2 border-brand-accent/20 shrink-0">
+                <div className="w-24 h-24 rounded-3xl  overflow-hidden border-2 border-brand-accent/20 shrink-0">
                   <img src={i === 0 ? "https://www.nsec.ac.in/images/dr-sukumar-roy.jpg" : "https://www.nsec.ac.in/images/faculty/psp.jpg"} alt={coord.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
                 <div>

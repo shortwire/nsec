@@ -90,7 +90,7 @@ function InitiativeCard({ item, index }) {
       className={`group block relative p-6 rounded-2xl border transition-all duration-300 ${
         item.url 
           ? 'bg-white border-slate-100 hover:border-brand-accent/40 hover:shadow-xl hover:-translate-y-1' 
-          : 'bg-slate-50 border-slate-200 opacity-60 cursor-not-allowed'
+          : ' border-slate-200 opacity-60 cursor-not-allowed'
       }`}
     >
       <div className="flex items-start justify-between mb-4">
@@ -176,12 +176,12 @@ export default function Rd() {
     <div className="min-h-screen bg-white overflow-hidden">
       {/* ── 01. HERO ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="35vh"
         titleStroke="R & D"
         titleFill="CELL"
         statutoryLabel="INNOVATION CORE"
-        policyLabel="Research & Development"
+        policyLabel=""
         rightLabel="Strategic.Insight.Node"
         useYellowAccents={true}
         rightContent={
@@ -286,7 +286,7 @@ export default function Rd() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="p-4 bg-slate-50 rounded-lg border-l-2 border-brand-maroon/30 text-[13px] font-body font-medium text-slate-600 leading-relaxed"
+                  className="p-4  rounded-lg border-l-2 border-brand-maroon/30 text-[13px] font-body font-medium text-slate-600 leading-relaxed"
                 >
                   {p}
                 </motion.div>
@@ -297,7 +297,7 @@ export default function Rd() {
       </section>
 
       {/* ── 03. OBJECTIVES ── */}
-      <section className="relative py-16 px-8 lg:px-24 bg-slate-50">
+      <section className="relative py-16 px-8 lg:px-24 ">
         <SectionHeading
           title="Key Objectives"
           tagline="Strategic focus areas for the R&D Cell."
@@ -337,16 +337,16 @@ export default function Rd() {
       </section>
 
       {/* ── 05. MOUs & PARTNERSHIPS ── */}
-      <section className="relative py-24 px-8 lg:px-24 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
+      <section className="relative py-24 px-8 lg:px-24  overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none [background-size:24px_24px]" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-white mb-2">Industry Partnerships</h2>
-              <p className="text-white/50 font-mono text-[11px] uppercase tracking-[0.2em]">Strategic MOUs & Collaborations</p>
+              <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-800 mb-2">Industry Partnerships</h2>
+              <p className="text-slate-600 font-mono text-[11px] uppercase tracking-[0.2em]">Strategic MOUs & Collaborations</p>
             </div>
             <div className="flex items-center gap-4">
-              <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">
+              <div className="px-4 py-2 rounded-full border border-slate-600/10 bg-white/5 backdrop-blur-sm text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">
                 Active Alliances: {mous.length}
               </div>
             </div>

@@ -108,7 +108,7 @@ export default function IIC() {
     <div className="min-h-screen bg-white font-sans selection:bg-brand-accent/30">
       {/* ── HERO SECTION ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="IIC"
         titleFill="HUB"

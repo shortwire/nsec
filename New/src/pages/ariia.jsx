@@ -79,12 +79,12 @@ export default function Ariia() {
     <div className="min-h-screen bg-white font-sans selection:bg-brand-accent/30">
       {/* ── HERO SECTION ── */}
       <PageHero
-        showParticles={true}
+        showParticles={false}
         maxHeight="33vh"
         titleStroke="ARIIA"
         titleFill="PORTAL"
         statutoryLabel="ATAL RANKING OF INSTITUTIONS"
-        policyLabel="Innovation Achievements Node"
+        policyLabel=""
         rightLabel="Innovation.Index"
         useYellowAccents={true}
         rightContent={
