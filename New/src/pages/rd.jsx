@@ -4,6 +4,8 @@ import { FlaskConical, Lightbulb, Target, CheckCircle2, Users, ExternalLink, Fil
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 
+void motion;
+
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
    ═══════════════════════════════════════════════════════════ */
@@ -29,25 +31,41 @@ function HighlightText({ text }) {
    ═══════════════════════════════════════════════════════════ */
 const VISION_ICONS = [Target, Zap, Globe, Cpu, Award, Microscope];
 
-function VisionCard({ index, item }) {
+const VISION_CARD_THEMES = {
+  accent: {
+    card: 'group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-brand-accent shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3',
+    badge: 'absolute -top-3 -left-4 w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_2px_4px_rgba(0,139,139,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-white',
+    icon: 'shrink-0 w-9 h-9 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-all duration-300',
+    text: 'text-[14px] font-body font-medium text-slate-700 leading-[1.7]'
+  },
+  gold: {
+    card: 'group relative rounded-[20px] bg-white  border-amber-200 border-l-[3px] border-l-amber-400 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(245,158,11,0.12)] hover:border-amber-300 transition-all duration-[250ms] ease-out mt-3 ml-3',
+    badge: 'absolute -top-3 -left-4 w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center shadow-[0_2px_4px_rgba(245,158,11,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(245,158,11,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-slate-900',
+    icon: 'shrink-0 w-9 h-9 rounded-[30%] bg-white border border-amber-300 flex items-center justify-center text-amber-500 group-hover:scale-105 transition-all duration-300',
+    text: 'text-[14px] font-body font-medium text-slate-700 leading-[1.7]'
+  }
+};
+
+function VisionCard({ index, item, theme = 'accent' }) {
   const Icon = VISION_ICONS[index % VISION_ICONS.length];
+  const cardTheme = VISION_CARD_THEMES[theme];
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-brand-accent shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3"
+      className={cardTheme.card}
     >
-      <div className="absolute -top-3 -left-4 w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_2px_4px_rgba(0,139,139,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-white">
+      <div className={cardTheme.badge}>
         <span className="text-[11px] font-mono font-black">{String(index + 1).padStart(2, '0')}</span>
       </div>
 
       <div className="p-6 pt-7 flex gap-4 items-start relative z-10">
-        <div className="shrink-0 w-9 h-9 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-all duration-300">
+        <div className={cardTheme.icon}>
           <Icon size={18} />
         </div>
-        <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.7]">
+        <p className={cardTheme.text}>
           <HighlightText text={item} />
         </p>
       </div>
@@ -109,7 +127,7 @@ export default function Rd() {
       setCurrentSentenceIdx((prev) => (prev + 1) % carouselPhrases.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselPhrases.length]);
 
   const visionPoints = [
     "To emerge as a premier global hub for cutting-edge research, innovation, and technological excellence in the field of engineering and science.",
@@ -236,8 +254,8 @@ export default function Rd() {
           tagline="Driving the research agenda at Netaji Subhash Engineering College."
         />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto mt-12">
-          {/* Vision Column */}
+        <div className="max-w-7xl mx-auto mt-12 space-y-16">
+          {/* Vision Section */}
           <div>
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
@@ -252,7 +270,7 @@ export default function Rd() {
             </div>
           </div>
 
-          {/* Mission Column */}
+          {/* Mandate Section */}
           <div>
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-xl bg-brand-maroon/10 flex items-center justify-center text-brand-maroon">
@@ -260,18 +278,9 @@ export default function Rd() {
               </div>
               <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-slate-900">Our Mandate</h3>
             </div>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="flex flex-col gap-6">
               {missionPoints.map((p, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="p-4  rounded-lg border-l-2 border-brand-maroon/30 text-[13px] font-body font-medium text-slate-600 leading-relaxed"
-                >
-                  {p}
-                </motion.div>
+                <VisionCard key={i} index={i} item={p} theme="gold" />
               ))}
             </div>
           </div>
@@ -319,7 +328,7 @@ export default function Rd() {
       </section>
 
       {/* ── 05. MOUs & PARTNERSHIPS ── */}
-      <section className="relative pt-16 pb-8 px-8 lg:px-24  overflow-hidden">
+      <section className="relative pt-16 pb-24 px-8 lg:px-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none [background-size:24px_24px]" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -345,18 +354,18 @@ export default function Rd() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-brand-accent/20 hover:border-brand-accent/40 transition-all duration-300"
+                className="group p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-brand-accent/20 hover:border-brand-accent/40 transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform">
                     <Building2 size={24} />
                   </div>
-                  <Handshake size={18} className="text-white/20 group-hover:text-brand-accent transition-colors" />
+                  <Handshake size={18} className="text-slate-400 group-hover:text-brand-accent transition-colors" />
                 </div>
-                <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-white/90 group-hover:text-white mb-2">{mou.organization}</h4>
+                <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900 group-hover:text-slate-900 mb-2">{mou.organization}</h4>
                 <p className="text-[10px] font-mono font-bold text-brand-accent/60 uppercase tracking-widest mb-6">{mou.type}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest">Verification Status</span>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+                  <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Verification Status</span>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                     <span className="text-[9px] font-mono text-green-500 font-bold uppercase tracking-widest">Active MOU</span>
