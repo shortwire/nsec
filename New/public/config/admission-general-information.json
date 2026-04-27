@@ -1,0 +1,81 @@
+{
+  "section": "general_information",
+  "title": "Admission General Information of NSEC",
+
+  "basic_info": {
+    "name": "Netaji Subhash Engineering College",
+    "established": 1998,
+    "affiliation": "Maulana Abul Kalam Azad University of Technology"
+  },
+
+  "accreditation": {
+    "nba": {
+      "validity": "2024-25 to 2026-27",
+      "programs": [
+        "Biomedical Engineering",
+        "Computer Science & Engineering",
+        "Electronics & Communication Engineering",
+        "Electrical Engineering"
+      ]
+    },
+    "naac": {
+      "status": "Accredited",
+      "valid_till": "12 February 2030",
+      "code": "109"
+    }
+  },
+
+  "ranking": {
+    "nirf": {
+      "year": 2020,
+      "category": "Engineering",
+      "band": "251-300"
+    }
+  },
+
+  "contact": {
+    "address": "Panchpota (Near Garia Railway Station), Garia, Kolkata",
+    "phone": ["033-2436-3333", "033-2436-1285"],
+    "fax": "033-2436-1286",
+    "email": "info@nsec.ac.in"
+  },
+
+  "programs": {
+    "btech": [
+      "Applied Electronics & Instrumentation Engineering",
+      "Artificial Intelligence and Data Science",
+      "Biomedical Engineering",
+      "Civil Engineering",
+      "Computer Science and Business Systems",
+      "Computer Science & Engineering",
+      "CSE (AI & ML)",
+      "CSE (Cyber Security)",
+      "CSE (Data Science)",
+      "CSE (Internet of Things)",
+      "Electrical Engineering",
+      "Electronics & Communication Engineering",
+      "Information Technology",
+      "Mechanical Engineering"
+    ],
+    "mtech": [
+      "Control & Instrumentation",
+      "Computer Science & Engineering",
+      "Electronics & Communication Engineering",
+      "Power Systems"
+    ],
+    "masters": [
+      "MBA",
+      "MCA"
+    ],
+    "bachelor": [
+      "BBA",
+      "BCA"
+    ],
+    "diploma": [
+      "Civil Engineering",
+      "Computer Science & Engineering",
+      "Electrical Engineering",
+      "Electrical Engineering and Electric Vehicle Technology"
+    ]
+  }
+}
