@@ -1,0 +1,17 @@
+{
+  "section": "admission_documents",
+  "title": "Documents Required at Time of Admission",
+  "subheading": "Mandatory Documents required at the time of Admission B-Tech (Through Counseling) - 2025-26",
+
+  "base_path": "/public/assets/admission/",
+
+  "documents": [
+    {
+      "title": "Mandatory Documents for B-Tech Admission (2025-26)",
+      "file": "admissiondoc25-26.pdf",
+      "type": "pdf",
+      "year": "2025-26",
+      "category": "btech_counselling"
+    }
+  ]
+}
