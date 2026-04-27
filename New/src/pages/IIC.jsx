@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, CheckCircle2, ChevronRight, ExternalLink, Zap, Target, Trophy, Share2, Cpu, Globe, Handshake, Wrench, Calendar, Activity, Microscope, Stethoscope, Factory, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 void motion;
 
@@ -285,33 +286,21 @@ export default function IIC() {
         
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {resourceCards.map((card, i) => (
-            <motion.div
+            <SpotlightStatusCard
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm hover:shadow-xl hover:border-brand-accent/30 transition-all group flex flex-col items-center text-center relative overflow-hidden"
-            >
-              {card.type === 'pdf' && (
-                <div className="absolute top-0 right-0 p-4 bg-brand-maroon/10 text-brand-maroon text-[8px] font-mono font-black uppercase tracking-widest rounded-bl-xl">PDF Resource</div>
-              )}
-              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-inner">
-                <card.icon size={24} />
-              </div>
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-800 mb-2 group-hover:text-brand-accent transition-colors">{card.title}</h4>
-              <p className="text-[12px] font-body font-medium text-slate-400 leading-tight mb-8 italic">{card.desc}</p>
-              
-              <div className="mt-auto w-full pt-6 border-t border-slate-50 flex items-center justify-between">
-                <a 
-                  href={card.path} 
-                  target={card.type === 'pdf' ? "_blank" : "_self"}
-                  className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-3 transition-all"
-                >
-                  {card.type === 'pdf' ? 'Download' : 'View Portal'} <ExternalLink size={12} />
-                </a>
-              </div>
-            </motion.div>
+              href={card.path}
+              target={card.type === 'pdf' ? '_blank' : undefined}
+              rel={card.type === 'pdf' ? 'noopener noreferrer' : undefined}
+              delay={i * 0.05}
+              variant={i % 3 === 0 ? 'teal' : i % 3 === 1 ? 'gold' : 'maroon'}
+              backgroundImage="/assets/images/helpline-bg.png"
+              icon={card.icon}
+              badge={card.type === 'pdf' ? 'PDF Resource' : 'Hub Portal'}
+              title={card.title}
+              description={card.desc}
+              meta="Innovation Hub"
+              cta={card.type === 'pdf' ? 'Download' : 'View Portal'}
+            />
           ))}
         </div>
       </section>

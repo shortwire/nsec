@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, ExternalLink, Lightbulb, Rocket, Search, Mail, Zap, Activity, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -120,29 +121,19 @@ export default function Ariia() {
             { label: "Metric Type", value: "National", icon: Search, bgImg: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" },
             { label: "Status", value: "Verified", icon: ShieldCheck, bgImg: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" }
           ].map((stat, i) => (
-            <motion.div
+            <SpotlightStatusCard
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative p-10 bg-slate-900 rounded-[24px] border border-slate-800 shadow-xl flex flex-col items-center text-center
-                         hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40
-                         transition-all duration-500 overflow-hidden"
-            >
-              {/* Background Image Overlay */}
-              <div className="absolute inset-0 z-0 opacity-80 pointer-events-none bg-center bg-cover rounded-[24px] transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]" style={{ backgroundImage: `url('${stat.bgImg}')` }} />
-              <div className="absolute inset-0 z-0 bg-slate-900/80 group-hover:bg-slate-900/60 transition-colors duration-500 rounded-[24px]" />
-              
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-[2] group-hover:bg-brand-accent/30 z-0 blur-xl" />
-              <div className="absolute bottom-0 left-0 right-0 h-[3px] z-0 transition-all duration-500" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.8), rgba(251,191,36,0.2), transparent)' }} />
-
-              <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-[#fbbf24]/80 flex items-center justify-center text-brand-accent mb-6 group-hover:bg-brand-accent group-hover:text-white group-hover:scale-110 transition-all duration-500 relative z-10 shadow-[0_0_15px_rgba(0,139,139,0.2)]">
-                <stat.icon size={32} />
-              </div>
-              <p className="text-[10px] font-mono font-black text-white/50 uppercase tracking-[0.3em] mb-2 relative z-10">{stat.label}</p>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-white leading-none relative z-10 drop-shadow-md">{stat.value}</h3>
-            </motion.div>
+              delay={i * 0.1}
+              variant="teal"
+              backgroundImage="/assets/images/helpline-bg.png"
+              icon={stat.icon}
+              badge="ARIIA Node"
+              title={stat.value}
+              description={stat.label}
+              descriptionClassName="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-white/60"
+              meta="Innovation Index"
+              cta="Verified"
+            />
           ))}
         </div>
       </section>

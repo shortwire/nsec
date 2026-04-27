@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, MapPin, Users, Globe, Building2, Leaf, Heart, MessageSquare, FileText, Download, CheckCircle2, ExternalLink, ChevronRight, GraduationCap, Globe2, TreePine, Sprout, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
+import Card from '../components/card';
 
 void motion;
 
@@ -167,29 +169,20 @@ export default function UbaPage() {
         
         <div className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {stats.map((stat, i) => (
-            <motion.div
+            <SpotlightStatusCard
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative p-10 bg-slate-900 rounded-[24px] border border-slate-800 shadow-xl flex flex-col items-center text-center
-                         hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40
-                         transition-all duration-500 overflow-hidden min-h-[300px] justify-center"
-            >
-              {/* Background Image Overlay */}
-              <div className="absolute inset-0 z-0 opacity-80 pointer-events-none bg-center bg-cover rounded-[24px] transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]" style={{ backgroundImage: `url('${stat.bgImg}')` }} />
-              <div className="absolute inset-0 z-0 bg-slate-900/80 group-hover:bg-slate-900/60 transition-colors duration-500 rounded-[24px]" />
-              
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-[2] group-hover:bg-brand-accent/30 z-0 blur-xl" />
-              <div className="absolute bottom-0 left-0 right-0 h-[3px] z-0 transition-all duration-500" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.8), rgba(251,191,36,0.2), transparent)' }} />
-
-              <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-[#fbbf24]/80 flex items-center justify-center text-brand-accent mb-6 group-hover:bg-brand-accent group-hover:text-white group-hover:scale-110 transition-all duration-500 relative z-10 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
-                <stat.icon size={32} />
-              </div>
-              <p className="text-[10px] font-mono font-black text-white/50 uppercase tracking-[0.3em] mb-2 relative z-10">{stat.label}</p>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-white leading-none relative z-10 drop-shadow-md">{stat.value}</h3>
-            </motion.div>
+              delay={i * 0.1}
+              variant="teal"
+              backgroundImage="/assets/images/helpline-bg.png"
+              icon={stat.icon}
+              badge="UBA Status"
+              title={stat.value}
+              description={stat.label}
+              descriptionClassName="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-white/60"
+              meta="Institutional Node"
+              cta="Verified"
+              className="min-h-[300px] justify-center"
+            />
           ))}
         </div>
       </section>
@@ -320,35 +313,38 @@ export default function UbaPage() {
 
       {/* ── 05. FOCUS & FUNCTIONS ── */}
       <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="max-w-6xl mx-auto flex flex-col gap-12">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Strategic Focus</span>
             <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
               Cell Major <br/> <span className="text-brand-accent">Interventions</span>
             </h2>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {ubaData.focus.map((f, i) => (
-                <div key={i} className="flex gap-4 p-5  rounded-2xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
-                  <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
-                    <CheckCircle2 size={16} />
+                <Card key={i} index={i} variant="slate" className="p-6">
+                  <div className="relative z-10 flex gap-4 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">"{f}"</p>
                   </div>
-                  <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">"{f}"</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
 
-          <div className="p-12  border border-brand-maroon/10 rounded-[48px] relative overflow-hidden">
-            <div className="absolute -top-12 -right-12 w-48 h-48 bg-brand-maroon/5 rounded-full blur-3xl" />
+          <div>
             <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">Operational <span className="text-brand-maroon">Functions</span></h3>
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {ubaData.functions.map((fn, i) => (
-                <div key={i} className="flex gap-6 items-start group">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand-maroon border border-brand-maroon/10 group-hover:bg-brand-maroon group-hover:text-white transition-all">
-                    <span className="font-heading font-black italic text-xl">{i + 1}</span>
+                <Card key={i} index={i} variant="danger" className="p-6">
+                  <div className="relative z-10 flex gap-4 items-start">
+                    <div className="shrink-0 w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-brand-maroon border border-brand-maroon/10 group-hover:bg-brand-maroon group-hover:text-white transition-all">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed pt-1 group-hover:text-slate-800 transition-colors">{fn}</p>
                   </div>
-                  <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed pt-1 group-hover:text-slate-800 transition-colors">{fn}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

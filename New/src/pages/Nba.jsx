@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, CheckCircle, Building2, Globe, BookOpen, ExternalLink, X, Clock } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -28,52 +29,21 @@ function HighlightText({ text }) {
    COMPONENT: PROGRAM CARD
  ═══════════════════════════════════════════════════════════ */
 function ProgramCard({ index, program }) {
+  const variants = ['teal', 'gold', 'maroon', 'teal'];
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative rounded-[24px] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden min-h-[340px] flex flex-col justify-end border border-slate-800"
-    >
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-        style={{ backgroundImage: `url(${program.bgImage})` }}
-      />
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-900/70 group-hover:bg-slate-900/50 transition-colors duration-500" />
-      {/* Gradient Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent" />
-      
-      {/* Background Number */}
-      <div className="absolute -top-4 -right-4 text-[120px] font-heading font-black italic text-white opacity-[0.03] pointer-events-none group-hover:opacity-[0.08] transition-opacity z-10">
-        {String(index + 1).padStart(2, '0')}
-      </div>
-
-      <div className="relative z-20 flex-1 flex flex-col justify-between">
-        <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform duration-500">
-          <Award size={28} />
-        </div>
-        
-        <div>
-          <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-white mb-4 leading-tight drop-shadow-md">
-            {program.name}
-          </h3>
-          <div className="flex flex-wrap gap-2 mb-6">
-            <span className="text-[10px] font-mono font-black px-2 py-1 bg-brand-accent/20 text-brand-accent border border-brand-accent/30 rounded uppercase tracking-widest backdrop-blur-sm">B.TECH PROGRAM</span>
-            <span className="text-[10px] font-mono font-black px-2 py-1 bg-brand-maroon/20 text-brand-maroon border border-brand-maroon/30 rounded uppercase tracking-widest backdrop-blur-sm">ACCREDITED</span>
-          </div>
-          <div className="space-y-4 pt-4 border-t border-white/10">
-            <div className="flex justify-between items-center">
-              <span className="text-xs font-mono font-bold text-slate-300 uppercase tracking-widest">Validity</span>
-              <span className="text-sm font-heading font-black italic text-[#fbbf24]">{program.validity}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="absolute bottom-0 left-0 h-[4px] bg-brand-accent w-0 group-hover:w-full transition-all duration-700 z-20" />
-    </motion.div>
+    <SpotlightStatusCard
+      delay={index * 0.1}
+      variant={variants[index % variants.length]}
+      backgroundImage="/assets/images/helpline-bg.png"
+      icon={Award}
+      badge="B.Tech Program"
+      title={program.name}
+      value={program.validity}
+      valueClassName="text-sm text-[#fbbf24]"
+      meta="NBA Approved"
+      cta="Accredited"
+      className="min-h-[340px]"
+    />
   );
 }
 

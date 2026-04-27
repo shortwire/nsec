@@ -12,9 +12,9 @@ const VARIANTS = {
     number: 'text-slate-900',
   },
   slate: {
-    root: 'bg-gradient-to-br from-slate-50 via-white to-white border border-slate-200 border-l-[3px] border-l-slate-400 shadow-[0_6px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] hover:border-slate-300',
-    badge: 'bg-slate-700 text-white shadow-[0_2px_4px_rgba(15,23,42,0.12)] group-hover:shadow-[0_4px_8px_rgba(15,23,42,0.18)]',
-    connector: 'w-16 group-hover:w-24 bg-[linear-gradient(to_right,rgba(71,85,105,0.55),rgba(71,85,105,0.14),transparent)]',
+    root: 'bg-gradient-to-br from-brand-accent/[0.03] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-brand-accent shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,139,139,0.12)] hover:border-brand-accent/30',
+    badge: 'bg-brand-accent text-white shadow-[0_2px_4px_rgba(0,139,139,0.18)] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.28)]',
+    connector: 'w-16 group-hover:w-24 bg-[linear-gradient(to_right,rgba(0,139,139,0.8),rgba(0,139,139,0.16),transparent)]',
     number: 'text-white',
   },
   danger: {

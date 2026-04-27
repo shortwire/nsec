@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, BookOpen, ExternalLink, Download, Globe, GraduationCap, Cpu, Laptop, Award, Info, Phone, ChevronRight, Maximize, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS in text
@@ -273,45 +274,28 @@ export default function Moocs() {
         <div className="mb-12" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto relative">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="group relative p-10 bg-white rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40 transition-all duration-500 overflow-hidden"
-          >
-            <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
-            <div className="flex items-center justify-between relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-slate-900 transition-all duration-300">
-                <GraduationCap size={22} />
-              </div>
-              <span className="text-sm font-mono font-black text-brand-accent uppercase tracking-[0.2em]">SPoC-Coursera</span>
-            </div>
-            <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-2">Prof. Anupam Ghosh</h4>
-              <p className="text-sm font-mono text-slate-600 uppercase tracking-widest">Head of Department, CSE (AIML)</p>
-              <p className="text-xs font-body text-slate-500 mt-2">Contact for Coursera invitation and credit transfer assistance.</p>
-            </div>
-          </motion.div>
+          <SpotlightStatusCard
+            icon={GraduationCap}
+            badge="SPoC-Coursera"
+            title="Prof. Anupam Ghosh"
+            description="Head of Department, CSE (AIML). Contact for Coursera invitation and credit transfer assistance."
+            backgroundImage="/assets/images/helpline-bg.png"
+            variant="teal"
+            meta="Enrollment Support"
+            cta="Connect"
+          />
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="group relative p-10 bg-white rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6 hover:shadow-[0_20px_40px_rgba(128,0,0,0.15)] hover:border-brand-maroon/40 transition-all duration-500 overflow-hidden"
-          >
-            <div className="absolute inset-0 z-0 bg-white/80 group-hover:bg-white/60 transition-colors duration-500 rounded-2xl" />
-            <div className="flex items-center justify-between relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-brand-accent/30 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-slate-900 transition-all duration-300">
-                <Info size={22} />
-              </div>
-              <span className="text-sm font-mono font-black text-brand-accent uppercase tracking-[0.2em]">NPTEL Steps</span>
-            </div>
-            <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-2">NPTEL-Swayam Join</h4>
-              <p className="text-[13px] font-body text-slate-600">Visit Swayam portal → Search Catalog → Select Course → Join with <span className="text-brand-accent">Gmail ID</span>.</p>
-            </div>
-          </motion.div>
+          <SpotlightStatusCard
+            delay={0.1}
+            icon={Info}
+            badge="NPTEL Steps"
+            title="NPTEL-Swayam Join"
+            description="Visit Swayam portal, search catalog, select course, and join with your Gmail ID."
+            backgroundImage="/assets/images/helpline-bg.png"
+            variant="gold"
+            meta="Quick Process"
+            cta="Start"
+          />
         </div>
       </section>
 

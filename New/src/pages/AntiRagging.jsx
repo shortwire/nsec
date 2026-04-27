@@ -4,6 +4,7 @@ import { Shield, AlertTriangle, ChevronRight, Eye, Download, ExternalLink, Phone
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/card';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 /* ═══════════════════════════════════════════════════════════
    THREE.JS  —  RIPPLE WAVE PARTICLE FIELD
@@ -292,95 +293,33 @@ export default function AntiRagging() {
         <div className="mb-12" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto relative">
-          {/* Phone Helpline Card */}
-          <motion.a
+          <SpotlightStatusCard
             href="tel:1800-180-5522"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-            className="group relative p-10 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6
-                       hover:shadow-[0_20px_40px_rgba(0,139,139,0.15)] hover:border-brand-accent/40
-                       transition-all duration-500 overflow-hidden cursor-pointer"
-          >
-            {/* Background Image Overlay */}
-            <div className="absolute inset-0 z-0 opacity-100 pointer-events-none bg-center bg-cover rounded-2xl transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]" style={{ backgroundImage: "url('/assets/images/helpline-bg.png')" }} />
-            <div className="absolute inset-0 z-0 bg-slate-900/60 group-hover:bg-slate-900/40 transition-colors duration-500 rounded-2xl" />
+            icon={Phone}
+            badge="24/7 Toll-Free"
+            title="UGC National Helpline"
+            value="1800-180-5522"
+            meta="Confidential Channel"
+            cta="Call Now"
+            backgroundImage="/assets/images/helpline-bg.png"
+            variant="teal"
+          />
 
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-[2] group-hover:bg-brand-accent/30 z-0 blur-xl" />
-            {/* Neon teal accent bar at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-[3px] z-0" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.6), rgba(251,191,36,0.2), transparent)' }} />
-
-            <div className="flex items-center justify-between relative z-10">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white group-hover:border-brand-accent group-hover:shadow-[0_0_24px_rgba(14,165,165,0.4)] group-hover:scale-105 transition-all duration-300">
-                  <Phone size={22} />
-                </div>
-                {/* Neon teal indicator dot */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-slate-900 animate-pulse" style={{ background: '#fbbf24', boxShadow: '0 0 8px rgba(251,191,36,0.8)' }} />
-              </div>
-              <span className="text-sm font-mono font-black text-brand-accent uppercase tracking-[0.2em] drop-shadow-md">24/7 Toll-Free</span>
-            </div>
-
-            <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-2 drop-shadow-md">UGC National Helpline</h4>
-              <p className="text-3xl font-mono font-black text-white/90 group-hover:text-brand-accent transition-colors duration-300 drop-shadow-md">1800‑180‑5522</p>
-            </div>
-
-            <div className="mt-auto pt-5 border-t border-white/10 flex items-center justify-between relative z-10">
-              <span className="text-[9px] font-mono font-bold text-white/50 uppercase tracking-widest">Confidential Channel</span>
-              <div className="flex items-center gap-2 text-brand-accent font-mono font-black text-[10px] uppercase tracking-widest transition-all duration-300">
-                Call Now <ChevronRight size={14} />
-              </div>
-            </div>
-          </motion.a>
-
-          {/* Website Portal Card */}
-          <motion.a
+          <SpotlightStatusCard
             href="https://antiragging.in"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ y: -5 }}
-            className="group relative p-10 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl flex flex-col gap-6
-                       hover:shadow-[0_20px_40px_rgba(128,0,0,0.15)] hover:border-brand-maroon/40
-                       transition-all duration-500 overflow-hidden cursor-pointer"
-          >
-            {/* Background Image Overlay */}
-            <div className="absolute inset-0 z-0 opacity-100 pointer-events-none bg-center bg-cover rounded-2xl transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]" style={{ backgroundImage: "url('/assets/images/portal-bg.png')" }} />
-            <div className="absolute inset-0 z-0 bg-slate-900/60 group-hover:bg-slate-900/40 transition-colors duration-500 rounded-2xl" />
-
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-maroon/20 rounded-full -mr-16 -mt-16 transition-all duration-500 group-hover:scale-[2] group-hover:bg-brand-maroon/30 z-0 blur-xl" />
-            {/* Gold accent bar at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-[3px] z-0" style={{ background: 'linear-gradient(to right, rgba(251,191,36,0.6), rgba(251,191,36,0.2), transparent)' }} />
-
-            <div className="flex items-center justify-between relative z-10">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-[#fbbf24]/30 flex items-center justify-center text-[#fbbf24] group-hover:bg-[#fbbf24] group-hover:text-slate-900 group-hover:border-[#fbbf24] group-hover:shadow-[0_0_24px_rgba(251,191,36,0.5)] group-hover:scale-105 transition-all duration-300">
-                  <ExternalLink size={22} />
-                </div>
-                {/* Gold indicator dot */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-slate-900 animate-pulse" style={{ background: '#fbbf24', boxShadow: '0 0 8px rgba(251,191,36,0.8)' }} />
-              </div>
-              <span className="text-sm font-mono font-black text-[#fbbf24] uppercase tracking-[0.2em] drop-shadow-md" style={{ textShadow: '0 0 12px rgba(251,191,36,0.4)' }}>Online Portal</span>
-            </div>
-
-            <div className="relative z-10">
-              <h4 className="text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-2 drop-shadow-md">Anti-Ragging Web Portal</h4>
-              <p className="text-[1.35rem] font-mono font-black text-[#e05252] group-hover:text-white transition-colors duration-300 uppercase tracking-[0.2em] drop-shadow-md" style={{ textShadow: '0 0 18px rgba(224,82,82,0.55)' }}>antiragging.in</p>
-            </div>
-
-            <div className="mt-auto pt-5 border-t border-white/10 flex items-center justify-between relative z-10">
-              <span className="text-[9px] font-mono font-bold text-white/50 uppercase tracking-widest">Digital Complaint</span>
-              <div className="flex items-center gap-2 text-[#fbbf24] font-mono font-black text-[10px] uppercase tracking-widest transition-all duration-300" style={{ textShadow: '0 0 10px rgba(251,191,36,0.4)' }}>
-                Open Portal <ChevronRight size={14} />
-              </div>
-            </div>
-          </motion.a>
+            delay={0.1}
+            icon={ExternalLink}
+            badge="Online Portal"
+            title="Anti-Ragging Web Portal"
+            value="antiragging.in"
+            valueClassName="text-[1.35rem] uppercase tracking-[0.2em] text-[#e05252] group-hover:text-white"
+            meta="Digital Complaint"
+            cta="Open Portal"
+            backgroundImage="/assets/images/helpline-bg.png"
+            variant="maroon"
+          />
         </div>
       </section>
 

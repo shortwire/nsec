@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FlaskConical, Lightbulb, Target, CheckCircle2, Users, ExternalLink, FileText, Award, Building2, Handshake, Globe, Cpu, BookOpen, ChevronRight, Maximize, Microscope, Zap, Library, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import Card from '../components/card';
 
 void motion;
 
@@ -31,45 +32,26 @@ function HighlightText({ text }) {
    ═══════════════════════════════════════════════════════════ */
 const VISION_ICONS = [Target, Zap, Globe, Cpu, Award, Microscope];
 
-const VISION_CARD_THEMES = {
-  accent: {
-    card: 'group relative rounded-[20px] bg-gradient-to-br from-brand-accent/[0.02] via-white to-white border border-brand-accent/10 border-l-[3px] border-l-brand-accent shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(0,139,139,0.1)] hover:border-brand-accent/30 transition-all duration-[250ms] ease-out mt-3 ml-3',
-    badge: 'absolute -top-3 -left-4 w-10 h-10 rounded-full bg-brand-accent flex items-center justify-center shadow-[0_2px_4px_rgba(0,139,139,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(0,139,139,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-white',
-    icon: 'shrink-0 w-9 h-9 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-all duration-300',
-    text: 'text-[14px] font-body font-medium text-slate-700 leading-[1.7]'
-  },
-  gold: {
-    card: 'group relative rounded-[20px] bg-white  border-amber-200 border-l-[3px] border-l-amber-400 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:-translate-y-[6px] hover:shadow-[0_12px_32px_rgba(245,158,11,0.12)] hover:border-amber-300 transition-all duration-[250ms] ease-out mt-3 ml-3',
-    badge: 'absolute -top-3 -left-4 w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center shadow-[0_2px_4px_rgba(245,158,11,0.2)] group-hover:scale-[1.05] group-hover:shadow-[0_4px_8px_rgba(245,158,11,0.3)] transition-all duration-[250ms] ease-out z-10 border-2 border-white text-slate-900',
-    icon: 'shrink-0 w-9 h-9 rounded-[30%] bg-white border border-amber-300 flex items-center justify-center text-amber-500 group-hover:scale-105 transition-all duration-300',
-    text: 'text-[14px] font-body font-medium text-slate-700 leading-[1.7]'
-  }
-};
-
 function VisionCard({ index, item, theme = 'accent' }) {
   const Icon = VISION_ICONS[index % VISION_ICONS.length];
-  const cardTheme = VISION_CARD_THEMES[theme];
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className={cardTheme.card}
+    <Card
+      index={index}
+      variant={theme === 'gold' ? 'accent' : theme === 'slate' ? 'slate' : 'accent'}
+      className="p-6 pt-7"
+      badgeClassName={theme === 'gold' ? 'bg-amber-400 text-slate-900 border-white' : ''}
+      connectorClassName={theme === 'gold' ? 'w-16 group-hover:w-24 bg-[linear-gradient(to_right,rgba(245,158,11,0.8),rgba(245,158,11,0.14),transparent)]' : ''}
+      numberClassName={theme === 'gold' ? 'text-slate-900' : ''}
     >
-      <div className={cardTheme.badge}>
-        <span className="text-[11px] font-mono font-black">{String(index + 1).padStart(2, '0')}</span>
-      </div>
-
-      <div className="p-6 pt-7 flex gap-4 items-start relative z-10">
-        <div className={cardTheme.icon}>
+      <div className="flex gap-4 items-start relative z-10">
+        <div className="shrink-0 w-9 h-9 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-all duration-300">
           <Icon size={18} />
         </div>
-        <p className={cardTheme.text}>
+        <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.7]">
           <HighlightText text={item} />
         </p>
       </div>
-    </motion.div>
+    </Card>
   );
 }
 
@@ -265,7 +247,7 @@ export default function Rd() {
             </div>
             <div className="flex flex-col gap-6">
               {visionPoints.map((p, i) => (
-                <VisionCard key={i} index={i} item={p} />
+                <VisionCard key={i} index={i} item={p} theme="accent" />
               ))}
             </div>
           </div>
@@ -295,20 +277,21 @@ export default function Rd() {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mt-12">
           {objectives.map((obj, i) => (
-            <motion.div
+            <Card
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:border-brand-accent/40 transition-all duration-300"
+              index={i}
+              variant="slate"
+              className="p-6"
             >
-              <div className="w-8 h-8 rounded-lg bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4">
-                <Zap size={16} />
+              <div className="relative z-10">
+                <div className="w-8 h-8 rounded-lg bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4">
+                  <Zap size={16} />
+                </div>
+                <p className="text-[13px] font-body font-medium text-slate-700 leading-relaxed">
+                  {obj}
+                </p>
               </div>
-              <p className="text-[13px] font-body font-medium text-slate-700 leading-relaxed">
-                {obj}
-              </p>
-            </motion.div>
+            </Card>
           ))}
         </div>
       </section>
