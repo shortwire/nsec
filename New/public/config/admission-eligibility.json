@@ -1,0 +1,100 @@
+{
+  "section": "eligibility_admission",
+  "title": "Eligibility Criteria & Admission Procedure",
+
+  "programs": {
+    "btech": {
+      "eligibility": [
+        "Passed 10+2 with Physics and Mathematics and one of Chemistry / Biotechnology / Biology / Computer Science / Computer Application / Technical Vocational Subject",
+        "Minimum 45% marks (40% for reserved categories)",
+        "Minimum 30% marks in English",
+        "Board must be recognized by Central/State Government"
+      ],
+      "entrance_exams": [
+        "JEE Main",
+        "WBJEE"
+      ],
+      "admission_procedure": [
+        "Apply for national/state level entrance exams",
+        "Participate in counselling after qualifying",
+        "Seat allotment based on rank, preferences, category, and availability",
+        "Report to allotted institute within given time"
+      ],
+      "selection_process": [
+        "Online counselling registration",
+        "Choice filling of colleges and branches",
+        "Seat allotment based on merit and preferences"
+      ],
+      "documents_required": [
+        "10th Marksheet, Certificate",
+        "12th Marksheet, Certificate",
+        "Entrance Admit Card",
+        "Entrance Rank/Score Card",
+        "Allotment Letter",
+        "Domicile Certificate",
+        "Category Certificate",
+        "Aadhar/PAN (Guardian)",
+        "Income Certificate (TFW)"
+      ]
+    },
+
+    "mtech": {
+      "eligibility": [
+        "Bachelor’s degree in Engineering/Technology in relevant discipline",
+        "Minimum 60% marks or 6.75 CGPA"
+      ],
+      "selection_process": [
+        "Based on GATE or PGET score",
+        "Participation in CCMT or university counselling",
+        "GATE candidates given weightage",
+        "Final admission after document verification"
+      ]
+    },
+
+    "mca": {
+      "eligibility": [
+        "BCA or Bachelor’s in Computer Science Engineering",
+        "OR B.Sc./B.Com./B.A. with Mathematics at 10+2 or graduation level",
+        "Minimum 50% marks (45% for reserved categories)"
+      ],
+      "selection_process": [
+        "Based on WB JECA score",
+        "Counselling based on rank"
+      ]
+    },
+
+    "bca": {
+      "eligibility": [
+        "Passed Higher Secondary (10+2) in General/Vocational stream from recognized board"
+      ],
+      "selection_process": [
+        "Based on CET merit list",
+        "Counselling as per schedule"
+      ]
+    },
+
+    "bba": {
+      "eligibility": [
+        "Passed 10+2 in any stream from recognized board",
+        "Must qualify CET exam"
+      ]
+    },
+
+    "mba": {
+      "eligibility": [
+        "Bachelor’s degree in any discipline",
+        "Must qualify JEMAT exam"
+      ]
+    },
+
+    "diploma": {
+      "eligibility": [
+        "Passed 10th with minimum 35% aggregate marks",
+        "Must have JEXPO rank for counselling"
+      ],
+      "direct_admission": [
+        "Minimum 90 marks in Mathematics and Physical Science combined in 10th for direct admission"
+      ]
+    }
+  }
+}
