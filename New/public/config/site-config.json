@@ -680,7 +680,7 @@
         },
         {
           "name": "Infrastructure",
-          "path": "/facilities#infrastructure",
+          "path": "/facilities/infrastructure",
           "desc": "Campus Build"
         },
         {

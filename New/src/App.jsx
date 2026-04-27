@@ -26,7 +26,7 @@ import Uba from './pages/uba';
 import RDPage from './pages/rd';
 import Naac from './pages/Naac';
 import NirfPage from './pages/nirf';
-
+import FacilitiesInfrastructure from './pages/Infrastructure';
 
 function App() {
   return (
@@ -48,6 +48,7 @@ function App() {
           <Route path="about" element={<StandardInfoPage configPath="/config/page-about-config.json" />} />
           <Route path="academics" element={<StandardInfoPage configPath="/config/page-academics-config.json" />} />
           <Route path="facilities" element={<StandardInfoPage configPath="/config/page-facilities-config.json" />} />
+          <Route path="facilities/infrastructure" element={<FacilitiesInfrastructure />} />
           <Route path="placement" element={<StandardInfoPage configPath="/config/page-placement-config.json" />} />
           <Route path="students" element={<StandardInfoPage configPath="/config/page-students-config.json" />} />
           <Route path="departments/:deptId" element={<DeptPage />} />

@@ -1,0 +1,183 @@
+{
+  "section": "library",
+  "title": "Library of NSEC",
+
+  "images": {
+    "hero": "/public/assets/facilities/library_face.jpg",
+    "collection_chart": "/public/assets/facilities/lin-book-prog-wise.jpg"
+  },
+
+  "documents": [
+    {
+      "title": "Information Brochure",
+      "url": "Library_Brochure_Jan_2025.pdf",
+      "type": "pdf"
+    },
+    {
+      "title": "Collection of Rare Books",
+      "url": "impdoc/rare-books.pdf",
+      "type": "pdf"
+    }
+  ],
+
+  "vision": "To strive continuously in pursuit of excellence in providing quality resources and effective services to stimulate intellectual curiosity, creativity, and research.",
+
+  "mission": [
+    "Provide access to high-quality scholarly resources and research tools",
+    "Develop managerial and IT skills of library personnel",
+    "Encourage diversity, excellence, and integrity",
+    "Support collaboration among students, faculty, and staff"
+  ],
+
+  "about": [
+    "The Central Library started in 2000 and moved to its current premises in 2004, growing significantly in resources and facilities.",
+    "It adapts to technological advancements to meet evolving user needs.",
+    "The library uses LIBSYS cloud-based software for automated operations.",
+    "It includes book collection areas and a digital reading room."
+  ],
+
+  "sections": [
+    "Acquisition",
+    "Technical Processing",
+    "Circulation",
+    "Reserve",
+    "Reference",
+    "Gallery Books",
+    "Text Book Section",
+    "Book Stack Areas",
+    "Digital Library / Reading Room"
+  ],
+
+  "stats": {
+    "area_total_m2": 746.3,
+    "reading_area_m2": 145.65,
+    "reading_seats": 110,
+    "daily_issue_users": 300,
+    "daily_reading_users": 150,
+    "titles": 5112,
+    "volumes": 104556,
+    "ebooks": 35660,
+    "ejournals": 294,
+    "print_journals": 5
+  },
+
+  "digital_resources": [
+    {
+      "name": "OPAC",
+      "url": "https://nsecopac.lsease.in/"
+    },
+    {
+      "name": "Knimbus / ScienceDirect",
+      "url": "http://nsec.knimbus.com/"
+    },
+    {
+      "name": "Inhouse e-resources",
+      "url": "http://172.16.50.253:8080/Library"
+    },
+    {
+      "name": "NPTEL",
+      "url": "https://nsec.ac.in/nptel/"
+    },
+    {
+      "name": "GATE Tutor",
+      "url": "https://gatetutor.in/"
+    }
+  ],
+
+  "features": [
+    "NDLI membership (IIT Kharagpur)",
+    "Barcode-based smart circulation system",
+    "Computerized indexing and issue/return",
+    "Internet and intranet access",
+    "Plagiarism Checker X",
+    "Suggestion and complaint box"
+  ],
+
+  "timings": {
+    "library": {
+      "monday_friday": "09:00 - 20:00",
+      "saturday": "09:00 - 17:00"
+    },
+    "circulation": {
+      "monday_friday": "09:00 - 13:30, 14:00 - 19:30",
+      "saturday": "09:00 - 13:30, 14:00 - 17:00"
+    },
+    "other_services": {
+      "membership": "10:30 - 12:15",
+      "fine_and_clearance": "14:30 - 17:15",
+      "id_card": "16:30 - 17:30"
+    }
+  },
+
+  "services": [
+    "Membership registration",
+    "Book issue, return, renewal",
+    "Fine collection",
+    "Reservation and overdue alerts",
+    "No dues certificate",
+    "Lost book recovery",
+    "Duplicate ID card",
+    "Help desk",
+    "Photocopying service"
+  ],
+
+  "photocopy_policy": {
+    "internal_rate": "0.60 per page",
+    "external_rate": "2 per page",
+    "note": "Full book/journal photocopy not allowed. Users must follow copyright laws."
+  },
+
+  "patrons": [
+    {
+      "name": "Dr. Amal K. Ghosh",
+      "role": "Principal, Resource Person"
+    },
+    {
+      "name": "Dr. Sukumar Roy",
+      "role": "Chairman, Library Committee"
+    },
+    {
+      "name": "Mr. Soumava Goswami",
+      "role": "Campus Administrator, Resource Person"
+    }
+  ],
+
+  "committee": [
+    "Prof. Amal K. Ghosh - Advisor",
+    "Prof. Sukumar Roy - Chairman",
+    "Prof. Deepashree Dhar - Member",
+    "Prof. Atrayee Roy Majumder - Member",
+    "Prof. Chandra Das - Member",
+    "Prof. Moujhuri Patra - Member",
+    "Prof. Partha Srathi Pal - Member",
+    "Prof. Sankhadip Saha - Member",
+    "Prof. Priyadarshiny Dhar - Member",
+    "Prof. Deblekha Konar - Member",
+    "Prof. Anupam Halder - Member",
+    "Prof. Sumana Chatterjee - Member",
+    "Prof. Sumit Roy - Member",
+    "Mr. Subrata Ghosh - Convener",
+    "Ms. Subhra Basu Ghosh - Member",
+    "Mr. Abhirup Bhar - Student Member",
+    "Ms. Retisha Bhaumik - Student Member"
+  ],
+
+  "staff": [
+    "Mr. Subrata Ghosh - Assistant Librarian",
+    "Mrs. Subhra Basu Ghosh - Assistant Librarian",
+    "Mr. Barun Mondal - Library Assistant",
+    "Mr. Janardan Das - Library Assistant",
+    "Mr. Anjan Dutta - Library Assistant",
+    "Mrs. Manju Dutta - Library Assistant",
+    "Mr. Satyajit Das - Library Assistant"
+  ],
+
+  "contact": {
+    "name": "Mr. Subrata Ghosh",
+    "designation": "Librarian",
+    "address": "Netaji Subhash Engineering College, Garia, Kolkata - 700152",
+    "phone": ["033-2436-1285", "033-2436-3333", "033-2436-4926"],
+    "fax": "033-2436-1286",
+    "email": "librarian@nsec.ac.in"
+  }
+}

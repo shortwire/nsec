@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, BookOpen, ExternalLink, Download, Globe, Cpu, Laptop,
-  Award, Info, Users, Target, CheckCircle2, ChevronRight, Maximize,
+  Award, Info, Target, CheckCircle2, ChevronRight, Maximize,
   MessageSquare, Brain, Landmark, X, GraduationCap
 } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import ContactSectionCard from '../components/ContactSectionCard.jsx';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -97,29 +98,6 @@ function ItemCard({ index, text, theme = "golden" }) {
         <p className="text-[16px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2">
           <HighlightText text={text} />
         </p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════
-   MEMBER CARD
- ═══════════════════════════════════════════════════════════ */
-function MemberCard({ index, member }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.03 }}
-      className="group p-4 bg-white border-[3px] border-slate-200 rounded-[24px] hover:border-brand-accent/40 hover:shadow-lg transition-all duration-300 flex items-center gap-4"
-    >
-      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-800 border-2 border-slate-800 group-hover:bg-slate-800 group-hover:text-white transition-colors shrink-0 shadow-sm">
-        <Users size={18} />
-      </div>
-      <div>
-        <h5 className="text-[14px] font-heading font-black italic uppercase tracking-tight text-slate-800">{member.name}</h5>
-        <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest">{member.role}</p>
       </div>
     </motion.div>
   );
@@ -415,7 +393,7 @@ export default function Iqac() {
           <div className="mb-8" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto">
             {committee.map((m, i) => (
-              <MemberCard key={i} index={i} member={m} />
+              <ContactSectionCard key={i} index={i} title={m.name} subtitle={m.role} />
             ))}
           </div>
         </div>

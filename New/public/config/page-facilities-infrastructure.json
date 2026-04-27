@@ -1,0 +1,45 @@
+{
+	"section": "  Common Infrastructure  :",
+	"title": "Infrastructure",
+	"overview": [
+		"The institute provides state-of-the-art infrastructure to support quality education for students from diverse backgrounds.",
+		"The campus is designed to create an ideal learning environment and prepare students for global professional challenges.",
+		"Infrastructure supports research, product development, and industrial consultancy."
+	],
+	"academic_facilities": [
+		"Well-equipped classrooms and e-classrooms",
+		"Departmental laboratories with modern equipment",
+		"Seminar halls and a central seminar hall with 200 seating capacity",
+		"Conference/board room with ICT facilities",
+		"Language laboratories for English communication skills with multimedia support"
+	],
+	"it_infrastructure": {
+		"computers": 1000,
+		"network": [
+			"1 Gbps LAN",
+			"Wi-Fi enabled campus"
+		]
+	},
+	"library": {
+		"type": "Digital + Central + Departmental",
+		"features": [
+			"Cloud-based Integrated Library Management System (ILMS)",
+			"Searchable journals via Knimbus",
+			"IEEE e-books and e-journals",
+			"NPTEL lecture videos",
+			"Reading room with internet-enabled computers"
+		],
+		"stats": {
+			"books": 103042,
+			"print_journals": 7,
+			"ebooks_and_ejournals": 1000,
+			"cd_dvd": 1076,
+			"reading_room_capacity": 100
+		}
+	},
+	"campus_facilities": [
+		"Transport facilities",
+		"Sports facilities",
+		"CCTV surveillance across campus"
+	]
+}

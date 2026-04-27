@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, History, MessageSquare, ExternalLink, GraduationCap, Scale, Stamp, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import ContactSectionCard from '../components/ContactSectionCard.jsx';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -884,21 +885,7 @@ export default function Naac() {
         <div className="max-w-7xl mx-auto mt-16 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {iqacData.composition.map((member, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl hover:border-brand-accent/30 transition-all group"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="px-2 py-1 bg-brand-accent/10 rounded text-[9px] font-mono font-black text-brand-accent uppercase tracking-widest">{member.role}</div>
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-200 group-hover:text-brand-accent transition-colors"><ShieldCheck size={16} /></div>
-                </div>
-                <h4 className="text-sm font-heading font-black italic uppercase tracking-tight text-slate-800 mb-1 leading-tight group-hover:text-brand-accent transition-colors">{member.name}</h4>
-                <p className="text-[11px] font-body font-medium text-slate-400 leading-tight">{member.detail}</p>
-              </motion.div>
+              <ContactSectionCard key={i} index={i} title={member.name} subtitle={member.role} />
             ))}
           </div>
         </div>
