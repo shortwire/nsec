@@ -1,0 +1,49 @@
+{
+  "section": "join_nsec",
+  "title": "Join NSEC for a Better Future",
+
+  "image": {
+    "src": "/public/assets/admission/2025Admn.jpg",
+    "alt": "NSEC Admission 2025"
+  },
+
+  "cta": {
+    "example_option": "B.Tech in AEIE"
+  },
+
+  "departments": [
+    "Applied Electronics & Instrumentation Engineering (AEIE)",
+    "Artificial Intelligence and Data Science",
+    "Biomedical Engineering",
+    "Civil Engineering",
+    "Computer Science and Business Systems",
+    "Computer Science & Engineering",
+    "CSE (Artificial Intelligence & Machine Learning)",
+    "CSE (Cyber Security)",
+    "CSE (Data Science)",
+    "CSE (Internet of Things)",
+    "Computer Science and Information Technology",
+    "Electrical Engineering",
+    "Electrical and Computer Engineering",
+    "Electrical Engineering and Electric Vehicle Technology",
+    "Electronics & Communication Engineering",
+    "Information Technology",
+    "Mechanical Engineering",
+    "Control & Instrumentation (M.Tech)",
+    "Power Systems (M.Tech)",
+    "Master of Business Administration (MBA)",
+    "Master of Computer Applications (MCA)",
+    "Bachelor of Computer Applications (BCA)",
+    "Bachelor of Business Administration (BBA)",
+    "BBA in Digital Marketing",
+    "BBA in Hospital Management"
+  ],
+
+  "contact": {
+    "phones": [
+      "+91-9831817307",
+      "+91-7044002539"
+    ],
+    "note": "For any queries related to admission, contact the above numbers"
+  }
+}
