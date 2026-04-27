@@ -1,0 +1,91 @@
+{
+  "section": "e_resources",
+  "title": "Online e-Resources Available in NSEC",
+  "subheading": "Online e-Resources for Students & Teachers",
+
+  "base_path": "/public/assets/facilities/eResources/",
+
+  "resources": [
+    {
+      "title": "All NPTEL Resources",
+      "image": "nptel-e-site.jpg",
+      "description": "Dedicated server of 20TB with all NPTEL videos and PDFs. Available only within LAN.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "http://nptel.nsec.ac.in"
+        }
+      ]
+    },
+    {
+      "title": "IEEE Xplore Digital Library",
+      "image": "ieee-e-site.jpg",
+      "description": "Access IEEE digital library resources. No password required within college LAN.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "https://ieeexplore.ieee.org/Xplore/home.jsp"
+        }
+      ]
+    },
+    {
+      "title": "Library Automation: Web OPAC",
+      "image": "opac-e-site.jpg",
+      "description": "Access library catalog online. Contact librarian for login credentials.",
+      "links": [
+        {
+          "label": "Internet",
+          "url": "http://opac.nsec.ac.in"
+        },
+        {
+          "label": "Intranet (LAN)",
+          "url": "http://172.16.50.101:8380/opac"
+        }
+      ]
+    },
+    {
+      "title": "NSEC LMS - Online In-house Resources",
+      "image": "lms-e-site.jpg",
+      "description": "Internal learning management system for accessing institutional resources.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "http://lmr.nsec.ac.in"
+        }
+      ]
+    },
+    {
+      "title": "Online Resources for GATE Aspirants",
+      "image": "gatetutor-e-site.jpg",
+      "description": "GATE preparation platform. Contact departmental coordinator for access credentials.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "https://www.gatetutor.in/"
+        }
+      ]
+    },
+    {
+      "title": "VIDEETA: Online e-Books",
+      "image": "videeya-e-site.jpg",
+      "description": "Access online e-books. Contact librarian for login credentials.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "http://www.videeya.com"
+        }
+      ]
+    },
+    {
+      "title": "Spoken Tutorial Courses",
+      "image": "spoken-e-site.jpg",
+      "description": "Initiative under National Mission on Education through ICT by MHRD to provide learning resources.",
+      "links": [
+        {
+          "label": "Access",
+          "url": "http://www.nsec.ac.in/page.php?id=515/"
+        }
+      ]
+    }
+  ]
+}

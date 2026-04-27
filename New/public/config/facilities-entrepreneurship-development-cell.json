@@ -1,0 +1,128 @@
+{
+  "section": "entrepreneurship_development_cell",
+  "title": "NSEC Entrepreneurship Development Cell",
+  "subheading": "NSEC Entrepreneurship Development Cell",
+
+  "images": [
+    {
+      "src": "/public/assets/facilities/entrepreneurshipDevelopment/edc-home.jpg",
+      "alt": "EDC Home"
+    }
+  ],
+
+  "about": [
+    "The Entrepreneurship Development Cell (EDC) was established in 2009 to nurture entrepreneurial thinking among students.",
+    "It aims to build an entrepreneurial ecosystem by supporting idea validation, product development, patenting, funding, and venture creation.",
+    "The cell promotes innovation through training, mentorship, and collaboration with external organizations."
+  ],
+
+  "initiatives": [
+    "Incubation centre for transforming ideas into fundable startups",
+    "Faculty development through training programs with NEN and other networks",
+    "Collaboration with Confederation of Indian Industries (CII)",
+    "MOU with Electrixa Energy and Lighting Pvt. Ltd. for incubation infrastructure",
+    "LED lighting assembly and testing unit setup within campus"
+  ],
+
+  "announcements": [
+    "Inviting ideas, proposals, prototypes, and projects for AICTE Chatra Viswakarma Award and other competitions",
+    "Online selection test for D2C Entrepreneurship Course by Wadhwani Foundation"
+  ],
+
+  "activities": [
+    {
+      "date": "25-06-2019",
+      "title": "Entrepreneurship awareness among 1st year students",
+      "mode": "Offline"
+    },
+    {
+      "date": "August 2019",
+      "title": "Introduction of D2C Entrepreneurship Course by Wadhwani Foundation",
+      "mode": "Offline"
+    },
+    {
+      "date": "21-08-2019",
+      "title": "1st prize in 3M-CII Young Innovators Challenge Award",
+      "mode": "Offline"
+    },
+    {
+      "date": "23-11-2019",
+      "title": "Workshop on Design Thinking",
+      "mode": "Offline"
+    },
+    {
+      "date": "06-04-2020",
+      "title": "Webinar on Design Thinking in Entrepreneurship",
+      "mode": "Online"
+    },
+    {
+      "date": "29-04-2020",
+      "title": "Webinar on Building a Successful Startup",
+      "mode": "Online"
+    },
+    {
+      "date": "05-01-2020",
+      "title": "Recognition as HI/BI by MSME",
+      "mode": "Offline"
+    },
+    {
+      "date": "24-02-2020",
+      "title": "Winner of AICTE Chatra Viswakarma Award",
+      "mode": "Offline"
+    },
+    {
+      "date": "02-06-2022 to 03-06-2022",
+      "title": "Workshop on Electronics Components with Hands-on Applications",
+      "mode": "Offline"
+    },
+    {
+      "date": "28-11-2022",
+      "title": "Workshop on Entrepreneurship and Innovation as Career Opportunity",
+      "mode": "Offline"
+    },
+    {
+      "date": "11-01-2023",
+      "title": "Workshop on Design Thinking and Innovation Design",
+      "mode": "Offline"
+    },
+    {
+      "date": "29-04-2023",
+      "title": "Alumni Entrepreneurship Motivational Session",
+      "mode": "Offline"
+    },
+    {
+      "date": "17-05-2023 to 19-05-2023",
+      "title": "Workshop on Prototype and Process Design",
+      "mode": "Offline"
+    },
+    {
+      "date": "21-08-2023",
+      "title": "World Entrepreneurs Day",
+      "mode": "Offline"
+    },
+    {
+      "date": "15-09-2023",
+      "title": "SIH 2023 Internal Hackathon",
+      "mode": "Offline"
+    }
+  ],
+
+  "legacy_activities": [
+    {
+      "date": "2019",
+      "title": "Idea2Prototype Competition, Hult Prize Events, Prototype Exhibitions"
+    },
+    {
+      "date": "2018",
+      "title": "X-Spark IITF Winner, IEEE Conference Participation, IICDC Challenge"
+    },
+    {
+      "date": "2017",
+      "title": "Hult Prize Regional & National Participation, Tech Talks"
+    },
+    {
+      "date": "2009-2016",
+      "title": "Consolidated Activities Report"
+    }
+  ]
+}

@@ -18,5 +18,18 @@
     "type": "youtube",
     "url": "https://www.youtube.com/watch?v=M-nLBOvPHbM&t=43s",
     "embed": "https://www.youtube.com/embed/M-nLBOvPHbM"
-  }
+  },
+
+  "videos": [
+    {
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=M-nLBOvPHbM&t=43s",
+      "embed": "https://www.youtube.com/embed/M-nLBOvPHbM"
+    },
+    {
+      "type": "youtube",
+      "url": "https://www.youtube.com/watch?v=4U-tJKfT-HM",
+      "embed": "https://www.youtube.com/embed/4U-tJKfT-HM"
+    }
+  ]
 }
