@@ -1,0 +1,15 @@
+{
+  "section": "admission_brochure",
+  "title": "Admission Brochure",
+
+  "base_path": "/public/assets/admission/",
+
+  "documents": [
+    {
+      "title": "NSEC Admission Brochure 2026",
+      "file": "nsec-admission-brochure-2026.pdf",
+      "type": "pdf",
+      "year": 2026
+    }
+  ]
+}
