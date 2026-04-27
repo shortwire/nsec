@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import MinCard from '../components/minCard';
 
 const BOLD_KEYWORDS = [
   'state-of-the-art',
@@ -218,25 +219,27 @@ export default function FacilitiesInfrastructure() {
 
       <section className="relative pt-12 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <SectionHeading title="IT Infrastructure" tagline="Digital backbone for connected learning and operations." />
-        <div className="max-w-6xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-10 rounded-[24px] bg-white border-2 border-slate-200 flex flex-col items-center text-center group hover:shadow-2xl hover:border-brand-accent/30 transition-all duration-500"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
-              <Monitor size={30} />
-            </div>
-            <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.3em] mb-2">Computers</p>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 leading-none">{config.it_infrastructure.computers}</h3>
-          </motion.div>
-
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(config.it_infrastructure.network || []).map((item, i) => (
-              <InfrastructureCard key={`network-${i}`} index={i} text={item} />
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <MinCard
+            title="Computers"
+            description={config.it_infrastructure.computers}
+            icon={Monitor}
+            variant="accent"
+            index={0}
+            center
+          />
+          {(config.it_infrastructure.network || []).map((item, i) => (
+            <MinCard
+              key={`network-${i}`}
+              title="Network Node"
+              description={item}
+              icon={Network}
+              badge="IT Infrastructure"
+              variant="slate"
+              index={i + 1}
+              center
+            />
+          ))}
         </div>
       </section>
 
@@ -262,23 +265,17 @@ export default function FacilitiesInfrastructure() {
           {(config.campus_facilities || []).map((item, i) => {
             const Icon = i === 0 ? Bus : i === 1 ? Trophy : Camera;
             return (
-              <motion.div
+              <MinCard
                 key={`campus-${i}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl hover:border-brand-accent/30 transition-all"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4 group-hover:bg-brand-accent group-hover:text-white transition-all">
-                  <Icon size={22} />
-                </div>
-                <p className="text-[14px] font-heading font-black italic uppercase tracking-tight text-slate-700 leading-tight">{item}</p>
-                <div className="mt-4 flex items-center gap-1 text-brand-accent">
-                  <span className="text-[9px] font-mono font-black uppercase tracking-widest">Enabled</span>
-                  <ChevronRight size={10} />
-                </div>
-              </motion.div>
+                title={item}
+                description="Campus support facility"
+                icon={Icon}
+                badge="Enabled"
+                variant="accent"
+                index={i}
+                center
+                actionLabel="Open Details"
+              />
             );
           })}
         </div>

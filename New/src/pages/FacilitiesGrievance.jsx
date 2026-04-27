@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Globe, ChevronRight, Phone, Mail, Clock, AlertCircle, CheckCircle2, Users, BookOpen } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import MinCard from '../components/minCard';
 
 const ICONS = [AlertCircle, BookOpen, Shield, Users, Globe, CheckCircle2, Phone, Mail];
 function ItemCard({ index, text }) {
@@ -168,18 +169,23 @@ export default function FacilitiesGrievance() {
           </div>
           <div className="lg:w-1/2">
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Contact Cell</h2>
-            <div className="p-8 bg-brand-blue rounded-3xl border border-white/10 shadow-2xl flex flex-col gap-4">
-              <div>
-                <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Office</p>
-                <p className="text-xl font-heading font-black italic uppercase text-white">{config.contact.name}</p>
+            <MinCard
+              badge="Contact Cell"
+              title={config.contact.name}
+              description={config.contact.address}
+              icon={Phone}
+              variant="slate"
+              className="bg-brand-blue border-white/10 shadow-2xl"
+              titleClassName="text-white"
+              descriptionClassName="text-white/60"
+              badgeClassName="bg-white/10 text-white/60"
+            >
+              <div className="mt-5 flex flex-col gap-4">
+                <a href={'tel:' + config.contact.phone} className="flex items-center gap-3 text-white/75 hover:text-brand-accent transition-colors"><Phone size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.phone}</span></a>
+                <a href={'mailto:' + config.contact.email} className="flex items-center gap-3 text-white/75 hover:text-brand-accent transition-colors"><Mail size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.email}</span></a>
+                <div className="flex items-center gap-3 text-white/75"><Clock size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.timings}</span></div>
               </div>
-              <div className="h-[1px] bg-white/10" />
-              <a href={'tel:' + config.contact.phone} className="flex items-center gap-3 text-white/70 hover:text-brand-accent transition-colors"><Phone size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.phone}</span></a>
-              <a href={'mailto:' + config.contact.email} className="flex items-center gap-3 text-white/70 hover:text-brand-accent transition-colors"><Mail size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.email}</span></a>
-              <div className="flex items-center gap-3 text-white/70"><Clock size={14} className="shrink-0" /><span className="font-mono text-sm">{config.contact.timings}</span></div>
-              <div className="h-[1px] bg-white/10" />
-              <p className="text-[13px] font-body text-white/50">{config.contact.address}</p>
-            </div>
+            </MinCard>
           </div>
         </div>
       </section>

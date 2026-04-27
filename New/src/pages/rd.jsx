@@ -4,6 +4,8 @@ import { FlaskConical, Lightbulb, Target, CheckCircle2, Users, ExternalLink, Fil
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/card';
+import PdfCard from '../components/pdfCard';
+import MinCard from '../components/minCard';
 
 void motion;
 
@@ -59,37 +61,18 @@ function VisionCard({ index, item, theme = 'accent' }) {
    COMPONENT: INITIATIVE CARD
    ═══════════════════════════════════════════════════════════ */
 function InitiativeCard({ item, index }) {
+  const icons = [FileText, BookOpen, Zap];
+  const Icon = icons[index % icons.length];
+  
   return (
-    <motion.a
-      href={item.url ? (item.url.startsWith('http') ? item.url : `https://www.nsec.ac.in/${item.url}`) : '#'}
-      target={item.url ? "_blank" : "_self"}
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className={`group block relative p-6 rounded-2xl border transition-all duration-300 ${
-        item.url 
-          ? 'bg-white border-slate-100 hover:border-brand-accent/40 hover:shadow-xl hover:-translate-y-1' 
-          : ' border-slate-200 opacity-60 cursor-not-allowed'
-      }`}
-    >
-      <div className="flex items-start justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-brand-accent/5 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-colors duration-300">
-          {index % 3 === 0 ? <FileText size={24} /> : index % 3 === 1 ? <BookOpen size={24} /> : <Zap size={24} />}
-        </div>
-        {item.url && (
-          <ExternalLink size={16} className="text-slate-300 group-hover:text-brand-accent transition-colors" />
-        )}
-      </div>
-      <h3 className="text-[16px] font-heading font-black italic uppercase tracking-tight text-slate-800 leading-tight">
-        {item.title}
-      </h3>
-      <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest group-hover:text-brand-accent transition-colors">
-        <span>{item.url ? 'View Document' : 'Information Pending'}</span>
-        {item.url && <ChevronRight size={12} className="group-hover:translate-x-1 transition-transform" />}
-      </div>
-    </motion.a>
+    <PdfCard
+      href={item.url ? (item.url.startsWith('http') ? item.url : `https://www.nsec.ac.in/${item.url}`) : null}
+      icon={Icon}
+      title={item.title}
+      variant="accent"
+      index={index}
+      download={false}
+    />
   );
 }
 
@@ -328,33 +311,17 @@ export default function Rd() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mous.map((mou, i) => (
-              <motion.a
+              <MinCard
                 key={i}
-                href={mou.url ? `https://www.nsec.ac.in/${mou.url}` : '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-brand-accent/20 hover:border-brand-accent/40 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform">
-                    <Building2 size={24} />
-                  </div>
-                  <Handshake size={18} className="text-slate-400 group-hover:text-brand-accent transition-colors" />
-                </div>
-                <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900 group-hover:text-slate-900 mb-2">{mou.organization}</h4>
-                <p className="text-[10px] font-mono font-bold text-brand-accent/60 uppercase tracking-widest mb-6">{mou.type}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-                  <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Verification Status</span>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[9px] font-mono text-green-500 font-bold uppercase tracking-widest">Active MOU</span>
-                  </div>
-                </div>
-              </motion.a>
+                href={mou.url ? `https://www.nsec.ac.in/${mou.url}` : undefined}
+                icon={Building2}
+                title={mou.organization}
+                badge={mou.type}
+                meta="Active MOU"
+                actionLabel="Open Document"
+                variant="accent"
+                index={i}
+              />
             ))}
           </div>
         </div>

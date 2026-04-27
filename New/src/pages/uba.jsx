@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
 import Card from '../components/card';
+import MinCard from '../components/minCard';
 
 void motion;
 
@@ -242,24 +243,17 @@ export default function UbaPage() {
         <SectionHeading title="Adopted Villages" tagline="Direct technological and knowledge support to rural clusters." />
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {ubaData.villages.map((village, i) => (
-            <motion.div
+            <MinCard
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl hover:border-brand-accent/30 transition-all group"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className={`px-2 py-1 rounded text-[9px] font-mono font-black uppercase tracking-widest ${village.type === 'Local' ? 'bg-brand-accent/10 text-brand-accent' : 'bg-brand-maroon/10 text-brand-maroon'}`}>{village.type} Node</div>
-                <MapPin size={16} className="text-slate-200 group-hover:text-brand-accent transition-colors" />
-              </div>
-              <h4 className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 mb-1 leading-tight group-hover:text-brand-accent transition-colors">{village.name}</h4>
-              <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-4">{village.region}</p>
-              <div className="pt-4 border-t border-slate-50">
-                <span className="text-[9px] font-mono font-bold text-slate-300 uppercase tracking-widest">District: {village.district}</span>
-              </div>
-            </motion.div>
+              title={village.name}
+              description={village.region}
+              badge={`${village.type} Node`}
+              meta={`District: ${village.district}`}
+              icon={MapPin}
+              variant={village.type === 'Local' ? 'accent' : 'danger'}
+              index={i}
+              center={false}
+            />
           ))}
         </div>
       </section>

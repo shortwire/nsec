@@ -8,6 +8,7 @@ import {
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import ContactSectionCard from '../components/ContactSectionCard.jsx';
+import PdfCard from '../components/pdfCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -411,19 +412,15 @@ export default function Iqac() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Important Links</h2>
             <div className="space-y-4">
               {importantLinks.map((link, i) => (
-                <button
+                <PdfCard
                   key={i}
+                  href={link.url}
+                  icon={FileText}
+                  title={link.title}
+                  variant="accent"
+                  index={i}
                   onClick={() => setSelectedPdf(link.url)}
-                  className="w-full text-left group flex items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl hover:bg-brand-accent/5 hover:border-brand-accent/30 shadow-sm hover:shadow-md transition-all duration-300 focus:outline-none"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
-                      <ExternalLink size={20} />
-                    </div>
-                    <span className="text-[16px] font-heading font-black italic uppercase tracking-tight text-slate-700 group-hover:text-brand-accent">{link.title}</span>
-                  </div>
-                  <ChevronRight size={20} className="text-slate-300 group-hover:translate-x-1 group-hover:text-brand-accent transition-all shrink-0" />
-                </button>
+                />
               ))}
             </div>
           </div>
@@ -433,17 +430,17 @@ export default function Iqac() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Annual Reports</h2>
             <div className="grid grid-cols-2 gap-4">
               {reports.map((report, i) => (
-                <button
+                <PdfCard
                   key={i}
+                  href={report.url}
+                  icon={Download}
+                  title={report.year}
+                  label="Annual Report"
+                  variant="danger"
+                  index={i}
+                  download={true}
                   onClick={() => setSelectedPdf(report.url)}
-                  className="w-full text-left focus:outline-none p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-brand-maroon/5 hover:border-brand-maroon/30 shadow-sm hover:shadow-md transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <Download size={16} className="text-brand-maroon group-hover:scale-110 transition-transform shrink-0" />
-                    <span className="text-sm font-mono font-bold text-slate-600 group-hover:text-brand-maroon">{report.year}</span>
-                  </div>
-                  <span className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest group-hover:text-brand-maroon/60">PDF</span>
-                </button>
+                />
               ))}
             </div>
           </div>

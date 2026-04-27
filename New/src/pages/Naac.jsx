@@ -4,6 +4,8 @@ import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, His
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import ContactSectionCard from '../components/ContactSectionCard.jsx';
+import PdfCard from '../components/pdfCard';
+import MinCard from '../components/minCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -748,20 +750,18 @@ export default function Naac() {
         
         <div className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {stats.map((stat, i) => (
-            <motion.div
+            <MinCard
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-[24px] bg-white border-2 border-slate-200 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:border-brand-accent/30 transition-all duration-500"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
-                <stat.icon size={32} />
-              </div>
-              <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.3em] mb-2">{stat.label}</p>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 leading-none">{stat.value}</h3>
-            </motion.div>
+              index={i}
+              title={stat.value}
+              description={stat.label}
+              icon={stat.icon}
+              variant="accent"
+              center
+              className="text-center"
+              titleClassName="text-3xl sm:text-3xl"
+              descriptionClassName="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-slate-400"
+            />
           ))}
         </div>
 
@@ -921,9 +921,18 @@ export default function Naac() {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 {iqacData.annualReports.map((r, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(r.url); }}   className="p-2 rounded-lg bg-white border border-slate-100 text-[10px] font-mono font-bold text-slate-500 hover:bg-brand-maroon hover:text-white transition-all text-center">
-                    {r.year}
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={r.url}
+                    icon={Download}
+                    title={r.year}
+                    label="Annual Report"
+                    variant="danger"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(r.url)}
+                    className="p-2 h-auto"
+                  />
                 ))}
               </div>
             </div>
@@ -948,19 +957,31 @@ export default function Naac() {
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">Statutory Documents</p>
                 {cycles.second.docs.map((doc, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-transparent hover:border-brand-accent/30 hover:bg-white hover:shadow-lg transition-all group">
-                    <FileText size={16} className="text-slate-300 group-hover:text-brand-accent transition-colors" />
-                    <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-700 leading-none group-hover:text-slate-900">{doc.title}</span>
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={doc.url}
+                    icon={FileText}
+                    title={doc.title}
+                    variant="accent"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(doc.url)}
+                  />
                 ))}
               </div>
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">AQAR Reports</p>
                 {cycles.second.aqars.map((aq, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(aq.url); }}   className="flex items-center justify-between p-4 bg-brand-accent/[0.03] rounded-2xl border border-brand-accent/10 hover:bg-brand-accent hover:text-white transition-all group">
-                    <span className="text-xs font-heading font-black italic uppercase tracking-tight">AQAR {aq.year}</span>
-                    <Download size={14} className="opacity-40 group-hover:opacity-100 group-hover:translate-y-1 transition-all" />
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={aq.url}
+                    icon={Download}
+                    title={`AQAR ${aq.year}`}
+                    variant="slate"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(aq.url)}
+                  />
                 ))}
                 <div className="p-6 bg-white rounded-3xl border border-dashed border-slate-200 mt-4">
                   <p className="text-[10px] font-mono font-bold text-slate-400 uppercase leading-relaxed text-center">Extended Profiles and DVV Clarifications are integrated in the criteria explorer below.</p>
@@ -981,20 +1002,32 @@ export default function Naac() {
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">Historical Certificates</p>
                 {cycles.first.docs.map((doc, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}   className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
-                    <FileText size={16} className="text-slate-300 group-hover:text-slate-600 transition-colors" />
-                    <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-600 leading-none group-hover:text-slate-800">{doc.title}</span>
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={doc.url}
+                    icon={FileText}
+                    title={doc.title}
+                    variant="slate"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(doc.url)}
+                  />
                 ))}
               </div>
               <div className="space-y-3">
                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-4">AQAR (2018-2023)</p>
                 <div className="grid grid-cols-1 gap-2">
                   {cycles.first.aqars.map((aq, i) => (
-                    <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(aq.url); }}   className="flex items-center justify-between p-3 bg-white rounded-xl border border-transparent hover:border-slate-200 hover:bg-white transition-all group">
-                      <span className="text-[11px] font-heading font-black italic uppercase tracking-tight text-slate-500">AQAR {aq.year}</span>
-                      <Download size={12} className="opacity-20 group-hover:opacity-100 transition-all" />
-                    </a>
+                    <PdfCard
+                      key={i}
+                      href={aq.url}
+                      icon={Download}
+                      title={`AQAR ${aq.year}`}
+                      variant="slate"
+                      index={i}
+                      download={true}
+                      onClick={() => setSelectedPdf(aq.url)}
+                    />
                   ))}
                 </div>
               </div>
@@ -1012,24 +1045,22 @@ export default function Naac() {
         <div className="max-w-7xl mx-auto mt-12 overflow-x-auto pb-8">
           <div className="min-w-[800px] grid grid-cols-7 gap-4">
             {criterionDocs.map((crit, i) => (
-              <motion.button
+              <MinCard
                 key={i}
+                title={`C${crit.id}`}
+                description={crit.title}
+                badge="Criterion"
+                icon={FileText}
+                variant={activeCriterion === crit.id ? 'accent' : 'slate'}
+                index={i}
+                center
+                compact
+                className={activeCriterion === crit.id ? 'scale-[1.03]' : ''}
+                titleClassName={activeCriterion === crit.id ? 'text-brand-accent' : ''}
+                descriptionClassName={activeCriterion === crit.id ? 'text-slate-700' : ''}
+                actionLabel={activeCriterion === crit.id ? 'Close Details' : 'View Metrics'}
                 onClick={() => setActiveCriterion(activeCriterion === crit.id ? null : crit.id)}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`group relative flex flex-col items-center text-center transition-all duration-300 ${activeCriterion === crit.id ? 'scale-105' : 'hover:scale-102'}`}
-              >
-                <div className={`w-full aspect-square rounded-2xl border flex flex-col items-center justify-center p-4 transition-all duration-300 ${activeCriterion === crit.id ? 'bg-brand-accent border-brand-accent shadow-2xl' : 'bg-white border-slate-100 hover:bg-brand-accent/5 hover:border-brand-accent/30'}`}>
-                  <span className={`text-4xl font-heading font-black italic transition-colors mb-2 ${activeCriterion === crit.id ? 'text-white/40' : 'text-brand-accent/20 group-hover:text-brand-accent/40'}`}>C{crit.id}</span>
-                  <span className={`text-[9px] font-mono font-black uppercase tracking-widest transition-colors leading-tight ${activeCriterion === crit.id ? 'text-white' : 'text-slate-400 group-hover:text-slate-800'}`}>{crit.title}</span>
-                </div>
-                <div className={`mt-3 flex items-center gap-1 transition-all duration-300 ${activeCriterion === crit.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                  <span className={`text-[9px] font-mono font-bold uppercase tracking-widest italic ${activeCriterion === crit.id ? 'text-brand-accent' : 'text-brand-accent'}`}>{activeCriterion === crit.id ? 'Close Details' : 'View Metrics'}</span>
-                  <ChevronRight size={10} className={`text-brand-accent transition-transform duration-300 ${activeCriterion === crit.id ? 'rotate-90' : ''}`} />
-                </div>
-              </motion.button>
+              />
             ))}
           </div>
         </div>

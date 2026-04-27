@@ -4,6 +4,7 @@ import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, His
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
+import PdfCard from '../components/pdfCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -223,10 +224,16 @@ export default function Nba() {
                   { title: "Engg & MBA (2024-25)", url: "https://www.nsec.ac.in/circular/EOA-Report-2024-25_BTech.PDF" },
                   { title: "MCA & BCA Program (2024-25)", url: "https://www.nsec.ac.in/circular/EOA-REPORT-2024-2025-MCA-BCA.PDF" }
                 ].map((doc, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }} className="p-5 bg-white border-2 border-slate-200 rounded-2xl flex items-center justify-between hover:border-brand-accent/40 hover:shadow-lg transition-all group">
-                    <span className="text-[13px] font-heading font-black italic uppercase tracking-tight text-slate-800">{doc.title}</span>
-                    <Download size={16} className="text-slate-300 group-hover:text-brand-accent group-hover:translate-y-1 transition-all" />
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={doc.url}
+                    icon={FileText}
+                    title={doc.title}
+                    variant="accent"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(doc.url)}
+                  />
                 ))}
               </div>
             </div>
@@ -238,7 +245,7 @@ export default function Nba() {
                 <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900">MAKAUT Affiliations</h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 {[
                   { name: "All B.Tech Programs", url: "https://www.nsec.ac.in/circular/109-BTECH-2025-26.pdf" },
                   { name: "All M.Tech Programs", url: "https://www.nsec.ac.in/circular/109-MTECH-2025-26.pdf" },
@@ -249,10 +256,17 @@ export default function Nba() {
                   { name: "BBA (Hospital Mgmt)", url: "https://www.nsec.ac.in/circular/109%20-BBA%28Spl%29-2-25-26.pdf" },
                   { name: "BBA Digital Marketing", url: "https://www.nsec.ac.in/circular/109%20-BBA%28Spl%29-2-25-26.pdf" }
                 ].map((prog, i) => (
-                  <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(prog.url); }} className="flex items-center gap-3 p-3 bg-white border-2 border-slate-200 rounded-xl hover:border-brand-maroon/20 hover:bg-white transition-all group">
-                    <CheckCircle2 size={14} className="text-brand-accent shrink-0 group-hover:scale-110" />
-                    <span className="text-[11px] font-mono font-bold text-slate-600 uppercase tracking-tight leading-none">{prog.name} [2025-26]</span>
-                  </a>
+                  <PdfCard
+                    key={i}
+                    href={prog.url}
+                    icon={CheckCircle2}
+                    title={prog.name}
+                    label="2025-26"
+                    variant="slate"
+                    index={i}
+                    download={true}
+                    onClick={() => setSelectedPdf(prog.url)}
+                  />
                 ))}
               </div>
               <a href="https://www.nsec.ac.in/page.php?id=533" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.2em] hover:translate-x-2 transition-transform">
@@ -274,13 +288,16 @@ export default function Nba() {
                 { title: "NBA Certificate (2019 - 2022)", url: "https://www.nsec.ac.in/impdoc/nba-nsec-2019-2022.pdf" },
                 { title: "Historical Certificates (2005 - 2019)", url: "https://www.nsec.ac.in/impdoc/NBA_Accreditation_2005-2019_opt.pdf" }
               ].map((doc, i) => (
-                <a key={i} href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }} className="group flex items-center justify-between p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-accent/40 hover:bg-white hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent"><FileText size={20} /></div>
-                    <span className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 group-hover:text-brand-accent transition-colors">{doc.title}</span>
-                  </div>
-                  <Download size={20} className="text-slate-300 group-hover:text-brand-accent group-hover:translate-y-1 transition-all" />
-                </a>
+                <PdfCard
+                  key={i}
+                  href={doc.url}
+                  icon={FileText}
+                  title={doc.title}
+                  variant="accent"
+                  index={i}
+                  download={true}
+                  onClick={() => setSelectedPdf(doc.url)}
+                />
               ))}
             </div>
           </div>

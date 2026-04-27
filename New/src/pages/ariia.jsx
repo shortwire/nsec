@@ -4,6 +4,8 @@ import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, His
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
+import PdfCard from '../components/pdfCard';
+import MinCard from '../components/minCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -167,21 +169,16 @@ export default function Ariia() {
 
                 <div className="space-y-4 relative z-10">
                   {cycle.docs.map((doc, di) => (
-                    <a
+                    <PdfCard
                       key={di}
-                      href="#" onClick={(e) => { e.preventDefault(); setSelectedPdf(doc.url); }}
-                      
-                      
-                      className="flex items-center justify-between p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-accent/40 hover:bg-slate-50 hover:shadow-lg transition-all duration-300 group/item"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-brand-accent shadow-sm group-hover/item:bg-brand-accent group-hover/item: transition-all">
-                          <FileText size={20} />
-                        </div>
-                        <span className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 group-hover/item:text-brand-accent transition-colors">{doc.label}</span>
-                      </div>
-                      <Download size={20} className="text-slate-300 group-hover/item:text-brand-accent transition-all" />
-                    </a>
+                      href={doc.url}
+                      icon={FileText}
+                      title={doc.label}
+                      variant="accent"
+                      index={di}
+                      download={true}
+                      onClick={() => setSelectedPdf(doc.url)}
+                    />
                   ))}
                 </div>
               </motion.div>
@@ -222,22 +219,16 @@ export default function Ariia() {
                 { label: "Principal Office", email: "principal@nsec.ac.in" },
                 { label: "Innovation Node", email: "bose.shilpi08@gmail.com" }
               ].map((node, i) => (
-                <a
+                <MinCard
                   key={i}
                   href={`mailto:${node.email}`}
-                  className="flex items-center justify-between p-6 bg-slate-50 border-2 border-slate-200 rounded-2xl hover:border-brand-accent/40 hover:bg-white hover:shadow-lg transition-all duration-300 group/node"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shadow-sm group-hover/node:scale-110 transition-all">
-                      <Mail size={18} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest leading-none mb-1 group-hover/node:text-brand-accent transition-colors">{node.label}</p>
-                      <p className="text-sm font-heading font-black italic tracking-wide text-slate-800 group-hover/node:text-brand-accent transition-colors">{node.email}</p>
-                    </div>
-                  </div>
-                  <ChevronRight size={18} className="text-slate-300 group-hover/node:text-brand-accent group-hover/node:translate-x-1 transition-all" />
-                </a>
+                  icon={Mail}
+                  title={node.label}
+                  description={node.email}
+                  variant="slate"
+                  index={i}
+                  actionLabel="Send Email"
+                />
               ))}
             </div>
           </div>

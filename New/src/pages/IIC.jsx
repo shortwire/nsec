@@ -4,6 +4,7 @@ import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, C
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
+import MinCard from '../components/minCard';
 
 void motion;
 
@@ -390,24 +391,20 @@ export default function IIC() {
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Achievements</span>
             <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
             <div className="space-y-6">
-              <div className="p-8 bg-slate-50 border border-slate-200 rounded-[32px] hover:border-brand-accent transition-all">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-accent/20 flex items-center justify-center text-brand-accent"><Trophy size={24} /></div>
-                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900">Model Assembly Unit</h4>
-                </div>
-                <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">
-                  Established a specialized <span className="text-slate-900 font-bold">Model Assembly cum Testing Unit on LED Lighting</span> within the campus, supporting real-world industrial training.
-                </p>
-              </div>
-              <div className="p-8 bg-slate-50 border border-slate-200 rounded-[32px] hover:border-brand-accent transition-all">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-maroon/20 flex items-center justify-center text-brand-maroon"><Activity size={24} /></div>
-                  <h4 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-900">INFERNO Fest</h4>
-                </div>
-                <p className="text-sm font-body font-medium text-slate-600 leading-relaxed italic">
-                  Our flagship business fest, <span className="text-slate-900 font-bold">INFERNO</span>, continues to act as a launchpad for student-led startups and business plan competitions.
-                </p>
-              </div>
+              <MinCard
+                title="Model Assembly Unit"
+                description="Established a specialized Model Assembly cum Testing Unit on LED Lighting within the campus, supporting real-world industrial training."
+                icon={Trophy}
+                variant="accent"
+                index={0}
+              />
+              <MinCard
+                title="INFERNO Fest"
+                description="Our flagship business fest, INFERNO, continues to act as a launchpad for student-led startups and business plan competitions."
+                icon={Activity}
+                variant="danger"
+                index={1}
+              />
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Lightbulb, Rocket, Award, Calendar, CheckCircle2, Target, Users, Briefcase } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import MinCard from '../components/minCard';
 
 const ITEM_ICONS = [Lightbulb, Rocket, Award, Target, Users, Briefcase, CheckCircle2, Calendar];
 
@@ -138,10 +139,16 @@ export default function FacilitiesEDC() {
               <h3 className="text-xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Legacy Highlights</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {(config.legacy_activities || []).map((act, i) => (
-                  <div key={i} className="p-5 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/30 hover:shadow-md transition-all">
-                    <span className="text-[10px] font-mono font-black text-[#fbbf24] uppercase tracking-widest block mb-2">{act.date}</span>
-                    <p className="text-[13px] font-body text-slate-700">{act.title}</p>
-                  </div>
+                  <MinCard
+                    key={i}
+                    title={act.title}
+                    description={act.date}
+                    icon={Award}
+                    badge="Legacy"
+                    variant={i % 2 === 0 ? 'accent' : 'slate'}
+                    index={i}
+                    compact
+                  />
                 ))}
               </div>
             </div>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, CheckCircle2, ChevronRight, ExternalLink, Zap, Target, Trophy, Cpu, Wrench, Calendar, Activity, Image as ImageIcon, Video, Mail, Hammer, Cog, Microscope, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import MinCard from '../components/minCard';
 
 void motion;
 
@@ -167,26 +168,18 @@ export default function IdeaLab() {
         
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {resourceCards.map((card, i) => (
-            <motion.a
+            <MinCard
               key={i}
               href={card.path}
               target={card.type === 'pdf' ? "_blank" : "_self"}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="p-8 bg-white border-2 border-slate-200 rounded-[32px] hover:bg-white hover:shadow-xl hover:border-brand-accent/25 transition-all group flex flex-col items-center text-center relative overflow-hidden"
-            >
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all mb-6 shadow-sm border border-slate-200">
-                <card.icon size={24} />
-              </div>
-              <h4 className="text-[15px] font-heading font-black italic uppercase tracking-tight text-slate-800 mb-1 group-hover:text-brand-accent transition-colors leading-none">{card.title}</h4>
-              <p className="text-[10px] font-body font-bold text-slate-400 leading-tight mb-6 italic">{card.desc}</p>
-              <div className="mt-auto flex items-center gap-2 text-brand-accent/40 group-hover:text-brand-accent transition-colors">
-                <span className="text-[9px] font-mono font-black uppercase tracking-widest">{card.type === 'pdf' ? 'Download' : 'Open Portal'}</span>
-                <ChevronRight size={12} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </motion.a>
+              icon={card.icon}
+              title={card.title}
+              description={card.desc}
+              variant={card.type === 'pdf' ? 'accent' : 'slate'}
+              index={i}
+              center
+              actionLabel={card.type === 'pdf' ? 'Download' : 'Open Portal'}
+            />
           ))}
         </div>
       </section>
