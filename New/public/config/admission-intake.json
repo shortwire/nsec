@@ -1,0 +1,166 @@
+{
+  "section": "admission_intake",
+  "title": "Admission Intake of NSEC",
+  "subheading": "Courses Offered",
+
+  "courses": {
+    "diploma": [
+      {
+        "name": "Electrical Engineering",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Electrical Engineering and Electric Vehicle Technology",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Civil Engineering",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Computer Science and Engineering",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 60
+      }
+    ],
+
+    "ug": [
+      {
+        "name": "Applied Electronics & Instrumentation Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Artificial Intelligence and Data Science",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Biomedical Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Civil Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Computer Science and Business Systems",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Computer Science & Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 300
+      },
+      {
+        "name": "CSE (AI & ML)",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 300
+      },
+      {
+        "name": "CSE (Cyber Security)",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "CSE (Data Science)",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "CSE (Internet of Things)",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Computer Science and Information Technology",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Electrical Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 120
+      },
+      {
+        "name": "Electrical and Computer Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Electronics & Communication Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 120
+      },
+      {
+        "name": "Information Technology",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 180
+      },
+      {
+        "name": "Mechanical Engineering",
+        "tenure": "4 Years / 8 Semesters",
+        "intake": 30
+      },
+      {
+        "name": "Bachelor of Computer Applications",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 120
+      },
+      {
+        "name": "Bachelor of Business Administration",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 120
+      },
+      {
+        "name": "BBA in Digital Marketing",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "BBA in Hospital Management",
+        "tenure": "3 Years / 6 Semesters",
+        "intake": 60
+      }
+    ],
+
+    "pg": [
+      {
+        "name": "M.Tech in Computer Science & Engineering",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 18
+      },
+      {
+        "name": "M.Tech in Electronics & Communication Engineering",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 9
+      },
+      {
+        "name": "M.Tech in Control & Instrumentation",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 9
+      },
+      {
+        "name": "M.Tech in Power Systems",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 18
+      },
+      {
+        "name": "Master of Business Administration",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 60
+      },
+      {
+        "name": "Master of Computer Applications",
+        "tenure": "2 Years / 4 Semesters",
+        "intake": 60
+      }
+    ]
+  }
+}
