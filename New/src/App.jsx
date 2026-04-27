@@ -19,6 +19,7 @@ import Ariia from './pages/ariia';
 import GenericLifePage from './pages/GenericLifePage';
 import StandardInfoPage from './pages/StandardInfoPage';
 import AntiRagging from './pages/AntiRagging';
+import Events from './pages/Events';
 import Moocs from './pages/Moocs';
 import Iqac from './pages/Iqac';
 import Nba from './pages/Nba';
@@ -70,7 +71,7 @@ function App() {
           <Route path="idealab" element={<IdeaLab />} />
           <Route path="anti-ragging" element={<AntiRagging />} />
           <Route path="silverjubilee" element={<GenericLifePage configPath="/config/page-silverjubilee-config.json" />} />
-          <Route path="events" element={<GenericLifePage configPath="/config/page-events-config.json" />} />
+          <Route path="events" element={<Events />} />
           <Route path="ariia" element={<Ariia />} />
           <Route path="contact" element={<GenericLifePage configPath="/config/page-contact-config.json" />} />
           <Route path="training-placement" element={<GenericLifePage configPath="/config/page-tnp-config.json" />} />
