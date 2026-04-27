@@ -1,0 +1,52 @@
+{
+  "section": "online_admission",
+  "title": "NSEC Online Admission",
+  "subheading": "Instructions for Online Admission",
+
+  "portal": {
+    "url": "https://nsecadmission.techtron.net/enquiry/login"
+  },
+
+  "steps": [
+    "Visit the admission portal and click on 'Register Now'",
+    "Complete registration by filling the form and uploading required documents",
+    "Ensure documents are scanned in PDF format (max 150 DPI)",
+    "Upload all required documents with proper naming format",
+    "Click on 'Submit & Next' to generate Enquiry ID",
+    "Use Enquiry ID as login ID and registered phone number as password",
+    "After confirmation from college, login again and fill the admission form",
+    "Submit the form and generate printable format",
+    "Keep a printout or softcopy for reference (no need to submit unless asked)"
+  ],
+
+  "required_documents": [
+    "10th Admit Card",
+    "10th Marksheet",
+    "10+2 Marksheet",
+    "WBJEE/JEE Admit Card",
+    "WBJEE/JEE Rank Card",
+    "Provisional Allotment Letter",
+    "Aadhar Card (Student)",
+    "Aadhar Card (Parent)",
+    "PAN Card (Parent)"
+  ],
+
+  "document_guidelines": [
+    "Upload documents in PDF format only",
+    "Resolution should not exceed 150 DPI",
+    "Use naming format: DocumentName StudentName Rank Stream (e.g. 10thadmit SajalSaha 17898 AEIE)"
+  ],
+
+  "credentials_info": {
+    "login_id": "Enquiry ID",
+    "password": "Registered Phone Number"
+  },
+
+  "contact": {
+    "phones": [
+      "+91-9831817307",
+      "+91-7044002539"
+    ],
+    "note": "Contact these numbers for admission confirmation or queries"
+  }
+}
