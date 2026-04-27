@@ -28,6 +28,20 @@ import RDPage from './pages/rd';
 import Naac from './pages/Naac';
 import NirfPage from './pages/nirf';
 import FacilitiesInfrastructure from './pages/Infrastructure';
+import FacilitiesLabs from './pages/FacilitiesLabs';
+import FacilitiesLibrary from './pages/FacilitiesLibrary';
+import FacilitiesEResources from './pages/FacilitiesEResources';
+import FacilitiesMediaCenter from './pages/FacilitiesMediaCenter';
+import FacilitiesEDC from './pages/FacilitiesEDC';
+import FacilitiesWelfare from './pages/FacilitiesWelfare';
+import FacilitiesGrievance from './pages/FacilitiesGrievance';
+import AdmissionInfo from './pages/AdmissionInfo';
+import AdmissionCourses from './pages/AdmissionCourses';
+import AdmissionEligibility from './pages/AdmissionEligibility';
+import AdmissionBrochure from './pages/AdmissionBrochure';
+import AdmissionDocuments from './pages/AdmissionDocuments';
+import AdmissionCounselling from './pages/AdmissionCounselling';
+import AdmissionOnline from './pages/AdmissionOnline';
 
 function App() {
   return (
@@ -36,7 +50,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="programs" element={<Programs />} />
-          <Route path="admissions" element={<Admissions />} />
+          <Route path="admission" element={<Admissions />} />
           <Route path="research" element={<Research />} />
           <Route path="life" element={<Life />} />
           <Route path="apply" element={<Admissions />} />
@@ -50,6 +64,21 @@ function App() {
           <Route path="academics" element={<StandardInfoPage configPath="/config/page-academics-config.json" />} />
           <Route path="facilities" element={<StandardInfoPage configPath="/config/page-facilities-config.json" />} />
           <Route path="facilities/infrastructure" element={<FacilitiesInfrastructure />} />
+          <Route path="facilities/labs" element={<FacilitiesLabs />} />
+          <Route path="facilities/library" element={<FacilitiesLibrary />} />
+          <Route path="facilities/e-resources" element={<FacilitiesEResources />} />
+          <Route path="facilities/media-center" element={<FacilitiesMediaCenter />} />
+          <Route path="facilities/edc" element={<FacilitiesEDC />} />
+          <Route path="facilities/welfare" element={<FacilitiesWelfare />} />
+          <Route path="facilities/grievance" element={<FacilitiesGrievance />} />
+          
+          <Route path="admission/info" element={<AdmissionInfo />} />
+          <Route path="admission/courses" element={<AdmissionCourses />} />
+          <Route path="admission/eligibility" element={<AdmissionEligibility />} />
+          <Route path="admission/brochure" element={<AdmissionBrochure />} />
+          <Route path="admission/documents" element={<AdmissionDocuments />} />
+          <Route path="admission/counselling" element={<AdmissionCounselling />} />
+          <Route path="admission/online" element={<AdmissionOnline />} />
           <Route path="placement" element={<StandardInfoPage configPath="/config/page-placement-config.json" />} />
           <Route path="students" element={<StandardInfoPage configPath="/config/page-students-config.json" />} />
           <Route path="departments/:deptId" element={<DeptPage />} />

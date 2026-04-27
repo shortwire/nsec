@@ -1,12 +1,80 @@
 {
   "section": "welfare_measures",
-  "title": "Welfare Measures",
+  "title": "Student Welfare Measures",
+  "tagline": "Comprehensive support systems for every NSEC student.",
+
+  "overview": [
+    "NSEC is committed to the holistic welfare of its students through financial aid, health support, transport, and mentoring programs.",
+    "The institution provides multiple scholarship schemes to ensure that meritorious and economically challenged students can pursue quality education.",
+    "A dedicated Student Welfare Committee oversees all welfare activities and ensures prompt resolution of student concerns.",
+    "Transport facilities, health insurance, and anti-ragging measures ensure a safe and supportive campus experience."
+  ],
+
+  "scholarships": [
+    {
+      "name": "Merit Scholarship",
+      "description": "Awarded to top performers in each semester across all departments based on SGPA rankings.",
+      "eligibility": "Top 10% scorers in semester exams"
+    },
+    {
+      "name": "SC/ST Scholarship",
+      "description": "State Government scholarship for SC/ST students as per West Bengal Government norms.",
+      "eligibility": "Scheduled Caste / Scheduled Tribe students"
+    },
+    {
+      "name": "OBC Scholarship",
+      "description": "Other Backward Classes scholarship provided through state government channels.",
+      "eligibility": "OBC (A) and OBC (B) category students"
+    },
+    {
+      "name": "Minority Scholarship",
+      "description": "Central government scholarship for minority community students pursuing technical education.",
+      "eligibility": "Students from notified minority communities"
+    },
+    {
+      "name": "Kanyashree Scholarship",
+      "description": "West Bengal Government scheme supporting girl students in higher education.",
+      "eligibility": "Female students (18+ years)"
+    },
+    {
+      "name": "TIG Merit Award",
+      "description": "Special award by Techno India Group for students with outstanding academic performance.",
+      "eligibility": "CGPA 8.5 and above"
+    }
+  ],
+
+  "support_measures": [
+    "Dedicated Student Counsellor for mental health and personal guidance",
+    "Anti-Ragging Squad and Monitoring Committee for campus safety",
+    "24/7 security and CCTV surveillance across the campus",
+    "Transport facilities for students commuting from remote areas",
+    "Group Mediclaim insurance coverage for all enrolled students",
+    "Free use of sports and recreation facilities",
+    "Career counselling and placement assistance",
+    "Separate hostel facilities for boys and girls with Wi-Fi"
+  ],
+
+  "committees": [
+    { "name": "Student Welfare Committee", "role": "Oversees all student welfare schemes and activities" },
+    { "name": "Anti-Ragging Committee", "role": "Ensures a ragging-free campus environment" },
+    { "name": "SC/ST Cell", "role": "Assists SC/ST students with scholarships and support" },
+    { "name": "Women's Cell", "role": "Safeguards the rights and dignity of female students" },
+    { "name": "Grievance Redressal Cell", "role": "Addresses academic and non-academic complaints" },
+    { "name": "Internal Complaints Committee", "role": "Handles sexual harassment complaints (POSH Act)" }
+  ],
+
   "documents": [
     {
       "title": "Effective Welfare Measures",
-      "file_name": "631_ Effective welfare.pdf",
-      "path": "/public/assets/facilities/welfareMeasures/631_ Effective welfare.pdf",
+      "url": "assets/facilities/welfareMeasures/631_ Effective welfare.pdf",
       "type": "pdf"
     }
-  ]
+  ],
+
+  "contact": {
+    "name": "Student Welfare Office",
+    "email": "welfare@nsec.ac.in",
+    "phone": "033-2436-1285",
+    "address": "Netaji Subhash Engineering College, Garia, Kolkata - 700152"
+  }
 }

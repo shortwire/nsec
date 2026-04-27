@@ -685,37 +685,37 @@
         },
         {
           "name": "Laboratories",
-          "path": "/facilities#labs",
+          "path": "/facilities/labs",
           "desc": "Technical Centers"
         },
         {
           "name": "Library",
-          "path": "/facilities#library",
+          "path": "/facilities/library",
           "desc": "Knowledge Hub"
         },
         {
           "name": "Online E-Resources",
-          "path": "/facilities#eresources",
+          "path": "/facilities/e-resources",
           "desc": "Digital Access"
         },
         {
           "name": "Media Center",
-          "path": "/facilities#media",
+          "path": "/facilities/media-center",
           "desc": "Creative Studio"
         },
         {
           "name": "ED Cell",
-          "path": "/facilities#edcell",
+          "path": "/facilities/edc",
           "desc": "Entrepreneurship"
         },
         {
           "name": "Welfare Measures",
-          "path": "/facilities#welfare",
+          "path": "/facilities/welfare",
           "desc": "Support Services"
         },
         {
           "name": "Grievance Portal",
-          "path": "/facilities#grievance",
+          "path": "/facilities/grievance",
           "desc": "Redressal System"
         }
       ]

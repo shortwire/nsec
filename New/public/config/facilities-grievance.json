@@ -1,0 +1,83 @@
+{
+  "section": "grievance_redressal",
+  "title": "Grievance Redressal",
+  "tagline": "A transparent, fair, and prompt system for addressing student concerns.",
+
+  "overview": [
+    "NSEC has established a robust Grievance Redressal System in compliance with UGC regulations to address academic, administrative, and personal grievances of students.",
+    "The system ensures confidentiality, impartiality, and timely resolution of all complaints filed by students or their parents.",
+    "Complaints can be submitted online through the UGC portal, via email, or physically at the Student Affairs office.",
+    "The institution takes zero tolerance approach to any form of discrimination, harassment, or academic malpractice."
+  ],
+
+  "process": [
+    {
+      "step": "01",
+      "title": "Submit Complaint",
+      "description": "Student submits a written or online grievance to the Grievance Redressal Cell or via the UGC portal."
+    },
+    {
+      "step": "02",
+      "title": "Acknowledgement",
+      "description": "The cell acknowledges receipt of the complaint within 3 working days and assigns a reference number."
+    },
+    {
+      "step": "03",
+      "title": "Investigation",
+      "description": "The committee reviews the complaint, collects evidence, and may call for a hearing with both parties."
+    },
+    {
+      "step": "04",
+      "title": "Resolution",
+      "description": "A resolution is communicated to the student within 30 working days. Appeals can be escalated if unsatisfied."
+    }
+  ],
+
+  "categories": [
+    "Academic grievances (marks, attendance, results)",
+    "Fee-related disputes and refund requests",
+    "Examination irregularities and malpractice",
+    "Ragging or bullying complaints",
+    "Sexual harassment (POSH Act complaints)",
+    "Discrimination based on caste, religion, or gender",
+    "Hostel-related complaints",
+    "Library and facilities-related issues",
+    "Administrative delays or negligence",
+    "Placement and internship disputes"
+  ],
+
+  "committee": [
+    { "name": "Prof. (Dr.) Amal K. Ghosh", "role": "Chairperson (Principal)" },
+    { "name": "Dr. Sukumar Roy", "role": "Coordinator (Dean - Academic)" },
+    { "name": "Mr. Soumava Goswami", "role": "Administrative Officer" },
+    { "name": "Prof. Anupam Ghosh", "role": "Faculty Member (CSE)" },
+    { "name": "Prof. Tridibesh Nag", "role": "Faculty Member (EE)" },
+    { "name": "Student Representative", "role": "Student Nominee" }
+  ],
+
+  "online_portals": [
+    {
+      "name": "UGC Grievance Portal",
+      "url": "https://www.ugc.ac.in/grievance/",
+      "description": "National online portal for student grievances against institutions"
+    },
+    {
+      "name": "AICTE Grievance Portal",
+      "url": "https://grievance.aicte-india.org/",
+      "description": "AICTE's dedicated portal for technical education grievances"
+    },
+    {
+      "name": "PG Portal (Govt. of India)",
+      "url": "https://pgportal.gov.in/",
+      "description": "Central Government's Public Grievance redressal portal"
+    }
+  ],
+
+  "contact": {
+    "name": "Grievance Redressal Cell",
+    "email": "grievance@nsec.ac.in",
+    "phone": "033-2436-1285",
+    "address": "Netaji Subhash Engineering College, Garia, Kolkata - 700152",
+    "timings": "Monday to Saturday, 10:00 AM - 4:00 PM"
+  }
+}

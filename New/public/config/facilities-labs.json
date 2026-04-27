@@ -1,0 +1,146 @@
+{
+  "section": "laboratories",
+  "title": "Research & Teaching Labs",
+  "tagline": "State-of-the-art facilities driving innovation and learning.",
+
+  "overview": [
+    "NSEC houses over 60 specialized laboratories across all engineering departments, equipped with modern instruments and industry-grade software.",
+    "Labs are meticulously designed to comply with AICTE norms while fostering hands-on learning, research, and innovation.",
+    "The AICTE-funded IDEA Lab is a cross-disciplinary innovation hub available to all students for rapid prototyping and creative projects.",
+    "Each lab maintains strict safety standards and is supervised by trained technical staff and faculty coordinators."
+  ],
+
+  "departments": [
+    {
+      "id": "cse",
+      "name": "Computer Science & Engineering",
+      "icon": "Cpu",
+      "labs": [
+        "Programming Lab (C, C++, Java)",
+        "Data Structures & Algorithms Lab",
+        "Operating Systems & Networks Lab",
+        "Database Management Lab",
+        "Artificial Intelligence & ML Lab",
+        "Cyber Security Lab",
+        "Software Engineering Lab",
+        "IoT & Embedded Systems Lab"
+      ]
+    },
+    {
+      "id": "it",
+      "name": "Information Technology",
+      "icon": "Monitor",
+      "labs": [
+        "Web Technologies Lab",
+        "Mobile Application Development Lab",
+        "Cloud Computing Lab",
+        "Computer Vision & Image Processing Lab",
+        "Network Security Lab"
+      ]
+    },
+    {
+      "id": "ece",
+      "name": "Electronics & Communication Engineering",
+      "icon": "Radio",
+      "labs": [
+        "Analog & Digital Electronics Lab",
+        "Microprocessor & Microcontroller Lab",
+        "Communication Engineering Lab",
+        "VLSI Design Lab",
+        "Signal Processing Lab",
+        "Antenna & Wave Propagation Lab"
+      ]
+    },
+    {
+      "id": "ee",
+      "name": "Electrical Engineering",
+      "icon": "Zap",
+      "labs": [
+        "Electrical Machines Lab",
+        "Power Systems Lab",
+        "Power Electronics Lab",
+        "Control Systems Lab",
+        "High Voltage Engineering Lab",
+        "Measurement & Instrumentation Lab"
+      ]
+    },
+    {
+      "id": "me",
+      "name": "Mechanical Engineering",
+      "icon": "Settings",
+      "labs": [
+        "Fluid Mechanics & Hydraulics Lab",
+        "Thermal Engineering Lab",
+        "Manufacturing Processes Lab",
+        "CAD/CAM Lab",
+        "Strength of Materials Lab",
+        "Metrology & Quality Control Lab"
+      ]
+    },
+    {
+      "id": "ce",
+      "name": "Civil Engineering",
+      "icon": "Building2",
+      "labs": [
+        "Structural Analysis Lab",
+        "Concrete Technology Lab",
+        "Soil Mechanics Lab",
+        "Survey Lab",
+        "Environmental Engineering Lab",
+        "Transportation Engineering Lab"
+      ]
+    },
+    {
+      "id": "besh",
+      "name": "Basic Engineering & Science Hub",
+      "icon": "FlaskConical",
+      "labs": [
+        "Physics Lab",
+        "Chemistry Lab",
+        "Mathematics & Computing Lab",
+        "Language Lab (English Communication)"
+      ]
+    }
+  ],
+
+  "special_labs": [
+    {
+      "name": "AICTE IDEA Lab",
+      "description": "A state-of-the-art innovation hub funded by AICTE, equipped with 3D printers, laser cutters, CNC machines, robotics kits, and AR/VR setups for rapid prototyping.",
+      "tag": "AICTE Funded"
+    },
+    {
+      "name": "IdeaLab Innovation Studio",
+      "description": "Cross-disciplinary creative workspace where students from all departments collaborate on live projects, startup ideas, and technical competitions.",
+      "tag": "Innovation Hub"
+    },
+    {
+      "name": "Cyber Security Research Centre",
+      "description": "Dedicated research lab for ethical hacking, network security analysis, and AI-driven cybersecurity experiments with industry partnerships.",
+      "tag": "Research Centre"
+    },
+    {
+      "name": "AI & Machine Learning Research Lab",
+      "description": "GPU-powered computing cluster for deep learning, natural language processing, and computer vision research projects.",
+      "tag": "Research Centre"
+    }
+  ],
+
+  "stats": [
+    { "label": "Total Labs", "value": "60+" },
+    { "label": "Computers", "value": "1,000+" },
+    { "label": "Departments", "value": "7" },
+    { "label": "Research Centres", "value": "4" }
+  ],
+
+  "facilities": [
+    "1 Gbps high-speed LAN across all labs",
+    "Wi-Fi enabled campus with dedicated lab access",
+    "Licensed software including MATLAB, AutoCAD, ANSYS, and Oracle",
+    "24/7 UPS power backup for uninterrupted operation",
+    "CCTV surveillance and access-controlled lab entries",
+    "Industry-grade instruments calibrated to national standards",
+    "Dedicated technical staff and lab assistants per department",
+    "Regular upgrades aligned with industry and AICTE requirements"
+  ]
+}
