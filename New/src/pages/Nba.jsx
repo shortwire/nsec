@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
 import PdfCard from '../components/pdfCard';
+import MinCard from '../components/minCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -214,7 +215,7 @@ export default function Nba() {
             <div>
               <div className="flex items-center gap-4 mb-10">
                 <img src="/assets/logo/aicte_logo.png" alt="AICTE Logo" className="h-12 w-auto object-contain" />
-                <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon">AICTE Approvals</h3>
+                <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900">AICTE Approvals</h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -242,7 +243,7 @@ export default function Nba() {
             <div>
               <div className="flex items-center gap-4 mb-10">
                 <img src="/assets/logo/makaut_logo.jpg" alt="MAKAUT Logo" className="h-12 w-auto object-contain rounded-md" />
-                <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon">MAKAUT Affiliations</h3>
+                <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900">MAKAUT Affiliations</h3>
               </div>
 
               <div className="grid grid-cols-1 gap-3">
@@ -282,7 +283,7 @@ export default function Nba() {
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
           <div className="lg:w-1/2">
-            <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Accreditation Node</h2>
+            <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-6">Accreditation Node</h2>
             <div className="space-y-4">
               {[
                 { title: "NBA Certificate (2024 - 2027)", url: "https://www.nsec.ac.in/impdoc/Netaji_Subhash_Engineering_College8_4_2024_16_32_35.pdf" },
@@ -302,23 +303,30 @@ export default function Nba() {
               ))}
             </div>
           </div>
-          <div className="lg:w-1/2 rounded-3xl p-10 border-2 border-slate-200 relative overflow-hidden">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Why NBA Matters?</h3>
-              <div className="grid grid-cols-1 gap-6">
-                {[
-                  { icon: CheckCircle, text: "Global recognition of technical degrees under the Washington Accord." },
-                  { icon: CheckCircle, text: "Assurance of quality education through outcome-based evaluation." },
-                  { icon: CheckCircle, text: "Enhanced employability and preference by global industry leaders." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="shrink-0 w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-brand-accent"><item.icon size={20} /></div>
-                    <p className="text-[15px] font-body font-medium text-slate-600 leading-relaxed pt-1">{item.text}</p>
+          <MinCard
+            variant="danger"
+            icon={CheckCircle}
+            badge="NBA Benefits"
+            title="Why NBA Matters?"
+            description="The accreditation strengthens recognition, quality assurance, and employability for technical programs."
+            className="lg:w-1/2 h-full"
+            contentClassName="gap-5"
+          >
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                "Global recognition of technical degrees under the Washington Accord.",
+                "Assurance of quality education through outcome-based evaluation.",
+                "Enhanced employability and preference by global industry leaders."
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start rounded-2xl border border-white/10 bg-white/10 p-4">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-[#fbbf24] flex items-center justify-center text-brand-maroon">
+                    <CheckCircle size={16} />
                   </div>
-                ))}
-              </div>
+                  <p className="text-[13px] sm:text-[14px] font-body font-medium text-white/80 leading-relaxed pt-1">{item}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          </MinCard>
         </div>
       </section>
 

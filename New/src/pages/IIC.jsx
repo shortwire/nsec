@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lightbulb, Users, Rocket, Building2, FileText, Download, CheckCircle2, ChevronRight, ExternalLink, Zap, Target, Trophy, Share2, Cpu, Globe, Handshake, Wrench, Calendar, Activity, Microscope, Stethoscope, Factory, BookOpen, X } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import Card from '../components/card';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
 import MinCard from '../components/minCard';
+import ContactSectionCard from '../components/ContactSectionCard.jsx';
 
 void motion;
 
@@ -143,8 +145,8 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Institutional Context</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
-              The NSEC-IIC <br/> <span className="text-brand-accent">Journey</span>
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+              The NSEC-IIC <br /> <span className="text-brand-accent">Journey</span>
             </h2>
             <div className="space-y-6">
               <div className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden group">
@@ -162,30 +164,31 @@ export default function IIC() {
             </div>
           </div>
 
-          <div className="relative pt-12">
-            <div className="bg-white rounded-[48px] p-12 text-slate-900 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10"><Rocket size={120} /></div>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">EDC Mandate</h3>
-              <p className="text-sm font-body font-medium text-slate-600 leading-relaxed mb-8 italic">
-                <HighlightText text="The NSEC Entrepreneurship Development Cell (NSEC-EDC) started its journey with the aim to inculcate the spirit of innovation and entrepreneurship amongst the young students, encouraging start-up creation through guidance, mentorship and support." />
-              </p>
-              <div className="space-y-4">
-                {[
-                  { title: "Vibrant Ecosystem", desc: "Creating a local innovation promotion infrastructure." },
-                  { title: "ARIIA Readiness", desc: "Benchmarking institutional rankings for innovation." },
-                  { title: "Cognitive Ability", desc: "Developing technical and problem-solving skills." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all">
-                    <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent"><CheckCircle2 size={16} /></div>
-                    <div>
-                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-slate-900">{item.title}</h4>
-                      <p className="text-[12px] font-body text-slate-600">{item.desc}</p>
-                    </div>
+          <MinCard
+            variant="danger"
+            icon={Rocket}
+            badge="EDC Mandate"
+            title="EDC Mandate"
+            description="The NSEC Entrepreneurship Development Cell (NSEC-EDC) started its journey with the aim to inculcate the spirit of innovation and entrepreneurship amongst the young students, encouraging start-up creation through guidance, mentorship and support."
+            className="relative pt-12 h-full"
+            contentClassName="gap-5"
+          >
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                { title: "Vibrant Ecosystem", desc: "Creating a local innovation promotion infrastructure." },
+                { title: "ARIIA Readiness", desc: "Benchmarking institutional rankings for innovation." },
+                { title: "Cognitive Ability", desc: "Developing technical and problem-solving skills." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 p-4 rounded-2xl border border-white/10 bg-white/10">
+                  <div className="w-8 h-8 rounded-lg bg-[#fbbf24] flex items-center justify-center text-brand-maroon shrink-0"><CheckCircle2 size={16} /></div>
+                  <div>
+                    <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-white">{item.title}</h4>
+                    <p className="text-[12px] font-body text-white/75">{item.desc}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </MinCard>
         </div>
       </section>
 
@@ -194,10 +197,10 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Council Mandate</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
-              Functions of <br/> <span className="text-brand-accent">IIC Council</span>
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+              Functions of <br /> <span className="text-brand-accent">IIC Council</span>
             </h2>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 "Conduct innovation and entrepreneurship activities.",
                 "Identify and reward innovations and success stories.",
@@ -206,77 +209,61 @@ export default function IIC() {
                 "Organize Hackathons, Idea competitions and mini-challenges.",
                 "Create Institutional Innovation portal for projects."
               ].map((fn, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-white border border-slate-100 rounded-2xl hover:bg-white hover:shadow-xl hover:border-brand-accent/20 transition-all group">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all shrink-0">
-                    <Zap size={18} />
+                <Card key={i} index={i} variant={i % 2 === 0 ? 'accent' : 'slate'}>
+                  <div className="p-5 pt-8 min-h-[140px] flex gap-4 items-start relative z-10">
+                    <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
+                      <Zap size={18} />
+                    </div>
+                    <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2">
+                      {fn}
+                    </p>
                   </div>
-                  <p className="text-sm font-heading font-black italic uppercase tracking-tight text-slate-700 pt-1 leading-none">{fn}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
 
-          <div className="p-12 bg-white rounded-[48px] text-slate-900 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
-              <Target size={160} />
-            </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Major Focus</h3>
-            <div className="space-y-4">
-              {[
-                "Vibrant innovation ecosystem creation.",
-                "Start-up supporting Mechanism at NSEC.",
-                "Prepare institute for ARIIA Framework.",
-                "Scouting Ideas and Pre-incubation Scouting.",
-                "Develop better Cognitive Ability for Students."
-              ].map((focus, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all group/item">
-                  <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent group-hover/item:bg-brand-accent group-hover/item:text-slate-900 transition-all">
-                    <CheckCircle2 size={16} />
+          <Card index={0} variant="danger" className="p-0">
+            <div className="p-12 relative overflow-hidden group h-full">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700 text-brand-maroon">
+                <Target size={160} />
+              </div>
+              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Major <span className="text-brand-maroon">Focus</span></h3>
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  "Vibrant innovation ecosystem creation.",
+                  "Start-up supporting Mechanism at NSEC.",
+                  "Prepare institute for ARIIA Framework.",
+                  "Scouting Ideas and Pre-incubation Scouting.",
+                  "Develop better Cognitive Ability for Students."
+                ].map((focus, i) => (
+                  <div key={i} className="flex gap-4 p-4 rounded-2xl border border-slate-200 bg-slate-50 group/item hover:bg-brand-maroon/5 hover:border-brand-maroon/20 transition-all">
+                    <div className="w-8 h-8 rounded-lg bg-brand-maroon/10 flex items-center justify-center text-brand-maroon group-hover/item:bg-brand-maroon group-hover/item:text-white transition-all shrink-0">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <span className="text-[13px] font-body font-medium text-slate-700 group-hover/item:text-slate-900 pt-1 leading-tight transition-colors">{focus}</span>
                   </div>
-                  <span className="text-[13px] font-body font-medium text-slate-700 pt-1 leading-tight">{focus}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
 
-      {/* ── 04. IIC MEMBERS TABLE ── */}
+      {/* ── 04. IIC MEMBERS ── */}
       <section id="members" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white">
         <SectionHeading title="IIC Members" tagline="Council composition according to the IIC Portal." />
-        
-        <div className="max-w-7xl mx-auto mt-16 overflow-hidden rounded-[40px] border border-slate-100 shadow-2xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-white text-white">
-                  <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">SN</th>
-                  <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">Name</th>
-                  <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest">Position in the Council</th>
-                  <th className="p-6 text-[10px] font-mono font-black uppercase tracking-widest text-right">Node</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {iicMembers.map((member, i) => (
-                  <tr key={i} className="border-b border-slate-50 hover:bg-white/50 transition-colors group">
-                    <td className="p-6">
-                      <span className="text-sm font-mono font-bold text-slate-300 group-hover:text-brand-accent">#{member.sn.toString().padStart(2, '0')}</span>
-                    </td>
-                    <td className="p-6">
-                      <p className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800 leading-none group-hover:text-brand-accent transition-colors">{member.name}</p>
-                    </td>
-                    <td className="p-6">
-                      <span className="px-3 py-1 bg-white border border-slate-100 rounded-lg text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-all">{member.position}</span>
-                    </td>
-                    <td className="p-6 text-right">
-                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-300 group-hover:bg-brand-accent group-hover:text-white transition-all ml-auto">
-                        <ChevronRight size={14} />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+        <div className="max-w-7xl mx-auto mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {iicMembers.map((member, i) => (
+              <ContactSectionCard
+                key={i}
+                index={i}
+                title={member.name}
+                subtitle={member.position}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -284,7 +271,7 @@ export default function IIC() {
       {/* ── 05. INNOVATION HUB (RESOURCES) ── */}
       <section id="hub" className="relative pt-16 pb-8 px-8 lg:px-24 bg-white border-t border-slate-200">
         <SectionHeading title="Innovation Hub" tagline="Resources, Facilities, and Strategic Ecosystem Portals." />
-        
+
         <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {resourceCards.map((card, i) => (
             <SpotlightStatusCard
@@ -313,9 +300,9 @@ export default function IIC() {
           <div id="products" className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="relative rounded-[48px] overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 bg-brand-accent/10 group-hover:bg-brand-accent/0 transition-colors duration-700" />
-              <img 
-                src="https://www.nsec.ac.in/notice/Sanitization_Tunnel.jpg" 
-                alt="Automatic Sanitization Tunnel" 
+              <img
+                src="https://www.nsec.ac.in/notice/Sanitization_Tunnel.jpg"
+                alt="Automatic Sanitization Tunnel"
                 className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => { e.target.src = '/assets/HeroFocus/Campus_Life4.webp'; }}
               />
@@ -326,7 +313,7 @@ export default function IIC() {
             </div>
             <div>
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Innovation Output</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">Products of <br/> <span className="text-brand-accent">NSEC-IIC</span></h3>
+              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">Products of <br /> <span className="text-brand-accent">NSEC-IIC</span></h3>
               <p className="text-lg font-body font-medium text-slate-500 leading-relaxed italic">
                 Our innovation ecosystem translates academic research into market-ready products. The <span className="text-brand-accent font-bold">Automatic Sanitization Tunnel</span>, developed by faculty and student innovators, stands as a testament to our rapid prototyping capabilities during national emergencies.
               </p>
@@ -337,9 +324,9 @@ export default function IIC() {
           <div id="facilities" className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center direction-rtl">
             <div className="lg:order-2 relative rounded-[48px] overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 bg-brand-maroon/10 group-hover:bg-brand-maroon/0 transition-colors duration-700" />
-              <img 
-                src="https://www.nsec.ac.in/notice/IDEA_Lab.jpg" 
-                alt="AICTE-IDEA Lab" 
+              <img
+                src="https://www.nsec.ac.in/notice/IDEA_Lab.jpg"
+                alt="AICTE-IDEA Lab"
                 className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => { e.target.src = '/assets/HeroFocus/Campus_Life3.webp'; }}
               />
@@ -350,7 +337,7 @@ export default function IIC() {
             </div>
             <div className="lg:order-1 text-right">
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Research Infra</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">State-of-the-art <br/> <span className="text-brand-accent">Facilities</span></h3>
+              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">State-of-the-art <br /> <span className="text-brand-accent">Facilities</span></h3>
               <p className="text-lg font-body font-medium text-slate-500 leading-relaxed italic">
                 From the <span className="text-brand-accent font-bold">AICTE-IDEA Lab</span> for high-end prototyping to the <span className="text-brand-accent font-bold">NSEC Incubation Centre</span> (mentored by CII), we provide the physical and intellectual space required to scale startup ventures.
               </p>
@@ -364,11 +351,11 @@ export default function IIC() {
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-brand-accent rounded-full blur-[120px]" />
         </div>
-        
+
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Regional Network</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
             <div id="mous" className="space-y-4">
               {[
                 { name: "Electrixa Energy and Lighting Pvt. Ltd.", type: "Industry Partner" },
@@ -389,7 +376,7 @@ export default function IIC() {
 
           <div id="achievements">
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Achievements</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
             <div className="space-y-6">
               <MinCard
                 title="Model Assembly Unit"
@@ -411,8 +398,8 @@ export default function IIC() {
       </section>
 
 
-    
-            {/* PDF Modal */}
+
+      {/* PDF Modal */}
       <AnimatePresence>
         {selectedPdf && (
           <motion.div
