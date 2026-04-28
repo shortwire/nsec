@@ -785,7 +785,7 @@ export default function Naac() {
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Institutional Hub</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
               Internal Quality <br/> <span className="text-brand-accent">Assurance Cell</span>
             </h2>
             <div className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden group">
@@ -826,7 +826,7 @@ export default function Naac() {
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <ShieldCheck size={120} />
             </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Our <span className="text-brand-accent">Vision</span></h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Our <span className="text-brand-accent">Vision</span></h3>
             <p className="text-lg font-body font-medium text-slate-600 leading-relaxed italic">
               "{iqacData.vision}"
             </p>
@@ -834,7 +834,7 @@ export default function Naac() {
 
           {/* Mission */}
           <div className="lg:col-span-2 p-10 bg-white border border-slate-100 rounded-[40px] relative overflow-hidden group">
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
               {iqacData.mission.map((item, i) => (
                 <div key={i} className="flex gap-4 group/item">
@@ -849,7 +849,7 @@ export default function Naac() {
 
           {/* Objectives */}
           <div className="lg:col-span-3 p-10 bg-brand-accent/[0.03] border border-brand-accent/10 rounded-[40px] relative overflow-hidden">
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Objectives</span></h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Strategic <span className="text-brand-accent">Objectives</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {iqacData.objectives.map((obj, i) => (
                 <div key={i} className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all">
@@ -891,7 +891,7 @@ export default function Naac() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Quality Mandate</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
               Operational <br/> <span className="text-brand-accent">Functions</span>
             </h2>
             <p className="text-lg font-body font-medium text-slate-500 leading-relaxed mb-8">
@@ -978,7 +978,7 @@ export default function Naac() {
             <div className="p-10 bg-white border-b border-slate-100 relative">
               <div className="absolute top-0 right-0 p-8 opacity-10 text-slate-900"><History size={80} /></div>
               <span className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.4em] mb-2 block">Archival History</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-1">NAAC 1st Cycle</h3>
+              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-1">NAAC 1st Cycle</h3>
               <p className="text-sm font-mono font-bold text-slate-400 uppercase tracking-widest italic">{cycles.first.period} • {cycles.first.status}</p>
             </div>
             <div className="p-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1064,7 +1064,7 @@ export default function Naac() {
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-12 gap-6">
                   <div>
                     <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-2 block">Key Indicator Analysis</span>
-                    <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 leading-none">
+                    <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon leading-none">
                       Criterion {activeCriterion}: <span className="text-brand-accent">{criterionDetails[activeCriterion].title}</span>
                     </h3>
                   </div>

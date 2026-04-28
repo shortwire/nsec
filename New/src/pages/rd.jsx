@@ -226,7 +226,7 @@ export default function Rd() {
               <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
                 <Target size={24} />
               </div>
-              <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-slate-900">Research Vision</h3>
+              <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon">Research Vision</h3>
             </div>
             <div className="flex flex-col gap-6">
               {visionPoints.map((p, i) => (
@@ -241,7 +241,7 @@ export default function Rd() {
               <div className="w-12 h-12 rounded-xl bg-brand-maroon/10 flex items-center justify-center text-brand-maroon">
                 <CheckCircle2 size={24} />
               </div>
-              <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-slate-900">Our Mandate</h3>
+              <h3 className="text-2xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon">Our Mandate</h3>
             </div>
             <div className="flex flex-col gap-6">
               {missionPoints.map((p, i) => (
@@ -299,7 +299,7 @@ export default function Rd() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-800 mb-2">Industry Partnerships</h2>
+              <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-2">Industry Partnerships</h2>
               <p className="text-slate-600 font-mono text-[11px] uppercase tracking-[0.2em]">Strategic MOUs & Collaborations</p>
             </div>
             <div className="flex items-center gap-4">

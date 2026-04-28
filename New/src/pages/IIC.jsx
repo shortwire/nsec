@@ -143,7 +143,7 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Institutional Context</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
               The NSEC-IIC <br/> <span className="text-brand-accent">Journey</span>
             </h2>
             <div className="space-y-6">
@@ -165,7 +165,7 @@ export default function IIC() {
           <div className="relative pt-12">
             <div className="bg-white rounded-[48px] p-12 text-slate-900 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10"><Rocket size={120} /></div>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">EDC Mandate</h3>
+              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">EDC Mandate</h3>
               <p className="text-sm font-body font-medium text-slate-600 leading-relaxed mb-8 italic">
                 <HighlightText text="The NSEC Entrepreneurship Development Cell (NSEC-EDC) started its journey with the aim to inculcate the spirit of innovation and entrepreneurship amongst the young students, encouraging start-up creation through guidance, mentorship and support." />
               </p>
@@ -194,7 +194,7 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Council Mandate</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
+            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">
               Functions of <br/> <span className="text-brand-accent">IIC Council</span>
             </h2>
             <div className="grid grid-cols-1 gap-4">
@@ -220,7 +220,7 @@ export default function IIC() {
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
               <Target size={160} />
             </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Major Focus</h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Major Focus</h3>
             <div className="space-y-4">
               {[
                 "Vibrant innovation ecosystem creation.",
@@ -326,7 +326,7 @@ export default function IIC() {
             </div>
             <div>
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Innovation Output</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">Products of <br/> <span className="text-brand-accent">NSEC-IIC</span></h3>
+              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">Products of <br/> <span className="text-brand-accent">NSEC-IIC</span></h3>
               <p className="text-lg font-body font-medium text-slate-500 leading-relaxed italic">
                 Our innovation ecosystem translates academic research into market-ready products. The <span className="text-brand-accent font-bold">Automatic Sanitization Tunnel</span>, developed by faculty and student innovators, stands as a testament to our rapid prototyping capabilities during national emergencies.
               </p>
@@ -350,7 +350,7 @@ export default function IIC() {
             </div>
             <div className="lg:order-1 text-right">
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Research Infra</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">State-of-the-art <br/> <span className="text-brand-accent">Facilities</span></h3>
+              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8 leading-none">State-of-the-art <br/> <span className="text-brand-accent">Facilities</span></h3>
               <p className="text-lg font-body font-medium text-slate-500 leading-relaxed italic">
                 From the <span className="text-brand-accent font-bold">AICTE-IDEA Lab</span> for high-end prototyping to the <span className="text-brand-accent font-bold">NSEC Incubation Centre</span> (mentored by CII), we provide the physical and intellectual space required to scale startup ventures.
               </p>
@@ -368,7 +368,7 @@ export default function IIC() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
           <div>
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Regional Network</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
             <div id="mous" className="space-y-4">
               {[
                 { name: "Electrixa Energy and Lighting Pvt. Ltd.", type: "Industry Partner" },
@@ -389,7 +389,7 @@ export default function IIC() {
 
           <div id="achievements">
             <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Achievements</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
             <div className="space-y-6">
               <MinCard
                 title="Model Assembly Unit"
