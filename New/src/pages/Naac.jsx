@@ -4,6 +4,7 @@ import { ShieldCheck, Award, FileText, Download, CheckCircle2, ChevronRight, His
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import ContactSectionCard from '../components/ContactSectionCard.jsx';
+import Card from '../components/card';
 import PdfCard from '../components/pdfCard';
 import MinCard from '../components/minCard';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
@@ -834,7 +835,7 @@ export default function Naac() {
 
           {/* Mission */}
           <div className="lg:col-span-2 p-10 bg-white border border-slate-100 rounded-[40px] relative overflow-hidden group">
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
               {iqacData.mission.map((item, i) => (
                 <div key={i} className="flex gap-4 group/item">
@@ -849,13 +850,19 @@ export default function Naac() {
 
           {/* Objectives */}
           <div className="lg:col-span-3 p-10 bg-brand-accent/[0.03] border border-brand-accent/10 rounded-[40px] relative overflow-hidden">
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Strategic <span className="text-brand-accent">Objectives</span></h3>
+            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Objectives</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {iqacData.objectives.map((obj, i) => (
-                <div key={i} className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-slate-400 mb-4 font-heading font-black italic">{i + 1}</div>
-                  <p className="text-[13px] font-body font-medium text-slate-600 leading-relaxed italic">"{obj}"</p>
-                </div>
+                <Card key={i} index={i} variant={i % 3 === 0 ? 'accent' : i % 3 === 1 ? 'slate' : 'danger'}>
+                  <div className="p-6 pt-8 min-h-[150px] flex gap-4 items-start relative z-10">
+                    <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300 font-heading font-black italic text-sm">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2 italic">
+                      {obj}
+                    </p>
+                  </div>
+                </Card>
               ))}
             </div>
           </div>
@@ -878,14 +885,18 @@ export default function Naac() {
       <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {iqacData.functions.map((fn, i) => (
-                <div key={i} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all group">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-300 group-hover:text-brand-accent group-hover:border-brand-accent/30 transition-all shrink-0">
-                    <CheckCircle2 size={18} />
+                <Card key={i} index={i} variant={i % 2 === 0 ? 'accent' : 'danger'}>
+                  <div className="p-6 pt-8 min-h-[140px] flex gap-4 items-start relative z-10">
+                    <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2">
+                      {fn}
+                    </p>
                   </div>
-                  <p className="text-[13px] font-body font-medium text-slate-600 leading-snug pt-1">{fn}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

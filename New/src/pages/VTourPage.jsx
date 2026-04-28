@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Map, ArrowRight, PlayCircle, Calendar, Globe, Download, Eye, ExternalLink, Maximize, MapPin, Building, Trees, Compass, BookOpen } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import MinCard from '../components/minCard';
 import PdfModal from '../components/PdfModal';
 
 export default function VTourPage() {
@@ -268,26 +269,19 @@ export default function VTourPage() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Campus Resources</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {resources.map((res, i) => (
-                <button
+                <MinCard
                   key={i}
+                  icon={res.type === 'Map' ? Map : res.type === 'Guide' ? BookOpen : res.type === 'Brochure' ? Building : Trees}
+                  title={res.title}
+                  description="Campus resource PDF"
+                  badge="Campus Resource"
+                  meta="Open document"
+                  variant={i % 2 === 0 ? 'accent' : 'slate'}
+                  index={i}
+                  center={false}
+                  actionLabel="View PDF"
                   onClick={() => setSelectedPdf(res.url)}
-                  className="w-full text-left focus:outline-none p-5 bg-white border border-slate-200 rounded-xl flex flex-col gap-4 hover:bg-brand-accent/5 hover:border-brand-accent/30 shadow-sm hover:shadow-md transition-all group"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-brand-accent group-hover:text-white transition-colors">
-                      {res.type === 'Map' ? <Map size={14} /> : 
-                       res.type === 'Guide' ? <BookOpen size={14} /> : 
-                       res.type === 'Brochure' ? <Building size={14} /> : <Trees size={14} />}
-                    </div>
-                    <span className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest group-hover:text-brand-accent/60">PDF</span>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-700 group-hover:text-brand-accent transition-colors leading-tight">{res.title}</h4>
-                    <div className="flex items-center gap-2 mt-2 text-slate-400 group-hover:text-brand-accent text-[10px] font-mono uppercase tracking-widest transition-colors">
-                      <Download size={12} className="group-hover:translate-y-px transition-transform" /> View Document
-                    </div>
-                  </div>
-                </button>
+                />
               ))}
             </div>
           </div>

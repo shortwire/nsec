@@ -135,30 +135,32 @@ export default function IdeaLab() {
             </div>
           </div>
 
-          <div className="relative pt-12">
-            <div className="bg-white rounded-[48px] p-12 text-slate-900 shadow-2xl relative overflow-hidden group border border-slate-200">
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
-                <Hammer size={120} />
-              </div>
-              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter mb-8 text-brand-accent">Strategic Goals</h3>
-              <div className="space-y-4">
-                {[
-                  { title: "Entrepreneurial Mindset", desc: "Cultivating the ability to commercialize innovative solutions." },
-                  { title: "Academia-Industry Bridge", desc: "Creating a strong foundation for future technology leaders." },
-                  { title: "Tangible Prototypes", desc: "Transforming concepts into products, or services." },
-                  { title: "Global Challenges", desc: "Addressing real-world problems through design thinking." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all">
-                    <div className="w-8 h-8 rounded-lg bg-brand-accent/20 flex items-center justify-center text-brand-accent shrink-0"><CheckCircle2 size={16} /></div>
-                    <div>
-                      <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-slate-900">{item.title}</h4>
-                      <p className="text-[12px] font-body text-slate-600">{item.desc}</p>
-                    </div>
+          <MinCard
+            variant="accent"
+            icon={Hammer}
+            badge="Core Mandate"
+            title="Strategic Goals"
+            description="Goals shaping the innovation and prototyping ecosystem at the IDEA Lab."
+            className="relative pt-12 h-full border border-slate-200"
+            contentClassName="gap-5"
+          >
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                { title: "Entrepreneurial Mindset", desc: "Cultivating the ability to commercialize innovative solutions." },
+                { title: "Academia-Industry Bridge", desc: "Creating a strong foundation for future technology leaders." },
+                { title: "Tangible Prototypes", desc: "Transforming concepts into products, or services." },
+                { title: "Global Challenges", desc: "Addressing real-world problems through design thinking." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 p-4 rounded-2xl border border-white/10 bg-white/10">
+                  <div className="w-8 h-8 rounded-lg bg-[#fbbf24] flex items-center justify-center text-brand-blue shrink-0"><CheckCircle2 size={16} /></div>
+                  <div>
+                    <h4 className="text-[11px] font-mono font-black uppercase tracking-widest text-white">{item.title}</h4>
+                    <p className="text-[12px] font-body text-white/80">{item.desc}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </MinCard>
         </div>
       </section>
 
