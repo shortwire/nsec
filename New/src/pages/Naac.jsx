@@ -6,6 +6,7 @@ import SectionHeading from '../components/SectionHeading';
 import ContactSectionCard from '../components/ContactSectionCard.jsx';
 import PdfCard from '../components/pdfCard';
 import MinCard from '../components/minCard';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -801,37 +802,19 @@ export default function Naac() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 bg-brand-accent/5 rounded-[40px] blur-2xl" />
-            <div className="relative bg-white border border-slate-100 rounded-[40px] p-10 shadow-xl overflow-hidden">
-              <div className="flex flex-col sm:flex-row items-center gap-8 mb-8">
-                <div className="w-24 h-24 rounded-3xl bg-white overflow-hidden border-2 border-brand-accent/20 shrink-0">
-                  <img src="https://www.nsec.ac.in/images/dr-sukumar-roy.jpg" alt="Dr. Sukumar Roy" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-heading font-black italic uppercase tracking-tight text-slate-900 leading-none mb-2">{iqacData.coordinator.name}</h3>
-                  <p className="text-xs font-mono font-bold text-brand-accent uppercase tracking-widest mb-4">{iqacData.coordinator.role}</p>
-                  <div className="flex flex-wrap gap-3">
-                    <a href={`mailto:${iqacData.coordinator.email.split(',')[0]}`} className="p-2 bg-white rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><MessageSquare size={16} /></a>
-                    <a href={`tel:${iqacData.coordinator.phone}`} className="p-2 bg-white rounded-lg text-slate-400 hover:text-brand-accent hover:bg-brand-accent/5 transition-all"><Download size={16} /></a>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed mb-8 border-l-2 border-slate-100 pl-6 italic">
-                "{iqacData.coordinator.desk}"
-              </p>
-              <div className="p-4 bg-white rounded-2xl border border-slate-100 flex items-center justify-between">
-                <div>
-                  <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Contact Node</p>
-                  <p className="text-[11px] font-heading font-black italic text-slate-700">{iqacData.coordinator.email.split(',')[0]}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Direct Ext.</p>
-                  <p className="text-[11px] font-heading font-black italic text-slate-700">{iqacData.coordinator.phone}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SpotlightStatusCard
+            delay={0.1}
+            variant="teal"
+            backgroundImage="/assets/images/helpline-bg.png"
+            icon={ShieldCheck}
+            badge="IQAC Coordinator"
+            title={iqacData.coordinator.name}
+            value="Coordinator-IQAC"
+            description={iqacData.coordinator.desk}
+            meta={iqacData.coordinator.email.split(',')[0]}
+            cta="Contact"
+            className="min-h-[420px]"
+          />
         </div>
       </section>
 

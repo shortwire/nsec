@@ -5,7 +5,6 @@ import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
 import PdfCard from '../components/pdfCard';
-import MinCard from '../components/minCard';
 
 /* ═══════════════════════════════════════════════════════════
    HIGHLIGHT IMPORTANT WORDS
@@ -219,15 +218,20 @@ export default function Ariia() {
                 { label: "Principal Office", email: "principal@nsec.ac.in" },
                 { label: "Innovation Node", email: "bose.shilpi08@gmail.com" }
               ].map((node, i) => (
-                <MinCard
+                <SpotlightStatusCard
                   key={i}
                   href={`mailto:${node.email}`}
+                  delay={i * 0.08}
+                  variant={i === 0 ? 'teal' : 'gold'}
+                  backgroundImage="/assets/images/helpline-bg.png"
                   icon={Mail}
+                  badge="ARIIA Feedback"
                   title={node.label}
-                  description={node.email}
-                  variant="slate"
-                  index={i}
-                  actionLabel="Send Email"
+                  value={node.email}
+                  description="Submit comments and feedback here"
+                  meta="Innovation Portal"
+                  cta="Send Email"
+                  className="min-h-[240px]"
                 />
               ))}
             </div>

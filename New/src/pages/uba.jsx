@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, MapPin, Users, Globe, Building2, Leaf, Heart, MessageSquare, FileText, Download, CheckCircle2, ExternalLink, ChevronRight, GraduationCap, Globe2, TreePine, Sprout, BookOpen, X } from 'lucide-react';
+import { ShieldCheck, MapPin, Users, Globe, Building2, Leaf, Heart, MessageSquare, FileText, Download, CheckCircle2, ExternalLink, ChevronRight, GraduationCap, Globe2, TreePine, Sprout, BookOpen, X, Mail } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
@@ -215,26 +215,19 @@ export default function UbaPage() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 bg-brand-accent/5 rounded-[40px] blur-2xl" />
-            <div className="relative bg-white border border-slate-100 rounded-[40px] p-8 shadow-xl overflow-hidden">
-              <div className="flex items-center gap-4 mb-8 pb-4 border-b border-slate-50">
-                <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent"><ShieldCheck size={24} /></div>
-                <h3 className="text-xl font-heading font-black italic uppercase tracking-tight text-slate-800">The NSEC UBA Cell</h3>
-              </div>
-              <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed mb-8">
-                <HighlightText text={ubaData.nsecRole} />
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {['NSS Unit', 'Rotaract Club', 'Faculty Group', 'Motivated Staff'].map((tag, i) => (
-                  <div key={i} className="flex items-center gap-2 px-4 py-2  rounded-lg text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest group hover:bg-brand-accent hover:text-white transition-all">
-                    <CheckCircle2 size={12} className="text-brand-accent group-hover:text-white" />
-                    {tag}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <SpotlightStatusCard
+            delay={0.1}
+            variant="teal"
+            backgroundImage="/assets/images/helpline-bg.png"
+            icon={ShieldCheck}
+            badge="UBA Cell"
+            title="The NSEC UBA Cell"
+            value="Participating Institute"
+            description={ubaData.nsecRole}
+            meta="IIT Kharagpur RCI"
+            cta="Explore"
+            className="min-h-[420px]"
+          />
         </div>
       </section>
 
@@ -349,41 +342,20 @@ export default function UbaPage() {
       <section className="relative pt-16 pb-24 px-8 lg:px-24 overflow-hidden border-t border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           {ubaData.coordinators.map((coord, i) => (
-            <motion.div
+            <SpotlightStatusCard
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="bg-white border border-slate-100 rounded-[40px] p-10 shadow-xl overflow-hidden relative group"
-            >
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-accent group-hover:w-2 transition-all" />
-              <div className="flex flex-col sm:flex-row items-center gap-8 mb-8">
-                <div className="w-24 h-24 rounded-3xl  overflow-hidden border-2 border-brand-accent/20 shrink-0">
-                  <img src={i === 0 ? "https://www.nsec.ac.in/images/dr-sukumar-roy.jpg" : "https://www.nsec.ac.in/images/faculty/psp.jpg"} alt={coord.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-heading font-black italic uppercase tracking-tight text-slate-900 leading-none mb-1">{coord.name}</h3>
-                  <p className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-widest mb-1">{coord.designation}</p>
-                  <p className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">{coord.role}</p>
-                </div>
-              </div>
-              <p className="text-[15px] font-body font-medium text-slate-500 leading-relaxed mb-8 border-l-2 border-slate-100 pl-6 italic">
-                "{coord.desk}"
-              </p>
-              <div className="p-4 bg-white rounded-2xl border border-slate-100 flex items-center justify-between">
-                <div>
-                  <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Official Email</p>
-                  <p className="text-[11px] font-heading font-black italic text-slate-700">{coord.email.split(',')[0]}</p>
-                </div>
-                {coord.phone && (
-                  <div className="text-right">
-                    <p className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">Nodal Extension</p>
-                    <p className="text-[11px] font-heading font-black italic text-slate-700">{coord.phone}</p>
-                  </div>
-                )}
-              </div>
-            </motion.div>
+              delay={i * 0.18}
+              variant={i === 0 ? 'teal' : 'maroon'}
+              backgroundImage="/assets/images/helpline-bg.png"
+              icon={Mail}
+              badge="UBA Faculty"
+              title={coord.name}
+              value={coord.designation}
+              description={coord.role}
+              meta={coord.phone || coord.email.split(',')[0]}
+              cta="Contact"
+              className="min-h-[420px]"
+            />
           ))}
         </div>
       </section>

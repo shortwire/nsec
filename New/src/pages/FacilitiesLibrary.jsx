@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, ExternalLink, Download, Clock, Globe, ChevronRight, X, CheckCircle2, Mail, Phone } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SpotlightStatusCard from '../components/SpotlightStatusCard';
 
 const ITEM_ICONS = [BookOpen, Globe, CheckCircle2, ExternalLink, Download, Clock, Mail, Phone];
 
@@ -207,14 +208,18 @@ export default function FacilitiesLibrary() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Digital Resources</h2>
             <div className="space-y-3">
               {(config.digital_resources || []).map((r, i) => (
-                <a key={i} href={r.url} target="_blank" rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-5 bg-white border border-slate-200 rounded-2xl hover:bg-brand-accent/5 hover:border-brand-accent/30 shadow-sm hover:shadow-md transition-all group">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-all"><Globe size={18} /></div>
-                    <span className="text-[15px] font-heading font-black italic uppercase tracking-tight text-slate-700 group-hover:text-brand-accent">{r.name}</span>
-                  </div>
-                  <ChevronRight size={18} className="text-slate-300 group-hover:translate-x-1 group-hover:text-brand-accent transition-all shrink-0" />
-                </a>
+                <SpotlightStatusCard
+                  key={i}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  delay={i * 0.06}
+                  backgroundImage={'/assets/images/helpline-bg.png'}
+                  icon={Globe}
+                  title={r.name}
+                  cta="Visit"
+                  variant="teal"
+                />
               ))}
             </div>
           </div>

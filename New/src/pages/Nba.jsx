@@ -259,10 +259,11 @@ export default function Nba() {
                   <PdfCard
                     key={i}
                     href={prog.url}
-                    icon={CheckCircle2}
+                    icon={FileText}
                     title={prog.name}
                     label="2025-26"
-                    variant="slate"
+                    meta="MAKAUT Affiliation"
+                    variant="accent"
                     index={i}
                     download={true}
                     onClick={() => setSelectedPdf(prog.url)}
