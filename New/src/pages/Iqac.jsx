@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, BookOpen, ExternalLink, Download, Globe, Cpu, Laptop,
   Award, Info, Target, CheckCircle2, ChevronRight, Maximize,
-  MessageSquare, Brain, Landmark, X, GraduationCap
+  MessageSquare, Brain, Landmark, X, GraduationCap, FileText
 } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';

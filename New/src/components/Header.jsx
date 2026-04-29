@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion as Motion } from 'framer-motion';
 import {
   Phone,
   Mail,
@@ -10,19 +9,6 @@ import {
   ShieldCheck,
   Zap
 } from 'lucide-react';
-
-const AccreditationLine = () => (
-  <div className="flex items-center gap-12 whitespace-nowrap">
-    <span className="text-[11px] font-bold text-brand-blue/80 uppercase tracking-tight">
-      Approved by <span className="text-brand-accent">AICTE</span> •
-      Affiliated to <span className="text-brand-accent">MAKAUT</span> •
-      Accredited by <span className="text-brand-accent">NBA</span> (Programmes) and
-      <span className="text-brand-accent ml-1">NAAC</span> •
-      Ranked by <span className="text-brand-accent ml-1">NIRF</span> [2020] &
-      <span className="text-brand-accent ml-1">ARIIA</span>
-    </span>
-  </div>
-);
 
 export default function Header() {
   const [config, setConfig] = useState(null);
@@ -126,30 +112,11 @@ export default function Header() {
             </div>
           </div>
 
-          {/* COLLEGE NAME & MARQUEE */}
+          {/* COLLEGE NAME */}
           <div className="flex flex-col items-end justify-center shrink-0">
             <h1 className="text-3xl lg:text-4xl font-black text-brand-maroon leading-none tracking-tighter uppercase italic whitespace-nowrap text-right">
               NETAJI SUBHASH ENGINEERING <span className="text-brand-accent">COLLEGE</span>
             </h1>
-
-            {/* NEW AGE SCROLLING TEXT */}
-            <div className="w-full max-w-2xl h-6 mt-1.5 bg-brand-bg rounded-full border border-brand-accent/5 overflow-hidden relative flex items-center px-6 group">
-              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-brand-bg to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-brand-bg to-transparent z-10" />
-
-              <Motion.div
-                animate={{ x: [0, -800] }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="whitespace-nowrap flex items-center gap-12"
-              >
-                <AccreditationLine />
-                <AccreditationLine />
-              </Motion.div>
-            </div>
           </div>
         </div>
       </header>

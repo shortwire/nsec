@@ -354,8 +354,8 @@ export default function IIC() {
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
           <div>
-            <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Regional Network</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Strategic <span className="text-brand-accent">Alliances</span></h3>
+            <span className="text-[10px] font-mono font-black text-black uppercase tracking-[0.4em] mb-4 block">Regional Network</span>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">Strategic <span className="text-brand-maroon">Alliances</span></h3>
             <div id="mous" className="space-y-4">
               {[
                 { name: "Electrixa Energy and Lighting Pvt. Ltd.", type: "Industry Partner" },
@@ -375,8 +375,8 @@ export default function IIC() {
           </div>
 
           <div id="achievements">
-            <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Achievements</span>
-            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">NSEC-EDC <span className="text-brand-accent">Impact</span></h3>
+            <span className="text-[10px] font-mono font-black text-black uppercase tracking-[0.4em] mb-4 block">Achievements</span>
+            <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">NSEC-EDC <span className="text-brand-maroon">Impact</span></h3>
             <div className="space-y-6">
               <MinCard
                 title="Model Assembly Unit"

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, FileText, Users, Target, CheckCircle2, Mail, BookOpen } from 'lucide-react';
+import { ArrowRight, FileText, Users, Target, CheckCircle2, Mail, BookOpen, Download } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import PdfCard from '../components/pdfCard';
 
 const MotionDiv = motion.div;
 const MotionH1 = motion.h1;
@@ -110,6 +111,7 @@ export default function IqacPage({ configPath }) {
   }, [configPath]);
 
   const pageConfig = config?.iqac ? normalizeIqacConfig(config.iqac) : config;
+  const pdfSectionTitles = new Set(['IQAC Links', 'Annual Reports']);
 
   if (!pageConfig) {
     return (
@@ -180,28 +182,46 @@ export default function IqacPage({ configPath }) {
                   </p>
                   
                   {prog.items.length > 0 && (
-                    <ul className="space-y-3 mb-8">
-                      {prog.items.slice(0, 3).map((item, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: i % 2 === 0 ? '#008b8b' : '#800000' }} />
-                          <span className="text-sm font-medium" style={{ color: '#333' }}>
-                            {typeof item === 'string' ? (
-                              item
-                            ) : (
-                              <a 
-                                href={item.url} 
-                                className="hover:underline transition-colors" 
-                                style={{ color: i % 2 === 0 ? '#008b8b' : '#800000' }}
-                                target="_blank" 
-                                rel="noreferrer"
-                              >
-                                {item.title}
-                              </a>
-                            )}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    pdfSectionTitles.has(prog.title) ? (
+                      <div className="space-y-3 mb-8">
+                        {prog.items.slice(0, prog.title === 'Annual Reports' ? prog.items.length : 3).map((item, j) => (
+                          <PdfCard
+                            key={j}
+                            href={item.url}
+                            icon={prog.title === 'Annual Reports' ? Download : FileText}
+                            title={item.title}
+                            label={prog.buttonLabel}
+                            variant={prog.title === 'Annual Reports' ? 'danger' : 'accent'}
+                            index={j}
+                            download={prog.title === 'Annual Reports'}
+                            className="!rounded-none !border-[1px]"
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <ul className="space-y-3 mb-8">
+                        {prog.items.slice(0, 3).map((item, j) => (
+                          <li key={j} className="flex items-start gap-3">
+                            <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: i % 2 === 0 ? '#008b8b' : '#800000' }} />
+                            <span className="text-sm font-medium" style={{ color: '#333' }}>
+                              {typeof item === 'string' ? (
+                                item
+                              ) : (
+                                <a 
+                                  href={item.url} 
+                                  className="hover:underline transition-colors" 
+                                  style={{ color: i % 2 === 0 ? '#008b8b' : '#800000' }}
+                                  target="_blank" 
+                                  rel="noreferrer"
+                                >
+                                  {item.title}
+                                </a>
+                              )}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )
                   )}
                 </div>
 

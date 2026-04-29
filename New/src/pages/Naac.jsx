@@ -834,17 +834,23 @@ export default function Naac() {
           </div>
 
           {/* Mission */}
-          <div className="lg:col-span-2 p-10 bg-white border border-slate-100 rounded-[40px] relative overflow-hidden group">
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-              {iqacData.mission.map((item, i) => (
-                <div key={i} className="flex gap-4 group/item">
-                  <div className="w-6 h-6 rounded-lg bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0 group-hover/item:bg-brand-accent group-hover/item:text-white transition-all">
-                    <CheckCircle2 size={12} />
-                  </div>
-                  <p className="text-sm font-body font-medium text-slate-600 leading-snug">{item}</p>
-                </div>
-              ))}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="p-10 bg-white border border-slate-100 rounded-[40px] relative overflow-hidden group">
+              <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8">Quality <span className="text-brand-accent">Mission</span></h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {iqacData.mission.map((item, i) => (
+                  <Card key={i} index={i} variant={i % 2 === 0 ? 'accent' : 'slate'}>
+                    <div className="p-6 pt-8 min-h-[140px] flex gap-4 items-start relative z-10">
+                      <div className="shrink-0 w-10 h-10 rounded-[30%] bg-brand-accent/[0.08] border border-brand-accent/40 flex items-center justify-center text-brand-accent shadow-[0_2px_8px_rgba(0,139,139,0.1)] group-hover:scale-105 transition-all duration-300">
+                        <CheckCircle2 size={20} />
+                      </div>
+                      <p className="text-[14px] font-body font-medium text-slate-700 leading-[1.8] group-hover:text-slate-900 transition-colors duration-[250ms] ease-out pt-1 pr-2">
+                        {item}
+                      </p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -944,7 +950,7 @@ export default function Naac() {
             <div className="p-10 bg-white text-white relative">
               <div className="absolute top-0 right-0 p-8 opacity-20"><ShieldCheck size={80} /></div>
               <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-2 block">Ongoing Accreditation</span>
-              <h3 className="text-4xl font-heading font-black italic uppercase tracking-tighter mb-1">NAAC 2nd Cycle</h3>
+              <h3 className="text-4xl font-heading text-brand-maroon italic uppercase tracking-tighter mb-1">NAAC 2nd Cycle</h3>
               <p className="text-sm font-mono font-bold opacity-60 uppercase tracking-widest italic">{cycles.second.period} • {cycles.second.status}</p>
             </div>
             <div className="p-10 grid grid-cols-1 sm:grid-cols-2 gap-4">

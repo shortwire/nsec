@@ -5,6 +5,7 @@ import { cn } from '../utils/cn';
 import Layout from '../components/Layout';
 import SuccessStories from '../components/SuccessStories';
 import SectionHeading from '../components/SectionHeading';
+import PdfCard from '../components/pdfCard';
 import { 
   Square,
   Circle,
@@ -80,8 +81,6 @@ const NoticeTicker = ({ notices }) => {
   const totalPages = Math.ceil(notices.length / noticesPerPage);
   const startIndex = currentPage * noticesPerPage;
   const currentNotices = notices.slice(startIndex, startIndex + noticesPerPage);
-  
-  const isPDF = (link) => link?.toLowerCase().endsWith('.pdf') || link?.includes('/assets/Notices/');
 
   const handleNext = () => {
     if (currentPage < totalPages - 1) setCurrentPage(prev => prev + 1);
@@ -129,34 +128,16 @@ const NoticeTicker = ({ notices }) => {
             className="space-y-3"
           >
             {currentNotices.map((notice, i) => (
-              <motion.a 
+              <PdfCard
                 key={`${currentPage}-${i}`}
                 href={notice.link}
-                target={isPDF(notice.link) ? "_blank" : "_self"}
-                rel={isPDF(notice.link) ? "noopener noreferrer" : ""}
-                whileHover={{ x: 5, borderColor: "var(--color-brand-accent)" }}
-                className="group flex items-center gap-4 p-4 bg-white border border-brand-accent/20 hover:border-brand-accent/70 transition-all duration-500 relative shadow-sm"
-              >
-                <div className="w-10 h-10 bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 group-hover:border-brand-accent/40 transition-all shrink-0">
-                  <Megaphone size={18} className="text-brand-accent" />
-                </div>
-                
-                <div className="min-w-0 flex-1">
-                  <h4 className="text-base font-black leading-tight uppercase italic text-brand-blue/80 group-hover:text-brand-accent transition-colors tracking-tighter">
-                    {notice.title}
-                  </h4>
-                  <div className="flex items-center gap-2 mt-1.5">
-                    <span className="text-[10px] font-mono font-bold text-slate-600 uppercase tracking-widest">
-                      {notice.date}
-                    </span>
-                    {currentPage === 0 && i < 2 && (
-                      <span className="flex h-1.5 w-1.5 rounded-full bg-brand-maroon animate-pulse" />
-                    )}
-                  </div>
-                </div>
-
-                <div className="w-1.5 h-1.5 bg-brand-blue/10 rounded-full group-hover:bg-brand-accent transition-all shrink-0" />
-              </motion.a>
+                icon={Megaphone}
+                title={notice.title}
+                meta={notice.date}
+                variant="accent"
+                index={i}
+                className="!rounded-none !border-[1px]"
+              />
             ))}
           </motion.div>
         </AnimatePresence>
@@ -505,35 +486,7 @@ const getLucideIcon = (name, size = 20, className = "text-brand-accent") => {
           </div>
         </div>
 
-        {/* INNOVATIVE TICKER: SEGMENTED INDUSTRIAL SCANNER */}
-        <div className="h-10 bg-brand-blue border-y border-brand-accent/30 flex items-center overflow-hidden relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-accent/5 to-transparent animate-pulse" />
-          
-          <div className="flex whitespace-nowrap animate-marquee-infinite relative z-10">
-            {[...tickerItems, ...tickerItems].map((item, i) => (
-              <div 
-                key={i} 
-                className={`flex items-center gap-4 px-12 py-1 mx-2 relative transition-all duration-500 ${
-                  i % 2 === 0 
-                    ? "bg-brand-accent text-brand-blue" 
-                    : "border border-brand-accent/50 text-brand-accent bg-transparent"
-                }`}
-                style={{ clipPath: 'polygon(10% 0, 100% 0, 90% 100%, 0 100%)' }}
-              >
-                <div className="flex items-center gap-3 relative z-10">
-                  {getLucideIcon(item.icon, 12, i % 2 === 0 ? "text-brand-blue" : "text-brand-accent")}
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em]">
-                    {item.label1}
-                  </span>
-                  <div className={`w-1 h-1 rounded-full ${i % 2 === 0 ? "bg-brand-blue/30" : "bg-brand-accent/30"}`} />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.1em] opacity-80">
-                    {item.label2}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Ticker removed per request (text-carousel) */}
       </section>
 
       {/* 02. CORE METRICS / DATA RIBBON ARRAY */}

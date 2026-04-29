@@ -190,9 +190,9 @@ export default function Ariia() {
       <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div>
-            <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-[0.4em] mb-4 block">Institutional Ethics</span>
-            <h2 className="text-5xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">
-              Transparency & <br/> <span className="text-brand-accent">Accuracy</span>
+            <span className="text-[10px] font-mono  text-brand-maroon uppercase tracking-[0.4em] mb-4 block">Institutional Ethics</span>
+            <h2 className="text-5xl font-heading text-brand-maroon italic uppercase tracking-tighter  mb-8 leading-none">
+              Transparency & <br/> <span className="text-brand-maroon">Accuracy</span>
             </h2>
             <div className="p-8 bg-white border border-slate-100 rounded-[32px] relative overflow-hidden">
               <p className="text-[17px] font-body font-medium text-slate-600 leading-relaxed italic">
@@ -209,7 +209,7 @@ export default function Ariia() {
             <div className="absolute top-0 right-0 p-8 opacity-5 text-brand-accent group-hover:scale-110 transition-transform duration-700">
               <Mail size={160} />
             </div>
-            <h3 className="text-3xl font-heading font-black italic uppercase tracking-tighter text-slate-900 mb-8 leading-none">Feedback & <span className="text-brand-accent">Comments</span></h3>
+            <h3 className="text-3xl font-heading text-brand-maroon italic uppercase tracking-tighter mb-8 leading-none">Feedback & <span className="text-brand-maroon">Comments</span></h3>
             <p className="text-sm font-body font-medium text-slate-600 leading-relaxed mb-8 relative z-10">
               Institutions pro-actively examine comments and feedback related to Submitted Data. Please reach out to the nodal offices below:
             </p>
