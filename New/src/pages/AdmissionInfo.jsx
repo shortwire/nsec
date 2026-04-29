@@ -3,20 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Award, Phone, Mail, MapPin, ExternalLink, X, CheckCircle2, GraduationCap, Info } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import AccentDetailCard from '../components/AccentDetailCard';
+import SectionItemCard from '../components/SectionItemCard';
 
 const PROG_ICONS = [GraduationCap, BookOpen, Award, CheckCircle2, Info, ExternalLink];
-
-function ProgramBadge({ name, index }) {
-  const Icon = PROG_ICONS[index % PROG_ICONS.length];
-  return (
-    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.04 }}
-      className="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:bg-brand-accent/5 transition-all group">
-      <div className="w-7 h-7 rounded-lg bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-all"><Icon size={13} /></div>
-      <span className="text-[13px] font-body font-medium text-slate-700 group-hover:text-slate-900">{name}</span>
-    </motion.div>
-  );
-}
 
 export default function AdmissionInfo() {
   const [config, setConfig] = useState(null);
@@ -80,10 +70,16 @@ export default function AdmissionInfo() {
                 { label: 'NAAC Status', value: `${config.accreditation.naac.status} (Valid till ${config.accreditation.naac.valid_till})` },
                 { label: 'NIRF Rank', value: `${config.ranking.nirf.band} (${config.ranking.nirf.year}, ${config.ranking.nirf.category})` },
               ].map((row, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-                  <span className="text-[10px] font-mono font-black text-brand-accent uppercase tracking-widest min-w-[100px] pt-0.5">{row.label}</span>
-                  <span className="text-[14px] font-body font-medium text-slate-700">{row.value}</span>
-                </div>
+                <AccentDetailCard
+                  key={i}
+                  index={i}
+                  label={row.label}
+                  value={row.value}
+                  tone="accent"
+                  size="md"
+                  layout="pair"
+                  showMarker={false}
+                />
               ))}
             </div>
           </div>
@@ -92,12 +88,9 @@ export default function AdmissionInfo() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-8">NBA Accreditation</h2>
             <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm mb-6">
               <p className="text-[11px] font-mono font-black text-brand-accent uppercase tracking-widest mb-4">Validity: {config.accreditation.nba.validity}</p>
-              <div className="space-y-2">
+              <div className="grid grid-cols-1 gap-3">
                 {config.accreditation.nba.programs.map((prog, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 bg-brand-accent/5 border border-brand-accent/10 rounded-xl">
-                    <CheckCircle2 size={14} className="text-brand-accent shrink-0" />
-                    <span className="text-[13px] font-body font-medium text-slate-700">{prog}</span>
-                  </div>
+                  <SectionItemCard key={i} index={i} title={prog} tone="accent" size="sm" icon={CheckCircle2} />
                 ))}
               </div>
             </div>
@@ -132,7 +125,9 @@ export default function AdmissionInfo() {
                 <span className="text-[10px] font-mono font-black px-3 py-1 bg-brand-maroon text-white rounded-full">{group.label}</span>
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
-                {group.items.map((name, i) => <ProgramBadge key={i} name={name} index={i} />)}
+                {group.items.map((name, i) => (
+                  <SectionItemCard key={i} index={i} title={name} tone="accent" size="sm" icon={PROG_ICONS[i % PROG_ICONS.length]} />
+                ))}
               </div>
             </div>
           ))}

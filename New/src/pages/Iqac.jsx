@@ -433,7 +433,7 @@ export default function Iqac() {
                 <PdfCard
                   key={i}
                   href={report.url}
-                  icon={Download}
+                  icon={FileText}
                   title={report.year}
                   label="Annual Report"
                   variant="danger"

@@ -131,7 +131,7 @@ const NoticeTicker = ({ notices }) => {
               <PdfCard
                 key={`${currentPage}-${i}`}
                 href={notice.link}
-                icon={Megaphone}
+                icon={Lucide.FileText}
                 title={notice.title}
                 meta={notice.date}
                 variant="accent"

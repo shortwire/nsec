@@ -33,9 +33,11 @@ export default function PdfCard({
   variant = 'accent',
   index = 0,
   onClick,
+  size = 'default',
   className = ''
 }) {
   const variantStyle = VARIANTS[variant] || VARIANTS.accent;
+  const isCompact = size === 'compact';
   
   const handleClick = (e) => {
     if (onClick) {
@@ -59,7 +61,8 @@ export default function PdfCard({
       viewport={{ once: true }}
       transition={{ delay: index * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        'group block relative p-5 sm:p-6 rounded-[24px] border-[3px] transition-all duration-300',
+        'group block relative transition-all duration-300',
+        isCompact ? 'p-3 rounded-xl border border-slate-200' : 'p-5 sm:p-6 rounded-[24px] border-[3px]',
         variantStyle.border,
         variantStyle.bg,
         variantStyle.hover,
@@ -67,36 +70,37 @@ export default function PdfCard({
         className
       )}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-start gap-4 flex-1 min-w-0">
+      <div className={cn('flex items-start justify-between gap-4', isCompact && 'gap-3')}>
+        <div className={cn('flex items-start gap-4 flex-1 min-w-0', isCompact && 'gap-3')}>
           <div className={cn(
-            'shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-[16px] flex items-center justify-center transition-all duration-300',
+            'shrink-0 rounded-[16px] flex items-center justify-center transition-all duration-300',
+            isCompact ? 'w-8 h-8' : 'w-10 h-10 sm:w-12 sm:h-12',
             variantStyle.icon
           )}>
-            <Icon size={24} className="sm:size-28" />
+            <Icon size={isCompact ? 16 : 24} className="sm:size-28" />
           </div>
-          <div className="min-w-0 flex-1 pt-1">
-            <h3 className="text-[13px] sm:text-[15px] font-heading font-black italic uppercase tracking-tight text-slate-900 leading-snug group-hover:text-brand-accent transition-colors duration-300">
+          <div className={cn('min-w-0 flex-1 pt-1', isCompact && 'pt-0.5')}>
+            <h3 className={cn('font-heading font-black italic uppercase tracking-tight text-slate-900 leading-snug group-hover:text-brand-accent transition-colors duration-300', isCompact ? 'text-[12px]' : 'text-[13px] sm:text-[15px]')}>
               {title}
             </h3>
             {label && (
-              <p className="text-[11px] sm:text-[12px] font-mono font-semibold text-slate-500 uppercase tracking-widest mt-2 group-hover:text-slate-700 transition-colors">
+              <p className={cn('font-mono font-semibold text-slate-500 uppercase tracking-widest group-hover:text-slate-700 transition-colors', isCompact ? 'text-[9px] mt-1' : 'text-[11px] sm:text-[12px] mt-2')}>
                 {label}
               </p>
             )}
             {meta && (
-              <p className="text-[10px] sm:text-[11px] font-body text-slate-400 mt-1.5 group-hover:text-slate-600 transition-colors">
+              <p className={cn('font-body text-slate-400 group-hover:text-slate-600 transition-colors', isCompact ? 'text-[9px] mt-1' : 'text-[10px] sm:text-[11px] mt-1.5')}>
                 {meta}
               </p>
             )}
           </div>
         </div>
         {href && (
-          <div className="shrink-0 pt-1">
+          <div className={cn('shrink-0 pt-1', isCompact && 'pt-0')}>
             {download ? (
-              <Download size={18} className="text-slate-300 group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300" />
+              <Download size={isCompact ? 14 : 18} className="text-slate-300 group-hover:text-brand-accent group-hover:scale-110 transition-all duration-300" />
             ) : (
-              <ExternalLink size={18} className="text-slate-300 group-hover:text-brand-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+              <ExternalLink size={isCompact ? 14 : 18} className="text-slate-300 group-hover:text-brand-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
             )}
           </div>
         )}

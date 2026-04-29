@@ -924,7 +924,7 @@ export default function Naac() {
                   <PdfCard
                     key={i}
                     href={r.url}
-                    icon={Download}
+                    icon={FileText}
                     title={r.year}
                     label="Annual Report"
                     variant="danger"
@@ -975,7 +975,7 @@ export default function Naac() {
                   <PdfCard
                     key={i}
                     href={aq.url}
-                    icon={Download}
+                    icon={FileText}
                     title={`AQAR ${aq.year}`}
                     variant="slate"
                     index={i}

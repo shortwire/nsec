@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Archive, Mail, ExternalLink, ChevronRight } from 'lucide-react';
+import { FileText, Archive, Mail, ExternalLink, ChevronRight, Maximize, Download } from 'lucide-react';
 import PageHero from '../components/PageHero';
 
 export default function NirfPage() {
@@ -25,28 +25,73 @@ export default function NirfPage() {
 		<div className="min-h-screen bg-brand-bg font-sans pb-24">
 			{/* HERO SECTION */}
 			<PageHero 
+				showParticles={false}
+				maxHeight="33vh"
 				titleStroke="NIRF"
 				titleFill="RANKING"
 				statutoryLabel="National Institutional"
 				policyLabel="Ranking Framework"
 				rightLabel="Institutional.Value"
-				useYellowAccents={true}
 				rightContent={
-					<div className="space-y-4">
-						<p className="text-white/70 text-[15px] font-body font-medium leading-relaxed">
-							National Institutional Ranking Framework (NIRF) <span className="text-brand-accent">Rankings & Submissions</span> for the Ministry of Education.
-						</p>
-						<div className="relative mt-4 group">
-							<img
-								src="/assets/nirf/nirf-2020-rank-l.jpg"
-								alt="NIRF Ranking Certificate"
-								className="w-full h-auto object-cover rounded-lg border border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg pointer-events-none" />
+					<div className="leading-snug">
+						{/* Main description text */}
+						<div className="flex flex-wrap gap-x-[0.35em] gap-y-1 mb-1">
+							{['National', 'Institutional', 'Ranking', 'Framework', '(NIRF)'].map((word, i) => (
+								<motion.span
+									key={i}
+									initial={{ opacity: 0, y: 12 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.5, delay: 0.4 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+									className="text-white/70 text-[15px] font-body font-medium"
+								>
+									{word}
+								</motion.span>
+							))}
+
+							{/* Glowing keyword — "Rankings & Submissions" */}
+							<motion.span
+								initial={{ opacity: 0, scale: 0.85 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.6, delay: 0.86, ease: [0.16, 1, 0.3, 1] }}
+								className="relative inline-block"
+							>
+								<span
+									className="text-[17px] font-heading font-black italic uppercase tracking-tighter text-[var(--color-brand-accent)]"
+									style={{ textShadow: '0 0 25px var(--color-brand-accent), 0 0 50px rgba(0,139,139,0.5)' }}
+								>
+									Rankings & Submissions
+								</span>
+								{/* animated underline */}
+								<motion.span
+									initial={{ scaleX: 0 }}
+									animate={{ scaleX: 1 }}
+									transition={{ duration: 0.5, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+									className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-accent origin-left block"
+									style={{ boxShadow: '0 0 8px rgba(0,139,139,0.8)' }}
+								/>
+							</motion.span>
+						</div>
+
+						{/* Line 2 */}
+						<div className="flex flex-wrap gap-x-[0.35em] gap-y-1 mb-1">
+							{['for', 'the', 'Ministry', 'of', 'Education'].map((word, i) => (
+								<motion.span
+									key={i}
+									initial={{ opacity: 0, y: 12 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.5, delay: 1.0 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+									className="text-white/70 text-[15px] font-body font-medium"
+								>
+									{word}
+								</motion.span>
+							))}
 						</div>
 					</div>
 				}
 			/>
+
+			{/* Golden gradient separator below hero */}
+			<div className="h-[2px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.5) 30%, rgba(251,191,36,0.5) 70%, transparent)' }} />
 
 			<div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-16">
 				
@@ -185,6 +230,84 @@ export default function NirfPage() {
 						</div>
 					</div>
 				</div>
+
+				{/* ── RANKING CERTIFICATE PREVIEW ── */}
+				<section className="pt-16 pb-24 px-0 relative overflow-hidden">
+					<div className="flex items-center justify-center mb-12">
+						<div className="flex items-center gap-3">
+							<div className="w-3 h-3 rounded-full bg-[#008b8b]"></div>
+							<h2 className="text-4xl md:text-5xl font-black text-[#800000] uppercase tracking-tight">NIRF Ranking</h2>
+						</div>
+					</div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+						className="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.08)] border border-slate-200/60"
+					>
+						{/* Premium browser chrome bar */}
+						<div className="flex items-center justify-between px-6 py-4 bg-brand-blue">
+							<div className="flex items-center gap-5">
+								<div className="flex gap-2">
+									{['bg-red-400', 'bg-yellow-400', 'bg-green-400'].map((c, i) => (
+										<div key={i} className={`w-3 h-3 rounded-full ${c} opacity-60`} />
+									))}
+								</div>
+								<div className="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-white/[0.06] rounded-lg border border-white/[0.08]">
+									<FileText size={11} className="text-brand-accent/60" />
+									<span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+										NIRF-Ranking-Certificate.jpg
+									</span>
+								</div>
+							</div>
+							<div className="flex items-center gap-2.5">
+								<a
+									href="/assets/nirf/nirf-2020-rank-l.jpg"
+									target="_blank"
+									rel="noopener noreferrer"
+									title="Fullscreen"
+									className="group/btn inline-flex items-center justify-center p-2.5 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg
+													   hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all duration-300"
+								>
+									<Maximize size={14} className="group-hover/btn:scale-110 transition-transform duration-200" />
+								</a>
+								<a
+									href="/assets/nirf/nirf-2020-rank-l.jpg"
+									download
+									className="group/btn inline-flex items-center gap-1.5 px-4 py-2 bg-brand-maroon text-white rounded-lg
+													   font-mono font-black text-[10px] uppercase tracking-[0.15em]
+													   hover:bg-white hover:text-brand-maroon hover:shadow-lg transition-all duration-300"
+								>
+									<Download size={12} className="group-hover/btn:translate-y-[1px] transition-transform duration-200" /> Download
+								</a>
+							</div>
+						</div>
+
+						{/* Image viewer */}
+						<div className="w-full bg-white flex items-center justify-center p-8" style={{ minHeight: '60vh' }}>
+							<img
+								src="/assets/nirf/nirf-2020-rank-l.jpg"
+								alt="NIRF Ranking Certificate"
+								className="w-full h-auto object-contain max-h-[65vh] rounded-lg shadow-lg"
+							/>
+						</div>
+
+						{/* Status bar */}
+						<div className="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-100">
+							<div className="flex items-center gap-2">
+								<div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#fbbf24', boxShadow: '0 0 6px rgba(251,191,36,0.5)' }} />
+								<span className="text-[10px] font-mono font-bold text-slate-700 uppercase tracking-widest">
+									Netaji Subhash Engineering College
+								</span>
+							</div>
+							<span className="text-[9px] font-mono text-brand-accent uppercase tracking-widest">
+								Ranking Certificate
+							</span>
+						</div>
+					</motion.div>
+				</section>
 			</div>
 		</div>
 	);

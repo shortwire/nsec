@@ -4,6 +4,7 @@ import { Shield, Globe, ChevronRight, Phone, Mail, Clock, AlertCircle, CheckCirc
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import MinCard from '../components/minCard';
+import AccentDetailCard from '../components/AccentDetailCard';
 
 const ICONS = [AlertCircle, BookOpen, Shield, Users, Globe, CheckCircle2, Phone, Mail];
 function ItemCard({ index, text }) {
@@ -116,10 +117,7 @@ export default function FacilitiesGrievance() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Grievance Types</h2>
             <div className="flex flex-col gap-2">
               {(config.categories || []).map((cat, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 bg-white border border-slate-100 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/20 transition-all">
-                  <div className="w-2 h-2 rounded-full bg-[#fbbf24] shrink-0" />
-                  <span className="text-[13px] font-body font-medium text-slate-700">{cat}</span>
-                </div>
+                <AccentDetailCard key={i} index={i} value={cat} tone="accent" size="md" />
               ))}
             </div>
           </div>

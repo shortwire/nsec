@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Users, Award, Zap, Camera, FileText, ChevronRight, BookOpen, ExternalLink, X, Download } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import PdfCard from '../components/pdfCard';
 
 const EVENTS_DATA = [
   {
@@ -160,17 +161,15 @@ function EventCard({ index, date, text, alternate, hasDetails, onViewDetails }) 
           </p>
         </div>
         {hasDetails && (
-          <div className="pt-4 mt-auto border-t border-slate-100">
-            <button
+          <div className="pt-4 mt-auto border-t border-slate-100 -mx-6 -mb-6 px-6 pb-6">
+            <PdfCard
               onClick={onViewDetails}
-              className="w-full text-left focus:outline-none p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-brand-maroon/5 hover:border-brand-maroon/30 shadow-sm hover:shadow-md transition-all group/btn"
-            >
-              <div className="flex items-center gap-3">
-                <Download size={16} className="text-brand-maroon group-hover/btn:scale-110 transition-transform shrink-0" />
-                <span className="text-sm font-mono font-bold text-slate-600 group-hover/btn:text-brand-maroon">View Details</span>
-              </div>
-              <span className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest group-hover/btn:text-brand-maroon/60">PDF</span>
-            </button>
+              icon={Download}
+              title="View Details"
+              label="PDF"
+              variant="slate"
+              size="compact"
+            />
           </div>
         )}
       </div>

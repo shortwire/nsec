@@ -32,7 +32,7 @@ function ActivityRow({ activity, index }) {
   return (
     <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
-      className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/20 transition-all group">
+      className="flex items-start gap-4 p-4 bg-white border-2 border-slate-200 rounded-2xl hover:bg-brand-accent/5 hover:border-brand-accent/30 shadow-sm hover:shadow-md transition-all group">
       <div className="shrink-0 text-right min-w-[110px]">
         <span className="text-[11px] font-mono font-bold text-slate-500">{activity.date}</span>
       </div>

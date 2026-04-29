@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, BookOpen, FileText, CheckCircle2, Info, ChevronDown } from 'lucide-react';
+import { ShieldCheck, ChevronDown, CheckCircle2 } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SectionItemCard from '../components/SectionItemCard';
 
 function AccordionSection({ title, children, isOpen, onToggle, index }) {
   return (
@@ -18,10 +19,14 @@ function AccordionSection({ title, children, isOpen, onToggle, index }) {
         className="w-full flex items-center justify-between p-6 text-left group hover:bg-brand-accent/5 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all">
+          <div className="w-10 h-10 rounded-xl  flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all">
             <ShieldCheck size={20} />
           </div>
-          <h3 className="text-lg font-heading font-black italic uppercase tracking-tight text-slate-800">{title}</h3>
+          <h3 className="text-lg font-heading font-black italic uppercase tracking-tighter text-brand-maroon flex items-center gap-3">
+            <span className="text-[10px] font-mono font-black px-3 py-1 bg-brand-maroon text-white rounded-full">
+              {title}
+            </span>
+          </h3>
         </div>
         <ChevronDown size={20} className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -33,7 +38,7 @@ function AccordionSection({ title, children, isOpen, onToggle, index }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="p-8 pt-0 border-t border-slate-100 bg-slate-50/30">
+            <div className="p-8 pt-0 border-t border-slate-100 ">
               <div className="mt-6 space-y-8">
                 {children}
               </div>
@@ -45,21 +50,16 @@ function AccordionSection({ title, children, isOpen, onToggle, index }) {
   );
 }
 
-function ListSection({ title, items, icon: Icon, color = "brand-accent" }) {
+function ListSection({ title, items, tone = 'accent' }) {
   return (
     <div>
-      <h4 className={`text-xs font-mono font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2 text-${color}`}>
-        <div className={`w-1.5 h-1.5 rounded-full bg-${color}`} />
+      <h4 className={`text-xs font-mono font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2 ${tone === 'blue' ? 'text-brand-blue' : tone === 'maroon' ? 'text-brand-maroon' : tone === 'amber' ? 'text-amber-700' : 'text-brand-accent'}`}>
+        <div className={`w-1.5 h-1.5 rounded-full ${tone === 'blue' ? 'bg-brand-blue' : tone === 'maroon' ? 'bg-brand-maroon' : tone === 'amber' ? 'bg-[#fbbf24]' : 'bg-brand-accent'}`} />
         {title}
       </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {items.map((item, i) => (
-          <div key={i} className="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
-            <div className={`mt-1 shrink-0 text-${color}`}>
-              <CheckCircle2 size={14} />
-            </div>
-            <span className="text-[13px] font-body text-slate-600 leading-relaxed">{item}</span>
-          </div>
+          <SectionItemCard key={i} index={i} title={item} tone={tone} size="sm" icon={CheckCircle2} />
         ))}
       </div>
     </div>
@@ -141,27 +141,27 @@ export default function AdmissionEligibility() {
                 index={i}
               >
                 {data.eligibility && (
-                  <ListSection title="Eligibility Criteria" items={data.eligibility} color="brand-accent" />
+                  <ListSection title="Eligibility Criteria" items={data.eligibility} tone="accent" />
                 )}
                 
                 {data.entrance_exams && (
-                  <ListSection title="Entrance Exams" items={data.entrance_exams} color="brand-blue" />
+                  <ListSection title="Entrance Exams" items={data.entrance_exams} tone="blue" />
                 )}
 
                 {data.admission_procedure && (
-                  <ListSection title="Admission Procedure" items={data.admission_procedure} color="brand-maroon" />
+                  <ListSection title="Admission Procedure" items={data.admission_procedure} tone="maroon" />
                 )}
 
                 {data.selection_process && (
-                  <ListSection title="Selection Process" items={data.selection_process} color="amber-500" />
+                  <ListSection title="Selection Process" items={data.selection_process} tone="amber" />
                 )}
 
                 {data.documents_required && (
-                  <ListSection title="Documents Required" items={data.documents_required} color="brand-accent" />
+                  <ListSection title="Documents Required" items={data.documents_required} tone="accent" />
                 )}
 
                 {data.direct_admission && (
-                   <ListSection title="Direct Admission" items={data.direct_admission} color="brand-blue" />
+                   <ListSection title="Direct Admission" items={data.direct_admission} tone="blue" />
                 )}
               </AccordionSection>
             ))}

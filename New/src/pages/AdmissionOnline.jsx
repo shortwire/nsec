@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, Globe, CheckCircle2, ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import AccentDetailCard from '../components/AccentDetailCard';
 
 export default function AdmissionOnline() {
   const [config, setConfig] = useState(null);
@@ -64,10 +65,7 @@ export default function AdmissionOnline() {
                    </h4>
                    <div className="grid grid-cols-1 gap-2">
                       {config.required_documents.map((doc, i) => (
-                        <div key={i} className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-xl">
-                          <CheckCircle2 size={14} className="text-brand-accent shrink-0" />
-                          <span className="text-[13px] font-body text-slate-600">{doc}</span>
-                        </div>
+                        <AccentDetailCard key={i} index={i} value={doc} tone="accent" size="sm" icon={CheckCircle2} />
                       ))}
                    </div>
                 </div>

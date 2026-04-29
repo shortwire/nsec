@@ -90,7 +90,7 @@ export default function SpotlightStatusCard({
       </div>
 
       <div className="relative z-10">
-        <h4 className={cn('text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-2 drop-shadow-md', titleClassName)}>{title}</h4>
+        <h4 className={cn('text-xl font-heading font-black italic uppercase tracking-tighter text-white mb-4 drop-shadow-md leading-snug break-words w-full', titleClassName)}>{title}</h4>
         {value ? <p className={cn('text-2xl font-mono font-black text-white/90 transition-colors duration-300 drop-shadow-md', valueClassName)}>{value}</p> : null}
         {description ? <p className={cn('text-sm font-body text-white/80 mt-2', descriptionClassName)}>{description}</p> : null}
       </div>

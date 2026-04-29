@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Shield, Users, Award, BookOpen, Download, ExternalLink, X, Phone, Mail, CheckCircle2, GraduationCap, Bus, Wifi } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import SectionItemCard from '../components/SectionItemCard';
 
 const ICONS = [Heart, Shield, Users, Award, BookOpen, Bus, Wifi, CheckCircle2, GraduationCap, Phone];
 function ItemCard({ index, text }) {
@@ -146,10 +147,7 @@ export default function FacilitiesWelfare() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Support Measures</h2>
             <div className="flex flex-col gap-3">
               {(config.support_measures || []).map((s, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 bg-white border border-slate-100 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/20 transition-all">
-                  <div className="w-2 h-2 rounded-full bg-[#fbbf24] shrink-0" />
-                  <span className="text-[14px] font-body font-medium text-slate-700">{s}</span>
-                </div>
+                <SectionItemCard key={i} index={i} title={s} tone="accent" size="md" icon={BookOpen} />
               ))}
             </div>
           </div>
@@ -157,10 +155,7 @@ export default function FacilitiesWelfare() {
             <h2 className="text-4xl font-heading font-black italic uppercase tracking-tighter text-brand-maroon mb-6">Committees</h2>
             <div className="flex flex-col gap-3">
               {(config.committees || []).map((c, i) => (
-                <div key={i} className="p-4 bg-white border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-md transition-all">
-                  <p className="text-[14px] font-heading font-black italic uppercase tracking-tight text-slate-800">{c.name}</p>
-                  <p className="text-[12px] font-body text-slate-500 mt-1">{c.role}</p>
-                </div>
+                <SectionItemCard key={i} index={i} title={c.name} description={c.role} tone="accent" size="md" icon={Users} />
               ))}
             </div>
           </div>
