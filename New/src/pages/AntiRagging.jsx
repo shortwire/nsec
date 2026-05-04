@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, AlertTriangle, ChevronRight, Eye, Download, ExternalLink, Phone, ArrowUpRight, MessageSquare, Frown, BookOpen, Briefcase, IndianRupee, ShieldAlert, Mail, Brain, Maximize } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/card';
 import SpotlightStatusCard from '../components/SpotlightStatusCard';
+import Breadcrumb from '../components/Breadcrumb';
+import PdfCard from '../components/pdfCard';
+import PdfModal from '../components/PdfModal';
+import { FileText } from 'lucide-react';
 
 /* ═══════════════════════════════════════════════════════════
    THREE.JS  —  RIPPLE WAVE PARTICLE FIELD
@@ -96,6 +101,8 @@ function PunishmentCard({ index, text }) {
 export default function AntiRagging() {
   const [config, setConfig] = useState(null);
   const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
+  const [activeSection, setActiveSection] = useState('Policy Overview');
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const PDF_SRC = '/assets/pdfs/Anti-Ragging-Committee-NSEC-2024-2025.pdf';
 
   const carouselPhrases = [
@@ -119,6 +126,81 @@ export default function AntiRagging() {
       .catch(err => console.error('Failed to load Anti-Ragging config:', err));
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === 'constitutes') setActiveSection('What Constitutes');
+          if (id === 'punishments') setActiveSection('Punishments');
+          if (id === 'report') setActiveSection('How to Report');
+          if (id === 'committee') setActiveSection('Committee (ARC)');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    // We add a small timeout to let the DOM render before querying
+    setTimeout(() => {
+      document.querySelectorAll('[data-section]').forEach(sec => observer.observe(sec));
+    }, 500);
+    
+    return () => observer.disconnect();
+  }, []);
+
+  const breadcrumbs = [];
+
+  const leftSubmenus = [
+    {
+      id: 'the-nsec',
+      label: 'The NSEC',
+      children: [
+        { id: '/about#overview', label: 'Overview' },
+        { id: '/about#vision', label: 'Vision & Mission' },
+        { id: '/about#distinctiveness', label: 'Institutional Distinctiveness' },
+        { id: '/about#org', label: 'Organisational Structure' },
+        { id: '/about#accreditation', label: 'Approval & Affiliation' },
+        { 
+          id: '/about#functionaries', 
+          label: 'Functionaries',
+          children: [
+            { id: '/about#functionaries-bog', label: 'Board of Governors' },
+            { id: '/about#functionaries-md', label: 'Managing Director' },
+            { id: '/about#functionaries-principal', label: 'Principal' },
+            { id: '/about#functionaries-dean', label: 'Dean' }
+          ]
+        },
+        { id: '/about#campus', label: 'Campus Map' },
+        { id: '/about#gallery', label: 'Photo Gallery' },
+        { id: '/about#contact', label: 'Contact Us' }
+      ]
+    }
+  ];
+
+  const rightSubmenus = [
+    { id: 'What Constitutes', label: 'Constitutes', elementId: 'constitutes' },
+    { id: 'Punishments', label: 'Punishments', elementId: 'punishments' },
+    { id: 'How to Report', label: 'Report', elementId: 'report' },
+    { id: 'Committee (ARC)', label: 'Committee', elementId: 'committee' },
+  ];
+
+  const handleSubmenuClick = (id) => {
+    if (id.startsWith('/about')) {
+      window.location.href = id;
+      return;
+    }
+    setActiveSection(id);
+    const menu = rightSubmenus.find(m => m.id === id);
+    if (menu && menu.elementId) {
+      const el = document.getElementById(menu.elementId);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 232;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   if (!config) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-brand-bg">
@@ -136,7 +218,7 @@ export default function AntiRagging() {
       {/* ── 01. HERO ── */}
       <PageHero
         showParticles={false}
-        maxHeight="33vh"
+        maxHeight="20vh"
         titleStroke="ANTI-"
         titleFill="RAGGING"
         statutoryLabel={<span className="text-[#fbbf24]">POLICY</span>}
@@ -237,13 +319,22 @@ export default function AntiRagging() {
       {/* Golden gradient separator below hero */}
       <div className="h-[2px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.5) 30%, rgba(251,191,36,0.5) 70%, transparent)' }} />
 
+      {/* ── NEW BREADCRUMB ── */}
+      <Breadcrumb 
+        items={breadcrumbs} 
+        submenus={leftSubmenus}
+        rightSubmenus={rightSubmenus}
+        activeSubmenu={activeSection}
+        onSubmenuClick={handleSubmenuClick}
+      />
+
       {/* ── 02. GUIDELINES CONTENT ── */}
       <section className="relative pt-24 pb-0 px-8 lg:px-24 bg-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
         {/* Section 01: What Constitutes Ragging — GRID LAYOUT */}
-        <div className="mb-8 relative">
+        <div className="mb-8 relative" id="constitutes" data-section="true">
           <SectionHeading
             title="What Constitutes"
             tagline="Defining the boundaries of student conduct."
@@ -261,7 +352,7 @@ export default function AntiRagging() {
         <div className="h-[1px] mx-auto max-w-3xl my-4" style={{ background: 'linear-gradient(to right, transparent, rgba(251,191,36,0.2) 20%, rgba(128,0,0,0.1) 50%, rgba(251,191,36,0.2) 80%, transparent)' }} />
 
         {/* Section 02: Punishments — GRID CARDS */}
-        <div className="relative -mx-8 lg:-mx-24 px-8 lg:px-24 pt-8 pb-12 border-t border-brand-maroon/5 bg-white">
+        <div className="relative -mx-8 lg:-mx-24 px-8 lg:px-24 pt-8 pb-12 border-t border-brand-maroon/5 bg-white" id="punishments" data-section="true">
           {/* Removed the background gradient and glow to keep it pure white */}
 
           <SectionHeading
@@ -282,7 +373,7 @@ export default function AntiRagging() {
       <div className="h-[1px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(0,139,139,0.12) 30%, rgba(0,139,139,0.12) 70%, transparent)' }} />
 
       {/* ── 03. REPORT & HELPLINE ── */}
-      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden">
+      <section className="relative pt-16 pb-8 px-8 lg:px-24 bg-white overflow-hidden" id="report" data-section="true">
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-accent/[0.025] rounded-full blur-3xl pointer-events-none translate-x-1/3 translate-y-1/3" />
         <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-brand-accent/[0.015] rounded-full blur-3xl pointer-events-none -translate-x-1/3 -translate-y-1/3" />
 
@@ -327,80 +418,25 @@ export default function AntiRagging() {
       <div className="h-[1px] w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(0,139,139,0.12) 30%, rgba(128,0,0,0.08) 70%, transparent)' }} />
 
       {/* ── 04. PDF PREVIEW ── */}
-      <section className="pt-16 pb-24 px-8 lg:px-24 bg-white relative overflow-hidden">
+      <section className="pt-16 pb-24 px-8 lg:px-24 bg-white relative overflow-hidden" id="committee" data-section="true">
         <SectionHeading
           title="Committee (ARC)"
           tagline="Official Anti-Ragging Committee & Squad"
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.08)] border border-slate-200/60"
-        >
-          {/* Premium browser chrome bar */}
-          <div className="flex items-center justify-between px-6 py-4 bg-brand-blue">
-            <div className="flex items-center gap-5">
-              <div className="flex gap-2">
-                {['bg-red-400', 'bg-yellow-400', 'bg-green-400'].map((c, i) => (
-                  <div key={i} className={`w-3 h-3 rounded-full ${c} opacity-60`} />
-                ))}
-              </div>
-              <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-white/[0.06] rounded-lg border border-white/[0.08]">
-                <Shield size={11} className="text-brand-accent/60" />
-                <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-                  Anti-Ragging-Committee-NSEC.pdf
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <a
-                href={PDF_SRC}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Fullscreen"
-                className="group/btn inline-flex items-center justify-center p-2.5 bg-brand-accent/10 text-brand-accent border border-brand-accent/20 rounded-lg
-                           hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all duration-300"
-              >
-                <Maximize size={14} className="group-hover/btn:scale-110 transition-transform duration-200" />
-              </a>
-              <a
-                href={PDF_SRC}
-                download
-                className="group/btn inline-flex items-center gap-1.5 px-4 py-2 bg-brand-maroon text-white rounded-lg
-                           font-mono font-black text-[10px] uppercase tracking-[0.15em]
-                           hover:bg-white hover:text-brand-maroon hover:shadow-lg transition-all duration-300"
-              >
-                <Download size={12} className="group-hover/btn:translate-y-[1px] transition-transform duration-200" /> Download
-              </a>
-            </div>
-          </div>
-
-          {/* Document viewer */}
-          <div className="w-full h-[78vh] bg-white">
-            <iframe
-              src={`${PDF_SRC}#view=FitH`}
-              className="w-full h-full"
-              title="Anti-Ragging Committee NSEC"
-            />
-          </div>
-
-          {/* Status bar */}
-          <div className="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-100">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#fbbf24', boxShadow: '0 0 6px rgba(251,191,36,0.5)' }} />
-              <span className="text-[10px] font-mono font-bold text-slate-700 uppercase tracking-widest">
-                Netaji Subhash Engineering College
-              </span>
-            </div>
-            <span className="text-[9px] font-mono text-brand-accent uppercase tracking-widest">
-              Statutory Document
-            </span>
-          </div>
-        </motion.div>
+        <div className="max-w-2xl mx-auto mt-8">
+          <PdfCard
+            href={PDF_SRC}
+            title="Anti-Ragging Committee NSEC 2024-2025"
+            label="Statutory Document"
+            meta="Official Anti-Ragging Committee & Squad"
+            icon={FileText}
+            onClick={() => setSelectedPdf(PDF_SRC)}
+          />
+        </div>
       </section>
+
+      <PdfModal selectedPdf={selectedPdf} setSelectedPdf={setSelectedPdf} />
 
     </div>
   );

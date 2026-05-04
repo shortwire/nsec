@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-brand-bg flex flex-col overflow-x-hidden">
+    <div className="min-h-screen bg-brand-bg flex flex-col overflow-x-clip">
       <Header />
       <Navbar />
       
